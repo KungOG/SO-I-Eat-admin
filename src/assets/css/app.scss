@@ -1,0 +1,20 @@
+@import '../../../node_modules/bootstrap/scss/bootstrap-grid';
+
+@import './components/variables';
+@import './components/typography';
+@import './components/functions';
+
+
+@import './views/OrderBoard.scss';
+@import './views/Login.scss';
+@import './views/EditDish.scss';
+@import './views/Edit.scss';
+@import './views/CreateDish.scss';
+@import './views/Archive.scss';
+@import './views/ArchiveItem.scss';
+@import './views/CardOrder.scss';
+@import './views/OrderInformation.scss';
+@import './views/MenuList.scss';
+@import './views/Navigation.scss';
+@import './views/SearchBar.scss';
+@import './views/SetTime.scss';
