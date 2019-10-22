@@ -12,11 +12,6 @@ export default new Router({
       component: () => import('./views/Login.vue'),
       children: [
         {
-          path: '/orderboard',
-          name: 'orderboard',
-          component: () => import('./views/OrderBoard.vue'),
-        },
-        {
           path: '/archive',
           name: 'archive',
           component: () => import('./views/Archive.vue'),
@@ -39,6 +34,11 @@ export default new Router({
           ],
         },
       ],
+    },
+    {
+      path: '/orderboard',
+      name: 'orderboard',
+      component: () => import('./views/OrderBoard.vue'),
     },
   ],
 });
