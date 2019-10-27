@@ -8,7 +8,12 @@
     </div>
     <div class='time-buttons'>
       <img :src='Timer' alt="This is icon for timer" />
-      <LightButton v-for="(buttonText, i) in buttonTexts" :key="i" :buttonText="buttonText"/>
+      <LightButton 
+        v-for="buttonText in buttonTexts" 
+        :key="buttonText" 
+        :buttonText="buttonText" 
+        :productionTime="productionTime"
+        @click.native="setProductionTime(buttonText) "/>
     </div>
     <div class='current-time'>
       <p>{{time}}</p>
@@ -37,12 +42,17 @@ export default {
       Icon: Icon,
       buttonTexts: ['10', '15', '20', '30', '45'],
       time: '',
+      productionTime: '',
+
     }
   },
   mounted() {
     var timerID = setInterval(this.updateTime, 1000);
   },
   methods: {
+    setProductionTime(time) {
+      this.productionTime = time;
+    },
     updateTime() {
       var cd = new Date();
       this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2);
