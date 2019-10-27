@@ -31,6 +31,7 @@ export default {
     &.active-btn {
       background-color: white;
       color: black;
+      outline: 0;
     }
   }
 </style>
