@@ -1,0 +1,29 @@
+.food-information > .content {
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+
+  .color {
+    background-color: green;
+    width: 10px;
+    height: 100px;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .added-items {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid grey;
+    border-right: 1px solid grey;
+  }
+
+  .removed-items {
+    display: flex;
+    flex-direction: column;
+  }
+}

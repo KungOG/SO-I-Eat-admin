@@ -1,3 +1,17 @@
-#app > .order-board {
-  background: grey;
+.order-board {
+  background: #000000;
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+
+    .drink-content {
+
+    }
+  
+    .food-content {
+    }
+  }
 }

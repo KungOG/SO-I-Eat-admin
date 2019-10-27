@@ -1,11 +1,13 @@
 <template>
-  <div class='orderBoard'>
+  <div class='order-board'>
     <Navigation />
-    <div class='drink-content'>
-      <DrinkCard />
-    </div>
-    <div class='food-content'>
-      <FoodCard />
+    <div class='content'>
+      <div class='drink-content'>
+        <DrinkCard />
+      </div>
+      <div class='food-content'>
+        <FoodCard />
+      </div>
     </div>
   </div>
 </template>
