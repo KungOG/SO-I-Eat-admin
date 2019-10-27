@@ -8,8 +8,11 @@
     </div>
     <div class='time-buttons'>
       <img :src='Timer' alt="This is icon for timer" />
+      <LightButton v-for="(buttonText, i) in buttonTexts" :key="i" :buttonText="buttonText"/>
     </div>
-    <div class='current-time'>15:35</div>
+    <div class='current-time'>
+      <p>{{time}}</p>
+    </div>
   </div>
 </template>
 
@@ -17,6 +20,7 @@
 import Orders from '@/assets/icons/Menu.svg';
 import Timer from '@/assets/icons/Clock.svg';
 import Icon from '@/assets/icons/Group.svg';
+import LightButton from '@/components/LightButton.vue';
 
 export default {
   name: 'navigationbar',
@@ -24,12 +28,31 @@ export default {
     Orders,
     Timer,
     Icon,
+    LightButton,
   },
   data () {
     return {
       Orders: Orders,
       Timer: Timer,
       Icon: Icon,
+      buttonTexts: ['10', '15', '20', '30', '45'],
+      time: '',
+    }
+  },
+  mounted() {
+    var timerID = setInterval(this.updateTime, 1000);
+  },
+  methods: {
+    updateTime() {
+      var cd = new Date();
+      this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2);
+    },
+    zeroPadding(num, digit) {
+      var zero = '';
+      for(var i = 0; i < digit; i++) {
+          zero += '0';
+      }
+      return (zero + num).slice(-digit);
     }
   }
 };
