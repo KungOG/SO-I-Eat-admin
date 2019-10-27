@@ -1,4 +1,8 @@
 .drink-information > .content {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid grey;
+  padding: 15px 0;
+  margin-bottom: 20px;
 }

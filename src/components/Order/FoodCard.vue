@@ -2,8 +2,8 @@
   <div class='food-order'>
     <div class='food-header'>
       <div class='filler' />
-      <h3>12</h3>
-      <h4>13.37</h4>
+      <h2>Bord 12</h2>
+      <span>13.37</span>
     </div>
     <FoodInformation />
   </div>

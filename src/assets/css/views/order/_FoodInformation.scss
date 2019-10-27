@@ -1,29 +1,40 @@
 .food-information > .content {
-  display: flex;
-  flex-direction: row;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+  display: grid;
+  justify-content: center;
+  border: 1px solid grey; border-width: 1px 0 1px 0;
+  grid-template-columns: 15px 1.5fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: 'color info add remove';
+
+  .info,
+  .added-items,
+  .removed-items {
+    padding: 15px 0 15px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
   .color {
     background-color: green;
-    width: 10px;
-    height: 100px;
+    grid-area: color;
+    width: 100%;
+    height: 100%;
   }
 
   .info {
-    display: flex;
-    flex-direction: column;
+    grid-area: info;
   }
 
   .added-items {
-    display: flex;
-    flex-direction: column;
+    grid-area: add;
     border-left: 1px solid grey;
     border-right: 1px solid grey;
   }
 
   .removed-items {
-    display: flex;
-    flex-direction: column;
+    grid-area: remove;
+    color: red;
   }
 }

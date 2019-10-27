@@ -3,8 +3,8 @@
     <div class='content'>
       <div class='color' />
       <div class='info'>
-        <span>1234</span>
-        <span>Menyrätt</span>
+        <h3>1234</h3>
+        <h3>Menyrätt</h3>
         <span>Kyckling</span>
       </div>
       <div class='added-items'>

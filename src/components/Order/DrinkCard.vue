@@ -1,8 +1,8 @@
 <template>
   <div class='drink-order'>
     <div class='drink-header'>
-      <h3>12</h3>
-      <h4>13.37</h4>
+      <h2>12</h2>
+      <span>13.37</span>
     </div>
     <DrinkInformation />
   </div>

@@ -1,8 +1,8 @@
 <template>
   <div class='drink-information'>
     <div class='content'>
-      <span>1256</span>
-      <span>Coca-Cola</span>
+      <h3>1256</h3>
+      <h3>Coca-Cola</h3>
       <span>Stor</span>
     </div>
   </div>
