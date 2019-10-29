@@ -6,7 +6,8 @@
         <DrinkCard />
       </div>
       <div class='food-content'>
-        <FoodCard class="1" v-for="(order, i) in orders" :key="i" :order="order" />
+        <FoodCard class="1" v-for="(order, i) in orders.array1" :key="i+100" :order="order" />
+        <FoodCard class="1" v-for="(order, i) in orders.array2" :key="i" :order="order" />
       </div>
     </div>
   </div>
@@ -19,9 +20,7 @@ import DrinkCard from '@/components/Order/DrinkCard.vue';
 
 export default {
   name: 'orderboard',
-    beforeMount () {
-    this.$store.dispatch('getOrders');
-  },
+
   components: {
     Navigation,
     DrinkCard,
@@ -29,7 +28,17 @@ export default {
   },
   computed: {
     orders() {
-      return this.$store.state.orders;
+      var orders = this.$store.state.orders;
+      var arrays = {array1: [], array2: []}
+
+      for(let i=0; i < 5; i++) {
+        if(orders.length % 2 == 0) {
+          arrays.array1.push(orders.shift())
+        } else {
+          arrays.array2.push(orders.shift())
+        }
+      }
+      return arrays
     }
   },
   methods: {
@@ -39,3 +48,5 @@ export default {
   }
 };
 </script>
+
+
