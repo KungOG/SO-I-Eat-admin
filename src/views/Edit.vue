@@ -26,9 +26,36 @@
       </section>
       <section>
         <div class="grid-wrapper">
-          <h1>Skapa ny menyrad</h1>
-          
-          <DarkButton />
+          <div class="header">
+            <h1>Skapa ny menyrad</h1>
+          </div>
+          <div class="number">
+            <input type="text">
+          </div>
+          <div class="category">
+            <input type="text">
+          </div>
+          <div class="name">
+            <input type="text">
+          </div>
+          <div class="price">
+            <input type="text">
+          </div>
+          <div class="protein">
+            <input type="text">
+          </div>
+          <div class="description">
+            <input type="text">
+          </div>
+          <div class="ingredients">
+            <input type="text">
+          </div>
+          <div class="spice">
+            <input type="text">
+          </div>
+          <div class="button">
+            <DarkButton />
+          </div>
         </div>
       </section>
     </div>

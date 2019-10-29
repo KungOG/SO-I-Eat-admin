@@ -72,7 +72,59 @@
         height: 100%;
         margin: 10px;
 
-        
+        .grid-wrapper {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: repeat(7, 1fr);
+          grid-template-areas: 
+          "header header"
+          "number category"
+          "name description"
+          "price description"
+          "protein ingredients"
+          "spice ingredients"
+          "button button";
+
+          .number {
+            grid-area: number;
+            background: pink;
+          }
+
+          .category {
+            grid-area: category;
+            background: green;
+          }
+
+          .header {
+            grid-area: header;
+            background: red;
+          }
+
+          .description {
+            grid-area: description;
+            background: blue;
+          }
+
+          .protein {
+            grid-area: protein;
+            background: yellow;
+          }
+
+          .ingredients {
+            grid-area: ingredients;
+            background: orange;
+          }
+
+          .spice {
+            grid-area: spice;
+            background: lightcyan;
+          }
+
+          .button {
+            grid-area: button;
+            background: brown;
+          }
+        }
       }
     }
   }
