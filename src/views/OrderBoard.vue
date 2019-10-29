@@ -6,7 +6,7 @@
         <DrinkCard />
       </div>
       <div class='food-content'>
-        <FoodCard />
+        <FoodCard class="1" v-for="(order, i) in orders" :key="i" :order="order" />
       </div>
     </div>
   </div>
@@ -30,6 +30,11 @@ export default {
   computed: {
     orders() {
       return this.$store.state.orders;
+    }
+  },
+  methods: {
+    sortOrders() {
+      console.log(this.orders);
     }
   }
 };

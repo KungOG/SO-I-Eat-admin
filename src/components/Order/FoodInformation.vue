@@ -3,17 +3,15 @@
     <div class='content'>
       <div class='color' />
       <div class='info'>
-        <h3>1234</h3>
-        <h3>Menyrätt</h3>
-        <span>Kyckling</span>
+        <!-- <h3>{{order.ordernumber}}</h3> -->
+        <h3>{{items.name}}</h3>
+        <span>{{items.protein}}</span>
       </div>
       <div class='added-items'>
-        <span>+ Ris</span>
-        <span>+ Cashew</span>
-        <span>+ Chili</span>
+        <span v-for="(item, j) in items.add" :key="j">{{item}}</span>
       </div>
       <div class='removed-items'>
-        <span>- Svamp</span>
+        <span v-for="(item, k) in items.remove" :key="k">{{item}}</span>
       </div>
     </div>
   </div>
@@ -21,5 +19,11 @@
 
 <script>
 export default {
+  props: {
+    items: {
+      type: Object,
+      required: true,
+    },
+  },
 };
 </script>
