@@ -5,11 +5,13 @@
       <div class='drink-content'>
         <DrinkCard />
       </div>
-      <div class='food-content'>
-        <FoodCard class="1" v-for="(order, i) in orders.array1" :key="i+100" :order="order" />
-        <FoodCard class="1" v-for="(order, i) in orders.array2" :key="i" :order="order" />
+      <div class="food1">
+        <FoodCard v-for="(order, i) in orders.array1" :key="i+100" :order="order" />
       </div>
-    </div>
+      <div class="food2">
+        <FoodCard v-for="(order, i) in orders.array2" :key="i" :order="order" />
+      </div>
+      </div>
   </div>
 </template>
 
@@ -33,9 +35,9 @@ export default {
 
       for(let i=0; i < 5; i++) {
         if(orders.length % 2 == 0) {
-          arrays.array1.push(orders.shift())
-        } else {
           arrays.array2.push(orders.shift())
+        } else {
+          arrays.array1.push(orders.shift())
         }
       }
       return arrays
