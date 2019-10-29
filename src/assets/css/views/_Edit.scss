@@ -1,3 +1,41 @@
-#app > .edit {
-  background: grey;
+.edit {
+  height: 100vh;
+
+  .content-wrapper {
+    display: flex;
+
+    > section {
+      &:first-child {
+        background: white;
+        width: 35%;
+        height: 100%;
+
+        .search-bar {
+
+        }
+
+        .items-list {
+          > ul {
+            padding: 0;
+
+            > li {
+              border-top: 1px solid black;
+              padding: 10px; 
+            }
+          }
+        }
+
+        .time-settings {
+
+        } 
+      }
+      
+      &:last-child {
+        background: white;
+        width: 65%;
+        height: 100%;
+        
+      }
+    }
+  }
 }

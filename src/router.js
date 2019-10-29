@@ -10,28 +10,26 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: () => import('./views/Login.vue'),
+    },  
+    {
+      path: '/archive',
+      name: 'archive',
+      component: () => import('./views/Archive.vue'),
+    },
+    {
+      path: '/edit',
+      name: 'edit',
+      component: () => import('./views/Edit.vue'),
       children: [
         {
-          path: '/archive',
-          name: 'archive',
-          component: () => import('./views/Archive.vue'),
+          path: '/createdish',
+          name: 'createdish',
+          component: () => import('./views/CreateDish.vue'),
         },
         {
-          path: '/edit',
-          name: 'edit',
-          component: () => import('./views/Edit.vue'),
-          children: [
-            {
-              path: '/createdish',
-              name: 'createdish',
-              component: () => import('./views/CreateDish.vue'),
-            },
-            {
-              path: '/editdish',
-              name: 'editdish',
-              component: () => import('./views/EditDish.vue'),
-            },
-          ],
+          path: '/editdish',
+          name: 'editdish',
+          component: () => import('./views/EditDish.vue'),
         },
       ],
     },
