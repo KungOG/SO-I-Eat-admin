@@ -3,30 +3,66 @@
 
   .content-wrapper {
     display: flex;
+    height: 100%;
 
     > section {
       &:first-child {
-        background: white;
         width: 35%;
         height: 100%;
 
         .search-bar {
+          background: white;
+          margin: 10px;
 
+          > input {
+           font-size: 16px;
+           padding: 15px; 
+         } 
         }
 
         .items-list {
+          background: white;
+          margin: 10px;
+          overflow-y: scroll;
+          height: 60%;
+
           > ul {
             padding: 0;
+            margin: 0;
 
             > li {
               border-top: 1px solid black;
-              padding: 10px; 
+              padding: 15px; 
+
+              > span {
+                margin: 10px; 
+              }
             }
           }
         }
 
         .time-settings {
+          background: white;
+          display: flex;
+          margin: 10px;
 
+          > div {
+            &:first-child {
+              display: flex;
+              flex-direction: column;
+              flex: 1;
+              align-items: flex-end;
+              padding: 20px;
+            }
+            
+            &:last-child {
+              display: flex;
+              flex-direction: column;
+              flex: 1;
+              padding: 20px;
+
+            }
+          }
         } 
       }
       
@@ -34,6 +70,8 @@
         background: white;
         width: 65%;
         height: 100%;
+        margin: 10px;
+
         
       }
     }
