@@ -2,16 +2,21 @@
   background: #000000;
 
   .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: .5fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'drink food food';
 
     .drink-content {
-
+      grid-area: drink;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
     }
   
     .food-content {
+      grid-area: food;
+      column-count: 2;
     }
   }
 }
