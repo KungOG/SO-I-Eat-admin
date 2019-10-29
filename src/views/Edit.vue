@@ -24,34 +24,44 @@
           </div>
         </div>
       </section>
-      <section>
+      <section class='field'>
         <div class="grid-wrapper">
           <div class="header">
             <h1>Skapa ny menyrad</h1>
           </div>
-          <div class="number">
-            <input type="text">
-          </div>
-          <div class="category">
-            <input type="text">
-          </div>
-          <div class="name">
-            <input type="text">
-          </div>
-          <div class="price">
-            <input type="text">
-          </div>
-          <div class="protein">
-            <input type="text">
-          </div>
-          <div class="description">
-            <input type="text">
-          </div>
-          <div class="ingredients">
-            <input type="text">
-          </div>
-          <div class="spice">
-            <input type="text">
+          <div class='wrapper'>
+            <div class="number">
+              <label>Nummer</label>
+              <input type="text">
+            </div>
+            <div class="category">
+              <label>Kategori</label>
+              <input type="text">
+            </div>
+            <div class="name">
+              <label>Benämning</label>
+              <input type="text">
+            </div>
+            <div class="price">
+              <label>Pris</label>
+              <input type="text">
+            </div>
+            <div class="protein">
+              <label>Protein</label>
+              <input type="text">
+            </div>
+            <div class="description">
+              <label>Beskrivning</label>
+              <input type="text">
+            </div>
+            <div class="ingredients">
+              <label>Redigerbara ingredienser</label>
+              <input type="text">
+            </div>
+            <div class="spice">
+              <label>Justerbar styrka</label>
+              <input type="text">
+            </div>
           </div>
           <div class="button">
             <DarkButton />
