@@ -1,7 +1,8 @@
 .food-information > .content {
   display: grid;
   justify-content: center;
-  border: 1px solid grey; border-width: 0 0 1px 0;
+  border: 1px solid $main-secondary-color; 
+  border-width: 0 0 1px 0;
   grid-template-columns: 15px 1.5fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas: 'color info add remove';
@@ -14,14 +15,23 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    border: 1px solid grey; border-width: 1px 0 0 0;
+    border: 1px solid $main-secondary-color; 
+    border-width: 1px 0 0 0;
   }
 
   .color {
-    background-color: #699d55;
+    background-color: $main-secondary-color;
     grid-area: color;
     width: 100%;
     height: 100%;
+
+    &.yellow {
+      background-color: $light-gold;
+    }
+
+    &.green {
+      background-color: $green;
+    }
   }
 
   .info {
@@ -36,6 +46,6 @@
 
   .removed-items {
     grid-area: remove;
-    color: red;
+    color: $main-color;
   }
 }

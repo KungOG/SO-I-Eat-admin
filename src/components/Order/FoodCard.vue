@@ -5,12 +5,17 @@
       <h2>Bord: {{order.table}}</h2>
       <span>{{order.time}}</span>
     </div>
-    <FoodInformation v-for="(order, i) in order.items" :key="i" :items="order" />
+    <FoodInformation 
+      v-for="(order, i) in order.items" 
+      :key="i" 
+      :items="order" 
+     />
   </div>
 </template>
 
 <script>
 import FoodInformation from '@/components/Order/FoodInformation.vue';
+
 export default {
   props: {
     order: {
@@ -18,6 +23,7 @@ export default {
       required: true,
     },
   },
+
   components: {
     FoodInformation,
   }

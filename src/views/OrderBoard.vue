@@ -30,15 +30,12 @@ export default {
   },
   computed: {
     orders() {
+      var originalArray = this.$store.state.orders.map(x => x);
       var orders = this.$store.state.orders;
       var arrays = {array1: [], array2: []}
 
-      for(let i=0; i < 5; i++) {
-        if(orders.length % 2 == 0) {
-          arrays.array2.push(orders.shift())
-        } else {
-          arrays.array1.push(orders.shift())
-        }
+      for(let i=0; i < originalArray.length; i++) {
+        orders.length % 2 == 0 ? arrays.array2.push(orders.shift()) : arrays.array1.push(orders.shift())
       }
       return arrays
     }
