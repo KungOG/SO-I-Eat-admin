@@ -44,7 +44,7 @@
             </div>
             <div class="price">
               <label>Pris</label>
-              <input type="text">
+              <input type="number">
             </div>
             <div class="protein">
               <label>Protein</label>
