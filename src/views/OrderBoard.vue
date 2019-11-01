@@ -6,10 +6,10 @@
         <DrinkCard />
       </div>
       <div class="food1">
-        <FoodCard v-for="(order, i) in orders.array1" :key="i+100" :order="order" />
+        <FoodCard v-for="(order, i) in orders.array1" :key="`orders-array1-${i}`" :order="order" />
       </div>
       <div class="food2">
-        <FoodCard v-for="(order, i) in orders.array2" :key="i" :order="order" />
+        <FoodCard v-for="(order, i) in orders.array2" :key="`orders-array2-${i}`" :order="order" />
       </div>
       </div>
   </div>
