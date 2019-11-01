@@ -1,7 +1,7 @@
 <template>
-  <div class='food-information'>
+  <div class='food-information'  @click="click">
     <div class='content'>
-      <div class='color' />
+      <div class='color' :class="[(status === 1 ? 'yellow' : ''), (status === 2 ? 'green' : '')]"/>
       <div class='info'>
         <!-- <h3>{{order.ordernumber}}</h3> -->
         <h3>{{items.name}}</h3>
@@ -19,11 +19,20 @@
 
 <script>
 export default {
+    data: () => ({
+    status: 0,
+  }),
   props: {
     items: {
       type: Object,
       required: true,
     },
   },
+  methods: {
+    click() {
+      this.status < 2 ? this.status++ : this.status = 0
+      console.log(this.status)
+    }
+  }
 };
 </script>

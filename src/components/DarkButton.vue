@@ -7,11 +7,11 @@ export default {
   props: {
     buttonText: {
       type: String,
-      required: true,
+      required: false,
     },
     productionTime: {
       type: String,
-      required: true,
+      required: false,
     },
   },
 };

@@ -2,21 +2,20 @@
   background: #000000;
 
   .content {
-    display: grid;
-    grid-template-columns: .5fr 1fr 1fr;
-    grid-template-rows: auto;
-    grid-template-areas: 'drink food food';
+    display: flex;
 
     .drink-content {
-      grid-area: drink;
       display: flex;
       justify-content: center;
       align-items: flex-start;
+      width: 20%;
     }
   
-    .food-content {
-      grid-area: food;
-      column-count: 2;
+    .food1 {
+      width: 40%;
+    }
+    .food2 {
+      width: 40%;
     }
   }
 }
