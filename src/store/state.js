@@ -1,4 +1,4 @@
 export default {
-    orders: [],
-    menuItems: [],
+  orders: [],
+  menuItems: [],
 };
