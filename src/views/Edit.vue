@@ -8,7 +8,7 @@
         </div>
         <div class="items-list">
           <ul>
-            <li v-for="(item, i) in filterMenuItems" :key="i"><span>{{ item.id }}</span>{{ item.name }}</li>
+            <li v-for="(item, i) in filterMenuItems" :key="i"><span>{{ item.productNr }}</span>{{ item.productName }}</li>
           </ul>        
         </div>
         <div class="time-settings">
@@ -104,16 +104,14 @@ export default {
     },
     filterMenuItems () {
       return this.menuItems.filter((item) => {
-        return item.name.match(this.search);
+        return item.productName.match(this.search);
       })
     }
   },
   methods: {
     createNewProduct() {
-      this.$store.dispatch('createProduct', this.newProduct)
-      console.log('click and send')
+      this.$store.dispatch('createProduct', this.newProduct);
     }
   }
-  
 };
 </script>
