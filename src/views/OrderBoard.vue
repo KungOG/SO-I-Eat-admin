@@ -35,7 +35,7 @@ export default {
       var arrays = {array1: [], array2: []}
 
       for(let i=0; i < originalArray.length; i++) {
-        orders.length % 2 == 0 ? arrays.array2.push(orders.shift()) : arrays.array1.push(orders.shift())
+        orders.length % 2 === 0 ? arrays.array2.push(orders.shift()) : arrays.array1.push(orders.shift())
       }
       return arrays
     }
