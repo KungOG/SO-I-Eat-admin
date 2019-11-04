@@ -26,4 +26,8 @@ export default {
   async createProduct(ctx, newProduct) {
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct);
   },
+  async updateProduct(ctx, newProduct) {
+    console.log(newProduct);
+    await axios.patch('https://so-i-eat-server.herokuapp.com/products', newProduct);
+  },
 };
