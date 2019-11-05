@@ -68,7 +68,6 @@
       
       &:last-child {
         background: white;
-        width: 65%;
         height: calc(100% - 20px);
         margin: 10px;
       }
@@ -79,11 +78,12 @@
 .edit > .content-wrapper > .field > .grid-wrapper {
   display: grid;
   height: 100%;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 30px 1fr;
+  grid-template-rows: .5fr 2fr .5fr;
   grid-template-areas: 
-  "top"
-  "middle"
-  "buttom";
+  "top top top"
+  "middle-left divider middle-right"
+  "buttom buttom buttom";
 
   .header,
   .button {
@@ -95,9 +95,26 @@
   .header {
     grid-area: top;
   }
+
+  .divider {
+    grid-area: divider;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .line {
+      height: 95%;
+      width: 1px;
+      background: black;
+    }
+  }
   
-  .wrapper {
-    grid-area: middle;
+  .wrapper-left {
+    grid-area: middle-left;
+  }
+
+  .wrapper-right {
+    grid-area: middle-right;
   }
   
   .button {
@@ -105,45 +122,76 @@
   }
 }
 
-.edit > .content-wrapper > .field > .grid-wrapper > .wrapper {
+.edit > .content-wrapper > .field > .grid-wrapper > .wrapper-left {
   display: grid;
-  padding: 0 60px;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
-  grid-gap: 30px;
+  padding-left: 60px;
+  grid-template-columns: .5fr 1fr;
   grid-template-areas: 
-   "number category"
-   "dish description"
-   "price description"
-   "protein ingredients"
-   "spice ingredients";
+   "number price"
+   "dish dish"
+   "category category"
+   "description description"
+   "description description"
+   "protein protein"
+   "spice spice";
   
   .number,
-  .category,
   .name,
+  .ingredients,
+  .price,
   .protein,
-  .spice,
-  .price {
+  .spice {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
-  > input {
-    height: 40px;
-    width: 100%;
-    border: 1px solid grey;
+    > input {
+      height: 35px;
+      border: 1px solid #cdcdcd;
+      margin: 9px 0;
+      padding-left: 5px;
     }
   }
 
-  .ingredients,
+  .price {
+    padding-left: 10px;
+  }
+
+  .category > select {
+    height: 35px;
+    width: 100%;
+    border: 1px solid #cdcdcd;
+    margin: 9px 0;
+    padding-left: 5px;
+  }
+
+  .description > textarea {
+    height: 100px;
+    margin: 9px 0;
+  }
+
+  .protein,
+  .spice {
+    .input-wrapper {
+      display: flex;
+      margin-top: 9px;
+      
+      > .container {
+        width: 200px;
+      }
+    }
+  }
+
+  .number > input {
+    width: 100px;
+  }
+
   .description {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
     > input {
-      height: 133px;
-      border: 1px solid grey;
+      border: 1px solid #cdcdcd;
     }
   }
 
@@ -171,11 +219,50 @@
     grid-area: protein;
   }
 
-  .ingredients {
+  .spice {
+    grid-area: spice;
+  }
+}
+
+.edit > .content-wrapper > .field > .grid-wrapper > .wrapper-right {
+  display: grid;
+  padding-right: 60px;
+  grid-template-columns: 1fr;
+  grid-template-areas: 
+   "ingredients"
+   "extras";
+
+   .ingredients,
+   .extras {
+     display: flex;
+     flex-direction: column;
+   
+     > input {
+       height: 35px;
+       border: 1px solid #cdcdcd;
+       margin: 9px 0;
+       padding-left: 5px;
+     }
+
+     > .container {
+       display: flex;
+     }
+   }
+
+   .ingredients {
     grid-area: ingredients;
   }
 
-  .spice {
-    grid-area: spice;
+  .extras {
+    grid-area: extras;
+  }
+
+  .extras > .input-wrapper {
+    display: flex;
+    margin-top: 9px;
+    
+    > .container {
+      width: 150px;
+    }
   }
 }
