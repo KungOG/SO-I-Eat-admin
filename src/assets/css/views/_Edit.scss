@@ -7,7 +7,7 @@
 
     > section {
       &:first-child {
-        width: 35%;
+        width: calc(100% - 65%);
         height: calc(100% - 122px);
 
         .search-bar {
@@ -68,6 +68,7 @@
       
       &:last-child {
         background: white;
+        width: calc(100% - 35%);
         height: calc(100% - 20px);
         margin: 10px;
       }
@@ -78,6 +79,7 @@
 .edit > .content-wrapper > .field > .grid-wrapper {
   display: grid;
   height: 100%;
+  width: 100%;
   grid-template-columns: 1fr 30px 1fr;
   grid-template-rows: .5fr 2fr .5fr;
   grid-template-areas: 
@@ -230,6 +232,7 @@
   grid-template-columns: 1fr;
   grid-template-areas: 
    "ingredients"
+   "extras"
    "extras";
 
    .ingredients,
