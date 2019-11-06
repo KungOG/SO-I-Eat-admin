@@ -61,23 +61,9 @@
             <div class="protein">
               <span>Huvudingredienser</span>
               <div class="input-wrapper">
-                <div class="container">
-                  <Checkbox :dataValue="newProduct.protein.includes('Beef')" value="Beef" @input="arrayFullOfProtein"/>
-                  <label for="beef">Biff</label>  
-                </div>
-                <div class="container">
-                  <Checkbox :dataValue="newProduct.protein.includes('Chicken')" value="Chicken" @input="arrayFullOfProtein"/>
-                  <label for="chicken">Kyckling</label>
-                </div>
-              </div>
-              <div class="input-wrapper">
-                <div class="container">
-                  <Checkbox :dataValue="newProduct.protein.includes('Pork')" value="Pork" @input="arrayFullOfProtein"/>
-                  <label for="pork">Fläsk</label>
-                </div>
-                <div class="container">
-                  <Checkbox :dataValue="newProduct.protein.includes('Shrimp')" value="Shrimp" @input="arrayFullOfProtein"/>
-                  <label for="shrimp">Räkor</label>
+                <div class="container" v-for="(proteinType, i) in proteinTypes" :key="`proteinType-${i}`" >
+                  <Checkbox :dataValue="newProduct.protein.includes(proteinType)" :value="proteinType" @input="arrayFullOfProtein"/>
+                  <label :for="proteinType">{{proteinType}}</label>  
                 </div>
               </div>
               <br>
@@ -87,11 +73,11 @@
               <div class="input-wrapper">
                 <div class="container">
                   <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="(x) => {newProduct.spice = x}"/>
-                  <label for="yes">Ja</label>
+                  <label for="Yes">Ja</label>
                 </div>
                 <div class="container">
                   <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="(x) => {newProduct.spice = x}"/>
-                  <label for="no">Nej</label>  
+                  <label for="No">Nej</label>  
                 </div>
               </div>
             </div>
@@ -113,7 +99,7 @@
               <div class="input-wrapper">
                 <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
                   <Checkbox :dataValue="newProduct.extras.includes(addon.name)" :value="addon.name" @input="arrayFullOfAddons"/>
-                  <label for="no">{{addon.name}}</label>  
+                  <label :for="addon.name">{{addon.name}}</label>  
                 </div>
               </div>
             </div>
@@ -142,6 +128,7 @@ export default {
   data: () => ({
     search: '',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
+    proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
     newProduct: {
       productNr: 0,
