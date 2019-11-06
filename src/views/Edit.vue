@@ -170,10 +170,16 @@ export default {
   methods: {
     createNewProduct() {
       if(this.newProduct._id) {
-        this.$store.dispatch('updateProduct', this.newProduct);
+        this.$store.dispatch('updateProduct', this.newProduct)
+        .then(
+          this.emptyNewProductData()
+        )
         console.log('UPDATE ---> ',this.newProduct);
       } else {
-        this.$store.dispatch('createProduct', this.newProduct);
+        this.$store.dispatch('createProduct', this.newProduct)
+        .then(
+          this.emptyNewProductData()
+        )
         console.log('CREATE ---> ',this.newProduct);
       }
     },
@@ -192,6 +198,19 @@ export default {
       var extras = this.newProduct.extras;
       extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
     },
+    emptyNewProductData() {
+      this.newProduct = {
+        productNr: 0,
+        productName: '',
+        category: 0,
+        price: 0,
+        description: '',
+        protein: [],
+        spice: false,
+        ingredients: [],
+        extras: [],
+      }
+    }
   },
 };
 </script>
