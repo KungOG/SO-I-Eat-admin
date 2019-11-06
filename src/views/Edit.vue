@@ -116,7 +116,7 @@
                   <label for="yes">Ja</label>
                 </div>
                 <div class="container">
-                  <input type="radio" id="no" value="true" v-model="newProduct.spice">
+                  <Checkbox v-model="newProduct.spice"/>
                   <label for="no">Nej</label>  
                 </div>
               </div>
@@ -134,12 +134,14 @@
 <script>
 import Navigation from '@/components/NavigationBar.vue';
 import DarkButton from '@/components/DarkButton.vue';
+import Checkbox from '@/components/Checkbox.vue';
 
 export default {
   name: 'edit',
   components: {
     Navigation,
     DarkButton,
+    Checkbox,
   },
   data: () => ({
     search: '',
