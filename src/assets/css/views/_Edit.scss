@@ -126,7 +126,7 @@
 
 .edit > .content-wrapper > .field > .grid-wrapper > .wrapper-left {
   display: grid;
-  padding-left: 60px;
+  padding-left: 50px;
   grid-template-columns: .5fr 1fr;
   grid-template-areas: 
    "number price"
@@ -181,7 +181,8 @@
       > .container {
         display: flex;
         align-items: center;
-        width: 100px;
+        width: 130px;
+        margin-bottom: 10px;
       }
     }
   }
@@ -231,7 +232,7 @@
 
 .edit > .content-wrapper > .field > .grid-wrapper > .wrapper-right {
   display: grid;
-  padding-right: 60px;
+  padding-right: 50px;
   grid-template-columns: 1fr;
   grid-template-areas: 
    "ingredients"
@@ -268,9 +269,10 @@
     margin-top: 9px;
     
     > .container {
-      width: 100px;
+      width: 119px;
       display: flex;
       align-items: center;
+      margin-bottom: 10px;
     }
   }
 }
