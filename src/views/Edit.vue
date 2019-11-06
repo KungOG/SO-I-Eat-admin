@@ -49,9 +49,7 @@
               <label>Kategori</label>
               <select v-model="newProduct.category">
                 <option disabled value="">Välj katergori</option>
-                <option type="number" value="0">Förätter</option>
-                <option type="number" value="1">Wokat</option>
-                <option type="number" value="2">Currygryta</option>
+                <option v-for="category in categories" :key="category.categoryId" type="number" value="0">{{category.categoryName}}</option>
               </select>
             </div>
             <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
@@ -105,7 +103,7 @@
             </div>
           </div>
           <div class="button" @click="createNewProduct">
-            <DarkButton />
+            <DarkButton :buttonText="buttonText" />
           </div>
         </div>
       </section>
@@ -127,10 +125,11 @@ export default {
   },
   data: () => ({
     search: '',
-    categoryToEdit: '',
+    categoryToEdit: 'huvudrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
+    buttonText: 'Lägg till',
     newProduct: {
       productNr: 0,
       productName: '',
@@ -138,23 +137,35 @@ export default {
       price: 0,
       description: '',
       protein: [],
-      spice: true,
+      spice: false,
       ingredients: [],
       extras: [],
     },
   }),
   beforeMount() {
     this.$store.dispatch('getMenuItems');
+    this.$store.dispatch('getCategories');
   },
   computed: {
     menuItems() {
-      return this.$store.state.menuItems;
+      return this.$store.state.menuItems.filter((item) => {
+        if(this.categoryToEdit === "efterrätt") {
+          return item.category === 6;
+        } else if (this.categoryToEdit === "dryck") {
+          return item.category === 7;
+        } else {
+          return item.category < 6;
+        }
+      })
     },
     filterMenuItems () {
       return this.menuItems.filter((item) => {
         return item.productName.match(this.search);
       })
-    }
+    },
+    categories() {
+      return this.$store.state.categories;
+    },
   },
   methods: {
     createNewProduct() {

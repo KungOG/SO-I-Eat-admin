@@ -23,6 +23,17 @@ export default {
         console.log(error);
       });
   },
+  getCategories(ctx) {
+    const url = 'https://so-i-eat-server.herokuapp.com/categories';
+    axios
+      .get(url)
+      .then((response) => {
+        ctx.commit('setCategories', response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   async createProduct(ctx, newProduct) {
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct);
   },
