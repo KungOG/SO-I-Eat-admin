@@ -119,9 +119,6 @@
                   <input type="radio" id="no" value="true" v-model="newProduct.spice">
                   <label for="no">Nej</label>  
                 </div>
-                <div class="container">
-                  <a href="#">Fläsk</a>
-                </div>
               </div>
             </div>
           </div>
