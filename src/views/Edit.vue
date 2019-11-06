@@ -111,13 +111,9 @@
             <div class="extras">
               <span>Tillval</span>
               <div class="input-wrapper">
-                <div class="container">
-                  <input type="radio" id="yes" value="true">
-                  <label for="yes">Ja</label>
-                </div>
-                <div class="container">
-                  
-                  <label for="no">Nej</label>  
+                <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
+                  <Checkbox :dataValue="newProduct.extras.includes(addon.name)" :value="addon.name" @input="arrayFullOfAddons"/>
+                  <label for="no">{{addon.name}}</label>  
                 </div>
               </div>
             </div>
@@ -145,6 +141,7 @@ export default {
   },
   data: () => ({
     search: '',
+    addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     boolean: true,
     newProduct: {
       productNr: 0,
@@ -155,7 +152,8 @@ export default {
       protein: [],
       spice: true,
       ingredients: [],
-    }
+      extras: [],
+    },
   }),
   beforeMount() {
     this.$store.dispatch('getMenuItems');
@@ -190,6 +188,10 @@ export default {
     arrayFullOfProtein(i) {
       var proteins = this.newProduct.protein;
       proteins.includes(i) ? proteins.splice(proteins.indexOf(i), 1) : proteins.push(i);
+    },
+    arrayFullOfAddons(i) {
+      var extras = this.newProduct.extras;
+      extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
     },
   },
 };
