@@ -22,6 +22,9 @@ import DrinkCard from '@/components/Order/DrinkCard.vue';
 
 export default {
   name: 'orderboard',
+  created() {
+    this.$store.dispatch('getOrders');
+  },
 
   components: {
     Navigation,

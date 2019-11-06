@@ -3,12 +3,13 @@
     <div class='food-header'>
       <div class='filler' />
       <h2>Bord: {{order.table}}</h2>
-      <span>{{order.time}}</span>
+      <span>{{order.orderInformation.time}}</span>
     </div>
     <FoodInformation 
-      v-for="(order, i) in order.items" 
+      v-for="(orderItem, i) in order.orderInformation.items" 
       :key="i" 
-      :items="order" 
+      :items="orderItem" 
+      :orderNumber="order.code"
      />
   </div>
 </template>

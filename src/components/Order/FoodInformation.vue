@@ -3,12 +3,12 @@
     <div class='content'>
       <div class='color' :class="[(status === 1 ? 'yellow' : ''), (status === 2 ? 'green' : '')]"/>
       <div class='info'>
-        <!-- <h3>{{order.ordernumber}}</h3> -->
-        <h3>{{items.name}}</h3>
+        <h3>{{orderNumber}}</h3>
+        <h3>{{items.productName}}</h3>
         <span>{{items.protein}}</span>
       </div>
       <div class='added-items'>
-        <span v-for="(item, j) in items.add" :key="j">{{item}}</span>
+        <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
       </div>
       <div class='removed-items'>
         <span v-for="(item, k) in items.remove" :key="k">{{item}}</span>
@@ -23,6 +23,10 @@ export default {
     status: 0,
   }),
   props: {
+    orderNumber: {
+      type: String,
+      required: true,
+    },
     items: {
       type: Object,
       required: true,
