@@ -1,5 +1,5 @@
 <template>
-  <button class="admin-btn" :class="buttonText === productionTime ? 'active-btn' : '' ">{{buttonText}}</button>   
+  <button class="light-admin-btn" :class="buttonText === productionTime ? 'active-btn' : '' ">{{buttonText}}</button>   
 </template>
 
 <script>
@@ -11,14 +11,14 @@ export default {
     },
     productionTime: {
       type: String,
-      required: true,
+      required: false,
     },
   },
 };
 </script>
 
 <style lang="scss">
-  .admin-btn {
+  .light-admin-btn {
     border: 1px solid white;
     border-radius: 5px;
     color: white;
@@ -28,6 +28,9 @@ export default {
     height: 30px;
     margin: 0 1rem;
 
+    &.edit-btn {
+      width: 100px;
+    }
     &.active-btn {
       background-color: white;
       color: black;

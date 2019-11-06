@@ -1,6 +1,6 @@
 <template>
   <div class='edit'>
-    <Navigation/>
+    <Navigation @setActiveCategoryToEdit="(x) => {categoryToEdit = x}"/>
     <div class="content-wrapper">
       <section>
         <div class="search-bar">
@@ -54,11 +54,11 @@
                 <option type="number" value="2">Currygryta</option>
               </select>
             </div>
-            <div class="description">
+            <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
               <label>Beskrivning</label>
               <textarea type="text" v-model="newProduct.description" />
             </div>
-            <div class="protein">
+            <div class="protein" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Huvudingredienser</span>
               <div class="input-wrapper">
                 <div class="container" v-for="(proteinType, i) in proteinTypes" :key="`proteinType-${i}`" >
@@ -68,7 +68,7 @@
               </div>
               <br>
             </div>
-            <div class="spice">
+            <div class="spice" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
@@ -86,7 +86,7 @@
             <div class="line" />
           </div>
           <div class="wrapper-right">
-            <div class="ingredients">
+            <div class="ingredients" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <label>Redigerbara ingredienser</label>
               <input type="text" v-model="newProduct.ingredients[0]">
               <input type="text" v-model="newProduct.ingredients[1]">
@@ -94,7 +94,7 @@
               <input type="text" v-model="newProduct.ingredients[3]">
               <input type="text" v-model="newProduct.ingredients[4]">
             </div>
-            <div class="extras">
+            <div class="extras" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Tillval</span>
               <div class="input-wrapper">
                 <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
@@ -127,6 +127,7 @@ export default {
   },
   data: () => ({
     search: '',
+    categoryToEdit: '',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
