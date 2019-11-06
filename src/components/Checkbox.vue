@@ -36,15 +36,16 @@ export default {
 
 <style lang="scss">
 .checkbox {
-    height: 20px;
-    width: 20px;
-    border: 1px solid blue;
-    border-radius: 5px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+  height: 20px;
+  width: 20px;
+  border: 1px solid black;
+  border-radius: 999px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px;
 }
 .checkbox-selected {
-    background: blue;
+  background: black;
 }
 </style>
