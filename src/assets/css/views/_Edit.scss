@@ -176,9 +176,12 @@
     .input-wrapper {
       display: flex;
       margin-top: 9px;
+      flex-wrap: wrap;
       
       > .container {
-        width: 200px;
+        display: flex;
+        align-items: center;
+        width: 100px;
       }
     }
   }
@@ -247,7 +250,7 @@
      }
 
      > .container {
-       display: flex;
+      display: flex;
      }
    }
 
@@ -261,10 +264,13 @@
 
   .extras > .input-wrapper {
     display: flex;
+    flex-wrap: wrap;
     margin-top: 9px;
     
     > .container {
       width: 100px;
+      display: flex;
+      align-items: center;
     }
   }
 }
