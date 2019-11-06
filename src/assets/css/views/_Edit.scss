@@ -232,7 +232,6 @@
   grid-template-columns: 1fr;
   grid-template-areas: 
    "ingredients"
-   "extras"
    "extras";
 
    .ingredients,
@@ -265,7 +264,7 @@
     margin-top: 9px;
     
     > .container {
-      width: 150px;
+      width: 100px;
     }
   }
 }
