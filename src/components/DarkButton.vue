@@ -1,5 +1,5 @@
 <template>
-  <button class="dark-admin-btn" :class="buttonText === productionTime ? 'active-btn' : '' ">{{buttonText}}</button>   
+  <button class="dark-admin-btn" :class="buttonText === productionTime ? 'dark-active-btn' : '' ">{{buttonText}}</button>   
 </template>
 
 <script>
@@ -28,7 +28,7 @@ export default {
     height: 30px;
     margin: 0;
 
-    &.active-btn {
+    &.dark-active-btn {
       background-color: white;
       color: black;
       outline: 0;

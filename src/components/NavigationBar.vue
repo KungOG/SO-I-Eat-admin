@@ -12,23 +12,26 @@
         v-for="buttonText in buttonTexts" 
         :key="buttonText" 
         :buttonText="buttonText" 
-        :productionTime="productionTime"
+        :chosenValue="productionTime"
         @click.native="setProductionTime(buttonText) "/>
     </div>
     <div v-if="$route.path == '/edit'">
       <LightButton 
         class="edit-btn"
         buttonText="huvudrätt"
+        :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('huvudrätt')"
       />
       <LightButton 
         class="edit-btn"
         buttonText="efterrätt"
+        :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('efterrätt')"
       />
       <LightButton
         class="edit-btn"
         buttonText="dryck"
+        :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('dryck')"
       />
     </div>

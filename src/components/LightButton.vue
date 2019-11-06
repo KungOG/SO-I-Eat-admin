@@ -1,5 +1,5 @@
 <template>
-  <button class="light-admin-btn" :class="buttonText === productionTime ? 'active-btn' : '' ">{{buttonText}}</button>   
+  <button class="light-admin-btn" :class="buttonText === chosenValue ? 'light-active-btn' : '' ">{{buttonText}}</button>   
 </template>
 
 <script>
@@ -9,9 +9,9 @@ export default {
       type: String,
       required: true,
     },
-    productionTime: {
+    chosenValue: {
       type: String,
-      required: false,
+      required: true,
     },
   },
 };
@@ -31,7 +31,7 @@ export default {
     &.edit-btn {
       width: 100px;
     }
-    &.active-btn {
+    &.light-active-btn {
       background-color: white;
       color: black;
       outline: 0;
