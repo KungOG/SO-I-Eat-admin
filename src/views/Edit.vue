@@ -62,21 +62,21 @@
               <span>Huvudingredienser</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <input type="radio" id="beef" value="Beef" v-model="newProduct.protein">
+                  <Checkbox :dataValue="newProduct.protein.includes('Beef')" value="Beef" @input="arrayFullOfProtein"/>
                   <label for="beef">Biff</label>  
                 </div>
                 <div class="container">
-                  <input type="radio" id="chicken" value="Chicken" v-model="newProduct.protein">
+                  <Checkbox :dataValue="newProduct.protein.includes('Chicken')" value="Chicken" @input="arrayFullOfProtein"/>
                   <label for="chicken">Kyckling</label>
                 </div>
               </div>
               <div class="input-wrapper">
                 <div class="container">
-                  <input type="radio" id="pork" value="Pork" v-model="newProduct.protein">
+                  <Checkbox :dataValue="newProduct.protein.includes('Pork')" value="Pork" @input="arrayFullOfProtein"/>
                   <label for="pork">Fläsk</label>
                 </div>
                 <div class="container">
-                  <input type="radio" id="shrimp" value="Shrimp" v-model="newProduct.protein">
+                  <Checkbox :dataValue="newProduct.protein.includes('Shrimp')" value="Shrimp" @input="arrayFullOfProtein"/>
                   <label for="shrimp">Räkor</label>
                 </div>
               </div>
@@ -86,11 +86,11 @@
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="changeInput"/>
+                  <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="(x) => {newProduct.spice = x}"/>
                   <label for="yes">Ja</label>
                 </div>
                 <div class="container">
-                  <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="changeInput"/>
+                  <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="(x) => {newProduct.spice = x}"/>
                   <label for="no">Nej</label>  
                 </div>
               </div>
@@ -187,9 +187,9 @@ export default {
       this.newProduct = productToEdit;
       console.log(this.newProduct);
     },
-    changeInput(i) {
-      console.log(typeof i)
-      this.newProduct.spice = i
+    arrayFullOfProtein(i) {
+      var proteins = this.newProduct.protein;
+      proteins.includes(i) ? proteins.splice(proteins.indexOf(i), 1) : proteins.push(i);
     },
   },
 };
