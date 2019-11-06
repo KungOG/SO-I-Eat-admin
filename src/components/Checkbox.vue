@@ -1,5 +1,5 @@
 <template>
-  <div class="checkbox" :class="{ 'checkbox-selected': value }" @click="$emit('input', !value)">
+  <div class="checkbox" :class="{ 'checkbox-selected': dataValue }" @click="sendValue">
     <svg
       class="w-1/2 fill-current"
       :class="[value ? 'text-white' : 'text-blue-400']"
@@ -17,12 +17,23 @@
 
 <script>
 export default {
-  name: 'ql-checkbox',
+  name: 'checkbox',
   props: {
-    value: { type: Boolean, required: true }
-  }
-}
+    value: { 
+        required: true,
+    },
+    dataValue: {
+        required: true,
+    }
+  },
+  methods: {
+      sendValue() {
+          this.$emit('input', this.value);
+      },
+  },
+};
 </script>
+
 <style lang="scss">
 .checkbox {
     height: 20px;

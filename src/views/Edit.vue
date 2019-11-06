@@ -86,11 +86,11 @@
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <input type="radio" id="yes" value="True" v-model="newProduct.spice">
+                  <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="changeInput"/>
                   <label for="yes">Ja</label>
                 </div>
                 <div class="container">
-                  <input type="radio" id="no" value="False" v-model="newProduct.spice">
+                  <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="changeInput"/>
                   <label for="no">Nej</label>  
                 </div>
               </div>
@@ -112,11 +112,11 @@
               <span>Tillval</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <input type="radio" id="yes" value="true" v-model="newProduct.spice">
+                  <input type="radio" id="yes" value="true">
                   <label for="yes">Ja</label>
                 </div>
                 <div class="container">
-                  <Checkbox v-model="newProduct.spice"/>
+                  
                   <label for="no">Nej</label>  
                 </div>
               </div>
@@ -145,6 +145,7 @@ export default {
   },
   data: () => ({
     search: '',
+    boolean: true,
     newProduct: {
       productNr: 0,
       productName: '',
@@ -185,7 +186,11 @@ export default {
       });
       this.newProduct = productToEdit;
       console.log(this.newProduct);
-    }
-  }
+    },
+    changeInput(i) {
+      console.log(typeof i)
+      this.newProduct.spice = i
+    },
+  },
 };
 </script>
