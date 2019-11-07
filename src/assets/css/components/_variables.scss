@@ -39,6 +39,7 @@ $header-font: 'News Cycle', sans-serif;
   .-inactive {
     opacity: .2;
     transition: opacity .5s;
+    pointer-events: none;
   }
 }
 

@@ -3,17 +3,37 @@
     <div class='logo'>
       <img :src='Icon' alt='Icon logo' />
     </div>
-    <div class='orders'>
+    <div class='orders' v-if="$route.path == '/orderboard'">
       <img :src='Orders' alt="This is icon for orders" />
     </div>
-    <div class='time-buttons'>
+    <div class='time-buttons' v-if="$route.path == '/orderboard'">
       <img :src='Timer' alt="This is icon for timer" />
       <LightButton 
         v-for="buttonText in buttonTexts" 
         :key="buttonText" 
         :buttonText="buttonText" 
-        :productionTime="productionTime"
+        :chosenValue="productionTime"
         @click.native="setProductionTime(buttonText) "/>
+    </div>
+    <div v-if="$route.path == '/edit'">
+      <LightButton 
+        class="edit-btn"
+        buttonText="huvudrätt"
+        :chosenValue="categoryToEdit"
+        @click.native="setCategoryToEdit('huvudrätt')"
+      />
+      <LightButton 
+        class="edit-btn"
+        buttonText="efterrätt"
+        :chosenValue="categoryToEdit"
+        @click.native="setCategoryToEdit('efterrätt')"
+      />
+      <LightButton
+        class="edit-btn"
+        buttonText="dryck"
+        :chosenValue="categoryToEdit"
+        @click.native="setCategoryToEdit('dryck')"
+      />
     </div>
     <div class='current-time'>
       <p>{{time}}</p>
@@ -43,7 +63,7 @@ export default {
       buttonTexts: ['10', '15', '20', '30', '45'],
       time: '',
       productionTime: '',
-
+      categoryToEdit: '',
     }
   },
   mounted() {
@@ -52,6 +72,10 @@ export default {
   methods: {
     setProductionTime(time) {
       this.productionTime = time;
+    },
+    setCategoryToEdit(cat) {
+      this.categoryToEdit = cat;
+      this.$emit('setActiveCategoryToEdit', cat);
     },
     updateTime() {
       var cd = new Date();

@@ -1,6 +1,6 @@
 <template>
   <div class='edit'>
-    <Navigation/>
+    <Navigation @setActiveCategoryToEdit="(x) => {categoryToEdit = x}"/>
     <div class="content-wrapper">
       <section>
         <div class="search-bar">
@@ -49,16 +49,14 @@
               <label>Kategori</label>
               <select v-model="newProduct.category">
                 <option disabled value="">Välj katergori</option>
-                <option type="number" value="0">Förätter</option>
-                <option type="number" value="1">Wokat</option>
-                <option type="number" value="2">Currygryta</option>
+                <option v-for="category in categories" :key="category.categoryId" type="number" value="0">{{category.categoryName}}</option>
               </select>
             </div>
-            <div class="description">
+            <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
               <label>Beskrivning</label>
               <textarea type="text" v-model="newProduct.description" />
             </div>
-            <div class="protein">
+            <div class="protein" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Huvudingredienser</span>
               <div class="input-wrapper">
                 <div class="container" v-for="(proteinType, i) in proteinTypes" :key="`proteinType-${i}`" >
@@ -68,7 +66,7 @@
               </div>
               <br>
             </div>
-            <div class="spice">
+            <div class="spice" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
@@ -86,7 +84,7 @@
             <div class="line" />
           </div>
           <div class="wrapper-right">
-            <div class="ingredients">
+            <div class="ingredients" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <label>Redigerbara ingredienser</label>
               <input type="text" v-model="newProduct.ingredients[0]">
               <input type="text" v-model="newProduct.ingredients[1]">
@@ -94,7 +92,7 @@
               <input type="text" v-model="newProduct.ingredients[3]">
               <input type="text" v-model="newProduct.ingredients[4]">
             </div>
-            <div class="extras">
+            <div class="extras" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Tillval</span>
               <div class="input-wrapper">
                 <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
@@ -105,7 +103,7 @@
             </div>
           </div>
           <div class="button" @click="createNewProduct">
-            <DarkButton />
+            <DarkButton :buttonText="buttonText" />
           </div>
         </div>
       </section>
@@ -127,9 +125,11 @@ export default {
   },
   data: () => ({
     search: '',
+    categoryToEdit: 'huvudrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
+    buttonText: 'Lägg till',
     newProduct: {
       productNr: 0,
       productName: '',
@@ -137,31 +137,49 @@ export default {
       price: 0,
       description: '',
       protein: [],
-      spice: true,
+      spice: false,
       ingredients: [],
       extras: [],
     },
   }),
   beforeMount() {
     this.$store.dispatch('getMenuItems');
+    this.$store.dispatch('getCategories');
   },
   computed: {
     menuItems() {
-      return this.$store.state.menuItems;
+      return this.$store.state.menuItems.filter((item) => {
+        if(this.categoryToEdit === "efterrätt") {
+          return item.category === 6;
+        } else if (this.categoryToEdit === "dryck") {
+          return item.category === 7;
+        } else {
+          return item.category < 6;
+        }
+      })
     },
     filterMenuItems () {
       return this.menuItems.filter((item) => {
         return item.productName.match(this.search);
       })
-    }
+    },
+    categories() {
+      return this.$store.state.categories;
+    },
   },
   methods: {
     createNewProduct() {
       if(this.newProduct._id) {
-        this.$store.dispatch('updateProduct', this.newProduct);
+        this.$store.dispatch('updateProduct', this.newProduct)
+        .then(
+          this.emptyNewProductData()
+        )
         console.log('UPDATE ---> ',this.newProduct);
       } else {
-        this.$store.dispatch('createProduct', this.newProduct);
+        this.$store.dispatch('createProduct', this.newProduct)
+        .then(
+          this.emptyNewProductData()
+        )
         console.log('CREATE ---> ',this.newProduct);
       }
     },
@@ -180,6 +198,19 @@ export default {
       var extras = this.newProduct.extras;
       extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
     },
+    emptyNewProductData() {
+      this.newProduct = {
+        productNr: 0,
+        productName: '',
+        category: 0,
+        price: 0,
+        description: '',
+        protein: [],
+        spice: false,
+        ingredients: [],
+        extras: [],
+      }
+    }
   },
 };
 </script>
