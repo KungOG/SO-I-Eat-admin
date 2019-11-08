@@ -103,11 +103,11 @@
             </div>
           </div>
           <div class="button">
+            <DarkButton :class="{'hidden-btn': !newProduct._id}" class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
             <div class="button-wrapper">
               <DarkButton :buttonText="buttonText" @click.native="createNewProduct" />
               <DarkButton buttonText="Avbryt" @click.native="emptyNewProductData" />
             </div>
-            <DarkButton class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
           </div>
         </div>
       </section>

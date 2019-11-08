@@ -33,5 +33,9 @@ export default {
       color: black;
       outline: 0;
     }
+
+    &.hidden-btn {
+      visibility: hidden;
+    }
   }
 </style>
