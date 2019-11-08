@@ -173,7 +173,7 @@ export default {
   },
   methods: {
     removeProductFromDB() {
-      console.log('Removed item --->');
+      this.$store.dispatch('removeProduct', this.newProduct._id)
     },
     createNewProduct() {
       if(this.newProduct._id) {
@@ -195,7 +195,6 @@ export default {
         return item._id === id;
       });
       this.newProduct = productToEdit;
-      console.log(this.newProduct);
     },
     arrayFullOfProtein(i) {
       var proteins = this.newProduct.protein;
