@@ -38,7 +38,9 @@ export default {
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct);
   },
   async updateProduct(ctx, newProduct) {
-    console.log(newProduct);
     await axios.patch('https://so-i-eat-server.herokuapp.com/products', newProduct);
+  },
+  async removeProduct(ctx, newProduct) {
+    await axios.delete(`https://so-i-eat-server.herokuapp.com/products/${newProduct}`);
   },
 };

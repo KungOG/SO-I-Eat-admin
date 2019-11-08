@@ -105,7 +105,7 @@
           <div class="button">
             <DarkButton :class="{'hidden-btn': !newProduct._id}" class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
             <div class="button-wrapper">
-              <DarkButton :buttonText="buttonText" @click.native="createNewProduct" />
+              <DarkButton class="-add" :buttonText="buttonText" @click.native="createNewProduct" />
               <DarkButton buttonText="Avbryt" @click.native="emptyNewProductData" />
             </div>
           </div>
@@ -173,7 +173,7 @@ export default {
   },
   methods: {
     removeProductFromDB() {
-      console.log('Removed item --->');
+      this.$store.dispatch('removeProduct', this.newProduct._id)
     },
     createNewProduct() {
       if(this.newProduct._id) {
