@@ -130,7 +130,7 @@ export default {
   },
   data: () => ({
     search: '',
-    categoryToEdit: 'huvudrätt',
+    categoryToEdit: 'förrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
@@ -158,6 +158,8 @@ export default {
           return item.category === 6;
         } else if (this.categoryToEdit === "dryck") {
           return item.category === 7;
+        } else if (this.categoryToEdit === "förrätt") {
+          return item.category === 0;
         } else {
           return item.category < 6;
         }
@@ -211,6 +213,8 @@ export default {
         this.newProduct.category = 7
       } else if(x === 'efterrätt') {
         this.newProduct.category = 6
+      } else if(x === 'förrätt') {
+        this.newProduct.category = 0
       } else {
         this.newProduct.category = 1
       }
