@@ -102,8 +102,12 @@
               </div>
             </div>
           </div>
-          <div class="button" @click="createNewProduct">
-            <DarkButton :buttonText="buttonText" />
+          <div class="button">
+            <div class="button-wrapper">
+              <DarkButton :buttonText="buttonText" @click.native="createNewProduct" />
+              <DarkButton buttonText="Avbryt" @click.native="emptyNewProductData" />
+            </div>
+            <DarkButton class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
           </div>
         </div>
       </section>
@@ -168,6 +172,9 @@ export default {
     },
   },
   methods: {
+    removeProductFromDB() {
+      console.log('Removed item --->');
+    },
     createNewProduct() {
       if(this.newProduct._id) {
         this.$store.dispatch('updateProduct', this.newProduct)
