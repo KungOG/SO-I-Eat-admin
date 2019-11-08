@@ -20,18 +20,6 @@ export default new Router({
       path: '/edit',
       name: 'edit',
       component: () => import('./views/Edit.vue'),
-      children: [
-        {
-          path: '/createdish',
-          name: 'createdish',
-          component: () => import('./views/CreateDish.vue'),
-        },
-        {
-          path: '/editdish',
-          name: 'editdish',
-          component: () => import('./views/EditDish.vue'),
-        },
-      ],
     },
     {
       path: '/orderboard',
