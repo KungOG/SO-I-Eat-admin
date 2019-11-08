@@ -30,7 +30,7 @@
       <section class='field'>
         <div class="grid-wrapper">
           <div class="header">
-            <h1>Skapa ny menyrad</h1>
+            <h1>Skapa ny {{ categoryToEdit }}</h1>
           </div>
           <div class='wrapper-left'>
             <div class="number">
@@ -188,7 +188,6 @@ export default {
         return item._id === id;
       });
       this.newProduct = productToEdit;
-      console.log(this.newProduct);
     },
     arrayFullOfProtein(i) {
       var proteins = this.newProduct.protein;

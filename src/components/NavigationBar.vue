@@ -63,7 +63,7 @@ export default {
       buttonTexts: ['10', '15', '20', '30', '45'],
       time: '',
       productionTime: '',
-      categoryToEdit: '',
+      categoryToEdit: 'huvudrätt',
     }
   },
   mounted() {
