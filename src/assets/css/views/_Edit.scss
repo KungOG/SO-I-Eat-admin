@@ -84,12 +84,12 @@
   grid-template-areas: 
   "top top top"
   "middle-left divider middle-right"
-  "buttom buttom buttom";
+  ". . buttom";
 
   .header,
   .button {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
   }
   
@@ -97,6 +97,13 @@
     grid-area: top;
   }
 
+  .button > .button-wrapper {
+    display: flex;
+  }
+
+  .button > .button-wrapper > .dark-admin-btn {
+    margin: 0 5px;
+  }
   .divider {
     grid-area: divider;
     display: flex;
