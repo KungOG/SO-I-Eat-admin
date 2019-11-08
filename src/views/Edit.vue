@@ -1,6 +1,6 @@
 <template>
   <div class='edit'>
-    <Navigation @setActiveCategoryToEdit="(x) => {categoryToEdit = x}"/>
+    <Navigation @setActiveCategoryToEdit="setActiveCategory"/>
     <div class="content-wrapper">
       <section>
         <div class="search-bar">
@@ -49,8 +49,8 @@
             <div class="category">
               <label>Kategori</label>
               <select v-model="newProduct.category">
-                <option disabled value="">Välj katergori</option>
-                <option v-for="category in categories" :key="category.categoryId" type="number" value="0">{{category.categoryName}}</option>
+                <option disabled value="">Välj kategori</option>
+                <option v-for="category in categories" :key="category.categoryId" type="number" :value="category.categoryId">{{category.categoryName}}</option>
               </select>
             </div>
             <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
@@ -205,11 +205,21 @@ export default {
       var extras = this.newProduct.extras;
       extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
     },
+    setActiveCategory(x) {
+      this.categoryToEdit = x
+      if(x === 'dryck') {
+        this.newProduct.category = 7
+      } else if(x === 'efterrätt') {
+        this.newProduct.category = 6
+      } else {
+        this.newProduct.category = 1
+      }
+    },
     emptyNewProductData() {
       this.newProduct = {
         productNr: 0,
         productName: '',
-        category: 0,
+        category: 1,
         price: 0,
         description: '',
         protein: [],
