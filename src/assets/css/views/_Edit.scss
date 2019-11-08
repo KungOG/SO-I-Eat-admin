@@ -103,6 +103,10 @@
 
   .button > .button-wrapper > .dark-admin-btn {
     margin: 0 5px;
+    
+    &.-add {
+      width: 70px;
+    }
   }
   .divider {
     grid-area: divider;
