@@ -30,7 +30,8 @@
       <section class='field'>
         <div class="grid-wrapper">
           <div class="header">
-            <h1>Skapa ny {{ categoryToEdit }}</h1>
+            <h1 v-if="!newProduct._id">Skapa ny {{ categoryToEdit }}</h1>
+            <h1 v-else>Redigera {{ newProduct.productName }}</h1>
           </div>
           <div class='wrapper-left'>
             <div class="number">
