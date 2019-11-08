@@ -10,7 +10,7 @@ export default new Router({
       path: '/',
       name: 'Login',
       component: () => import('./views/Login.vue'),
-    },  
+    },
     {
       path: '/archive',
       name: 'archive',
