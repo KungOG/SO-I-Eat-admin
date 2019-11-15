@@ -53,7 +53,7 @@
                 <option v-for="category in categories" :key="category.categoryId" type="number" :value="category.categoryId">{{category.categoryName}}</option>
               </select>
             </div>
-            <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
+            <div class="description">
               <label>Beskrivning</label>
               <textarea type="text" v-model="newProduct.description" />
             </div>
