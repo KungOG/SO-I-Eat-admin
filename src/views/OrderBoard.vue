@@ -3,15 +3,15 @@
     <Navigation />
     <div class='content'>
       <div class='drink-content'>
-        <DrinkCard />
+        <DrinkCard v-for="(order, i) in drinkOrders" :key="`drink-orders-${i}`" :order="order"/>
       </div>
       <div class="food1">
-        <FoodCard v-for="(order, i) in orders.array1" :key="`orders-array1-${i}`" :order="order" />
+        <FoodCard v-for="(order, i) in foodOrders.array1" :key="`food-orders-array1-${i}`" :order="order" />
       </div>
       <div class="food2">
-        <FoodCard v-for="(order, i) in orders.array2" :key="`orders-array2-${i}`" :order="order" />
+        <FoodCard v-for="(order, i) in foodOrders.array2" :key="`food-orders-array2-${i}`" :order="order" />
       </div>
-      </div>
+    </div>
   </div>
 </template>
 
@@ -22,32 +22,31 @@ import DrinkCard from '@/components/Order/DrinkCard.vue';
 
 export default {
   name: 'orderboard',
-  created() {
+  beforeMount() {
     this.$store.dispatch('getOrders');
   },
-
   components: {
     Navigation,
     DrinkCard,
     FoodCard,
   },
   computed: {
-    orders() {
+    drinkOrders() {
+      var orders = this.$store.state.orders.map(x => x);
+      var drinks = orders.filter(x => x.orderInformation.drinkItems.length !== 0);
+      return drinks;
+    },
+    foodOrders() {
       var originalArray = this.$store.state.orders.map(x => x);
       var orders = this.$store.state.orders;
       var arrays = {array1: [], array2: []}
 
-      for(let i=0; i < originalArray.length; i++) {
-        orders.length % 2 === 0 ? arrays.array2.push(orders.shift()) : arrays.array1.push(orders.shift())
+      for(let i=0; i < orders.length; i++) {
+        originalArray.length % 2 === 0 ? arrays.array2.push(originalArray.shift()) : arrays.array1.push(originalArray.shift())
       }
       return arrays
-    }
+    },
   },
-  methods: {
-    sortOrders() {
-      console.log(this.orders);
-    }
-  }
 };
 </script>
 
