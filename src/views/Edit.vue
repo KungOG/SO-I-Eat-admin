@@ -15,16 +15,7 @@
           </ul>        
         </div>
         <div class="time-settings">
-          <div>
-            <DarkButton :buttonText="'Öppen'"/>
-            <h3>Starttid</h3>
-            <h3>Stoptid</h3>
-          </div>
-          <div>
-            <DarkButton :buttonText="'Stängd'"/>
-            <DarkButton/>
-            <DarkButton/>
-          </div>
+          <SetTime />
         </div>
       </section>
       <section class='field'>
@@ -119,6 +110,7 @@
 import Navigation from '@/components/NavigationBar.vue';
 import DarkButton from '@/components/DarkButton.vue';
 import Checkbox from '@/components/Checkbox.vue';
+import SetTime from '@/components/SetTime.vue';
 
 export default {
   name: 'edit',
@@ -126,6 +118,7 @@ export default {
     Navigation,
     DarkButton,
     Checkbox,
+    SetTime
   },
   data: () => ({
     search: '',
