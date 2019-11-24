@@ -1,6 +1,6 @@
 <template>
   <div class='edit'>
-    <Navigation @setActiveCategoryToEdit="(x) => {categoryToEdit = x}"/>
+    <Navigation @setActiveCategoryToEdit="setActiveCategory"/>
     <div class="content-wrapper">
       <section>
         <div class="search-bar">
@@ -21,7 +21,8 @@
       <section class='field'>
         <div class="grid-wrapper">
           <div class="header">
-            <h1>Skapa ny {{ categoryToEdit }}</h1>
+            <h1 v-if="!newProduct._id">Skapa ny {{ categoryToEdit }}</h1>
+            <h1 v-else>Redigera {{ newProduct.productName }}</h1>
           </div>
           <div class='wrapper-left'>
             <div class="number">
@@ -39,11 +40,11 @@
             <div class="category">
               <label>Kategori</label>
               <select v-model="newProduct.category">
-                <option disabled value="">Välj katergori</option>
-                <option v-for="category in categories" :key="category.categoryId" type="number" value="0">{{category.categoryName}}</option>
+                <option disabled value="">Välj kategori</option>
+                <option v-for="category in categories" :key="category.categoryId" type="number" :value="category.categoryId">{{category.categoryName}}</option>
               </select>
             </div>
-            <div class="description" :class="{'-inactive': categoryToEdit === 'dryck'}">
+            <div class="description">
               <label>Beskrivning</label>
               <textarea type="text" v-model="newProduct.description" />
             </div>
@@ -122,7 +123,7 @@ export default {
   },
   data: () => ({
     search: '',
-    categoryToEdit: 'huvudrätt',
+    categoryToEdit: 'förrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
     boolean: true,
@@ -150,6 +151,8 @@ export default {
           return item.category === 6;
         } else if (this.categoryToEdit === "dryck") {
           return item.category === 7;
+        } else if (this.categoryToEdit === "förrätt") {
+          return item.category === 0;
         } else {
           return item.category < 6;
         }
@@ -197,11 +200,23 @@ export default {
       var extras = this.newProduct.extras;
       extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
     },
+    setActiveCategory(x) {
+      this.categoryToEdit = x
+      if(x === 'dryck') {
+        this.newProduct.category = 7
+      } else if(x === 'efterrätt') {
+        this.newProduct.category = 6
+      } else if(x === 'förrätt') {
+        this.newProduct.category = 0
+      } else {
+        this.newProduct.category = 1
+      }
+    },
     emptyNewProductData() {
       this.newProduct = {
         productNr: 0,
         productName: '',
-        category: 0,
+        category: 1,
         price: 0,
         description: '',
         protein: [],

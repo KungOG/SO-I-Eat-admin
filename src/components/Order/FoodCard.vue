@@ -6,7 +6,7 @@
       <span>{{order.orderInformation.time}}</span>
     </div>
     <FoodInformation 
-      v-for="(orderItem, i) in order.orderInformation.items" 
+      v-for="(orderItem, i) in order.orderInformation.foodItems" 
       :key="i" 
       :items="orderItem" 
       :orderNumber="order.code"

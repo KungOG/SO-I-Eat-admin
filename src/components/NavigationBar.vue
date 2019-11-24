@@ -18,6 +18,12 @@
     <div v-if="$route.path == '/edit'">
       <LightButton 
         class="edit-btn"
+        buttonText="förrätt"
+        :chosenValue="categoryToEdit"
+        @click.native="setCategoryToEdit('förrätt')"
+      />
+      <LightButton 
+        class="edit-btn"
         buttonText="huvudrätt"
         :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('huvudrätt')"
@@ -63,7 +69,7 @@ export default {
       buttonTexts: ['10', '15', '20', '30', '45'],
       time: '',
       productionTime: '',
-      categoryToEdit: 'huvudrätt',
+      categoryToEdit: 'förrätt',
     }
   },
   mounted() {
