@@ -35,8 +35,11 @@ export default {
       });
   },
   async updateBusinessHours(ctx, businessHours) {
-    console.log(businessHours);
     await axios.patch('https://so-i-eat-server.herokuapp.com/businessHours', businessHours);
+  },
+  async updateStatus(ctx, status) {
+    console.log(status);
+    await axios.patch('https://so-i-eat-server.herokuapp.com/statuses', status);
   },
   async createProduct(ctx, newProduct) {
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct);

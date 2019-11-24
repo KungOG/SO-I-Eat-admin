@@ -1,8 +1,8 @@
 <template>
   <div class='set-time'>
     <div>
-      <DarkButton :buttonText="'Öppen'"/>
-      <DarkButton :buttonText="'Stängd'"/>
+      <DarkButton :buttonText="'Öppen'" @click.native="(status='open')" :class="status === 'open' ? 'active' : ''"/>
+      <DarkButton :buttonText="'Stängd'" @click.native="(status='closed')" :class="status === 'closed' ? 'active' : ''"/>
       <div class='open-business'>
         <h3>Starttid</h3>
         <select v-model="selectedOpenHour">
@@ -53,25 +53,28 @@ export default {
     selectedOpenHour: null,
     selectedCloseHour: null,
     id: null,
+    status: null,
+    statusId: null,
 
   }),
   created() {
     this.getBusinessHours();
+    this.getBusinessStatus();
   },
   watch: {
     selectedOpenHour() {
-      console.log('open')
       this.updateBusinessHours();
     },
     selectedCloseHour() {
-      console.log('close')
       this.updateBusinessHours();
     },
+    status() {
+      this.updateStatus();
+    }
   },
   methods: {
     updateBusinessHours() {
       this.$store.dispatch('updateBusinessHours', {_id: this.id, closed: this.selectedCloseHour, open: this.selectedOpenHour});
-      console.log('Byta --->', this.selectedOpenHour);
     },
     getBusinessHours() {
       const url = 'https://so-i-eat-server.herokuapp.com/businessHours';
@@ -85,6 +88,22 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    getBusinessStatus() {
+      const url = 'https://so-i-eat-server.herokuapp.com/statuses';
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response);
+          this.statusId = response.data[0]._id;
+          this.status = response.data[0].status;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    updateStatus() {
+      this.$store.dispatch('updateStatus', {status: this.status, _id: this.statusId});
     },
   },
 };
