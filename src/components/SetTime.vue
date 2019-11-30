@@ -14,7 +14,7 @@
       <div class='closed-business'>
         <h3>Stoptid</h3>
         <select v-model="selectedCloseHour">
-          <option :value="hour" v-for="hour in openHours" :key="`close-hour-${hour}`">
+          <option :value="hour" v-for="hour in closeHours" :key="`close-hour-${hour}`">
             {{hour}}
           </option>
         </select>
@@ -57,6 +57,12 @@ export default {
     statusId: null,
 
   }),
+  computed: {
+    closeHours() {
+      let openHours = this.openHours.map(x => x);
+      return openHours.filter(x => x > this.selectedOpenHour)
+    },
+  },
   created() {
     this.getBusinessHours();
     this.getBusinessStatus();
