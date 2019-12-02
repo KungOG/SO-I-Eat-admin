@@ -34,21 +34,22 @@ export default {
   },
   data: () => ({
     openHours: [
-      '08:00',
-      '09:00',
-      '10:00',
-      '11:00',
-      '12:00',
-      '13:00',
-      '14:00',
-      '15:00',
-      '16:00',
-      '17:00',
-      '18:00',
-      '19:00',
-      '20:00',
-      '21:00',
-      '22:00',
+      '08.00',
+      '09.00',
+      '10.00',
+      '11.00',
+      '12.00',
+      '13.00',
+      '14.00',
+      '15.00',
+      '16.00',
+      '17.00',
+      '18.00',
+      '19.00',
+      '20.00',
+      '21.00',
+      '22.00',
+      '23.00'
     ],
     selectedOpenHour: null,
     selectedCloseHour: null,
@@ -59,13 +60,18 @@ export default {
   }),
   computed: {
     closeHours() {
-      let openHours = this.openHours.map(x => x);
-      return openHours.filter(x => x > this.selectedOpenHour)
+      return this.openHours.map(x => x).filter(x => x > this.selectedOpenHour);
     },
   },
   created() {
     this.getBusinessHours();
     this.getBusinessStatus();
+  },
+  mounted() {
+    setInterval(() => { 
+      this.getBusinessHours();
+      this.checkCurrentTime();
+    }, 10000);
   },
   watch: {
     selectedOpenHour() {
@@ -90,6 +96,7 @@ export default {
           this.selectedOpenHour = response.data[0].open;
           this.selectedCloseHour = response.data[0].closed;
           this.id = response.data[0]._id;
+          console.log('hej')
         })
         .catch((error) => {
           console.log(error);
@@ -100,7 +107,6 @@ export default {
       axios
         .get(url)
         .then((response) => {
-          console.log(response);
           this.statusId = response.data[0]._id;
           this.status = response.data[0].status;
         })
@@ -111,6 +117,17 @@ export default {
     updateStatus() {
       this.$store.dispatch('updateStatus', {status: this.status, _id: this.statusId});
     },
+    checkCurrentTime() {
+      const d = new Date();
+      let currentTime = Number(d.getHours() + '.' + d.getMinutes());
+      console.log(currentTime, Number(this.selectedOpenHour) )
+      currentTime > Number(this.selectedOpenHour) && currentTime < Number(this.selectedCloseHour) ? console.log('open') : console.log('closed')
+    },
   },
 };
 </script>
+
+kolla av öppettider i loop - om temp tid finns + det är samma datum, gå efter den
+om inte, ta bort temp datum och gå efter ordinarie datum
+
+klick på stängd eller öppet - sätt datum och temp tid
