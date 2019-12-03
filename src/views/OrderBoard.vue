@@ -12,7 +12,6 @@
         <FoodCard v-for="(order, i) in foodOrders.array2" :key="`food-orders-array2-${i}`" :order="order" />
       </div>
     </div>
-    <Modal v-if="showModal" @closeModal="showModal = false"/>
   </div>
 </template>
 
@@ -20,25 +19,17 @@
 import Navigation from '@/components/NavigationBar.vue';
 import FoodCard from '@/components/Order/FoodCard.vue';
 import DrinkCard from '@/components/Order/DrinkCard.vue';
-import Modal from '@/components/Modal.vue';
 
 export default {
   name: 'orderboard',
   beforeMount() {
     this.$store.dispatch('getOrders');
   },
-  mounted() {
-    this.showModal = true;
-  },
   components: {
     Navigation,
     DrinkCard,
     FoodCard,
-    Modal,
   },
-  data: () => ({
-    showModal: false,
-  }),
   computed: {
     drinkOrders() {
       var orders = this.$store.state.orders.map(x => x);
