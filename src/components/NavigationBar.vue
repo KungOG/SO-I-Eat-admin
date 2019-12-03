@@ -103,9 +103,8 @@ export default {
       axios
         .get(url)
         .then((response) => {
-          console.log(response);
           this.productionTimeId = response.data[0]._id;
-          this.productionTime = response.data[0].productionTime;
+          this.productionTime = response.data[0].time;
         })
         .catch((error) => {
           console.log(error);
