@@ -36,6 +36,10 @@ export default {
       var drinks = orders.filter(x => x.orderInformation.drinkItems.length !== 0);
       return drinks;
     },
+    foodOrders2() {
+      let foodItems =  Object.entries(this.$store.getters.foodItems);
+      return foodItems
+    },
     foodOrders() {
       var originalArray = this.$store.state.orders.map(x => x);
       var orders = this.$store.state.orders;
@@ -49,5 +53,3 @@ export default {
   },
 };
 </script>
-
-
