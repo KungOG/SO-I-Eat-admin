@@ -13,7 +13,7 @@
         :key="buttonText" 
         :buttonText="buttonText" 
         :chosenValue="productionTime"
-        @click.native="setProductionTime(buttonText) "/>
+        @click.native="updateProductionTime(buttonText) "/>
     </div>
     <div v-if="$route.path == '/edit'">
       <LightButton 
@@ -52,6 +52,7 @@ import Orders from '@/assets/icons/Menu.svg';
 import Timer from '@/assets/icons/Clock.svg';
 import Icon from '@/assets/icons/Group.svg';
 import LightButton from '@/components/LightButton.vue';
+import axios from 'axios';
 
 export default {
   name: 'navigationbar',
@@ -69,15 +70,18 @@ export default {
       buttonTexts: ['10', '15', '20', '30', '45'],
       time: '',
       productionTime: '',
+      productionTimeId: null,
       categoryToEdit: 'förrätt',
     }
   },
   mounted() {
     var timerID = setInterval(this.updateTime, 1000);
+    this.getProductionTime();
   },
   methods: {
-    setProductionTime(time) {
-      this.productionTime = time;
+    updateProductionTime(time) {
+      this.$store.dispatch('updateProductionTime', {productionTime: time, _id: this.productionTimeId});
+      this.getProductionTime();
     },
     setCategoryToEdit(cat) {
       this.categoryToEdit = cat;
@@ -93,7 +97,20 @@ export default {
           zero += '0';
       }
       return (zero + num).slice(-digit);
-    }
+    },
+    getProductionTime(ctx) {
+      const url = 'https://so-i-eat-server.herokuapp.com/deliveryTimes';
+      axios
+        .get(url)
+        .then((response) => {
+          console.log(response);
+          this.productionTimeId = response.data[0]._id;
+          this.productionTime = response.data[0].productionTime;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   }
 };
 </script>
