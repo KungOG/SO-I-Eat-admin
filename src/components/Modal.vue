@@ -59,8 +59,8 @@ export default {
       '22.00',
       '23.00'
     ],
-    selectedOpenHour: null,
-    selectedCloseHour: null,
+    selectedOpenHour: '11.00',
+    selectedCloseHour: '20.00',
     id: null,
     statusId: null,
   }),
