@@ -2,15 +2,17 @@
   <div class='food-order'>
     <div class='food-header'>
       <div class='filler' />
-      <h2>Bord: {{order.orderInformation.table}}</h2>
-      <span>{{order.date}}</span>
+      <h2>Bord: {{order[0]}}</h2>
+      <span>tid</span>
     </div>
-    <FoodInformation 
-      v-for="(orderItem, i) in order.orderInformation.foodItems" 
-      :key="i" 
-      :items="orderItem" 
-      :orderNumber="order.code"
-     />
+    <div v-for="(orderItem, i) in order[1]"  :key="i">
+      <FoodInformation 
+        v-for="(item, i) in orderItem.orderInformation.foodItems" 
+        :key="i" 
+        :items="item" 
+        :orderNumber="orderItem.code"
+      />
+     </div>
   </div>
 </template>
 
@@ -20,7 +22,6 @@ import FoodInformation from '@/components/Order/FoodInformation.vue';
 export default {
   props: {
     order: {
-      type: Object,
       required: true,
     },
   },

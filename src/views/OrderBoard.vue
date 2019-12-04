@@ -6,7 +6,7 @@
         <DrinkCard v-for="(order, i) in drinkOrders" :key="`drink-orders-${i}`" :order="order"/>
       </div>
       <div class="food1">
-        <FoodCard v-for="(order, i) in foodOrders.array1" :key="`food-orders-array1-${i}`" :order="order" />
+        <FoodCard v-for="(order, i) in foodOrders2" :key="`food-orders-array1-${i}`" :order="order" />
       </div>
       <div class="food2">
         <FoodCard v-for="(order, i) in foodOrders.array2" :key="`food-orders-array2-${i}`" :order="order" />
