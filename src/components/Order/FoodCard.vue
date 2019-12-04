@@ -4,7 +4,7 @@
       <div class='filler' />
       <h2 v-if="order[1][0].orderInformation.table !== 'take away'">Bord: {{order[1][0].orderInformation.table}}</h2>
       <h2 v-else>{{order[1][0].orderInformation.table}}</h2>
-      <span>tid</span>
+      <span>{{time}}</span>
     </div>
     <div v-for="(orderItem, i) in order[1]"  :key="i">
       <FoodInformation 
@@ -29,6 +29,12 @@ export default {
 
   components: {
     FoodInformation,
+  },
+  computed: {
+    time() {
+      var d = new Date(this.order[1][0].date);
+      return d.getHours().toString()+':'+d.getMinutes().toString();
+    }
   }
 };
 </script>
