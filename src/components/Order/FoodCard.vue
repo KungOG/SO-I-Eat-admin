@@ -12,6 +12,8 @@
         :key="i" 
         :items="item" 
         :orderNumber="orderItem.code"
+        :id="orderItem._id"
+        :status="orderItem.status"
       />
      </div>
   </div>
