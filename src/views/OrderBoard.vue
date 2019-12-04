@@ -32,9 +32,17 @@ export default {
   },
   computed: {
     drinkOrders() {
-      var orders = this.$store.state.orders.map(x => x);
-      var drinks = orders.filter(x => x.orderInformation.drinkItems.length !== 0);
-      return drinks;
+      let foodItems =  Object.entries(this.$store.getters.foodItems);
+      foodItems.sort(function(a, b) {
+        if (a[1][0].date < b[1][0].date) return -1;
+        if (a[1][0].date > b[1][0].date) return 1; 
+        return 0;  
+      })
+      var arrayy = [];
+      foodItems.forEach((x) => { 
+        x[1][0].orderInformation.drinkItems.length !== 0 ? arrayy.push(x) : ''
+      });
+      return arrayy;
     },
     foodOrders() {
       let foodItems =  Object.entries(this.$store.getters.foodItems);

@@ -7,11 +7,12 @@ foodItems(state) {
       if(key === 'take away') {
         acc[code] = [];
         acc[code].push(obj);
-      } else if (!acc[key]) {
-        acc[key] = [];
-        acc[key].push(obj);
       }
+      if (!acc[key] || key === 'take away') {
+        acc[key] = [];
+      }
+      acc[key].push(obj);
       return acc;
     }, {});
-  }
+  },
 };
