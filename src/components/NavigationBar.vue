@@ -3,8 +3,9 @@
     <div class='logo'>
       <img :src='Icon' alt='Icon logo' />
     </div>
-    <div class='orders' v-if="$route.path == '/orderboard'">
+    <div class='nav-orders' v-if="$route.path == '/orderboard'">
       <img :src='Orders' alt="This is icon for orders" />
+      <p>{{numberOfOrders}}</p>
     </div>
     <div class='time-buttons' v-if="$route.path == '/orderboard'">
       <img :src='Timer' alt="This is icon for timer" />
@@ -73,6 +74,11 @@ export default {
       productionTimeId: null,
       categoryToEdit: 'förrätt',
     }
+  },
+  computed: {
+    numberOfOrders() {
+      return Object.entries(this.$store.getters.foodItems).length;
+    },
   },
   mounted() {
     var timerID = setInterval(this.updateTime, 1000);
