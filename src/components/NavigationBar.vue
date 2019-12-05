@@ -77,7 +77,7 @@ export default {
   },
   computed: {
     numberOfOrders() {
-      return Object.entries(this.$store.getters.foodItems).length;
+      return this.$store.getters.foodItems.length;
     },
   },
   mounted() {

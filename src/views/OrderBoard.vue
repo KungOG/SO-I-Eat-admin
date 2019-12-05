@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     drinkOrders() {
-      let foodItems =  Object.entries(this.$store.getters.foodItems);
+      let foodItems =  this.$store.getters.foodItems.map(x => x);
       foodItems.sort(function(a, b) {
         if (a[1][0].date < b[1][0].date) return -1;
         if (a[1][0].date > b[1][0].date) return 1; 
@@ -45,8 +45,8 @@ export default {
       return arrayy;
     },
     foodOrders() {
-      let foodItems =  Object.entries(this.$store.getters.foodItems);
-      let count =  Object.entries(this.$store.getters.foodItems);
+      let foodItems =  this.$store.getters.foodItems.map(x => x);
+      let count =  this.$store.getters.foodItems;
       var arrays = {array1: [], array2: []}
       foodItems.sort(function(a, b) {
         if (a[1][0].date < b[1][0].date) return -1;
