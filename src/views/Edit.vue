@@ -94,6 +94,9 @@
               </div>
             </div>
           </div>
+          <div v-if="newProduct._id" class="switch-button">
+            <SwitchButton :value="newProduct.active"/>
+          </div>
           <div class="button">
             <DarkButton :class="{'hidden-btn': !newProduct._id}" class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
             <div class="button-wrapper">
@@ -112,6 +115,7 @@ import Navigation from '@/components/NavigationBar.vue';
 import DarkButton from '@/components/DarkButton.vue';
 import Checkbox from '@/components/Checkbox.vue';
 import SetTime from '@/components/SetTime.vue';
+import SwitchButton from '@/components/SwitchButton.vue';
 
 export default {
   name: 'edit',
@@ -119,7 +123,8 @@ export default {
     Navigation,
     DarkButton,
     Checkbox,
-    SetTime
+    SetTime,
+    SwitchButton,
   },
   data: () => ({
     search: '',
@@ -132,6 +137,7 @@ export default {
       productNr: 0,
       productName: '',
       category: 0,
+      active: false,
       price: 0,
       description: '',
       protein: [],

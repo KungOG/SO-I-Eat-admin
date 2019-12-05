@@ -84,7 +84,7 @@
   grid-template-areas: 
   "top top top"
   "middle-left divider middle-right"
-  ". . buttom";
+  "buttons-left . buttons-right";
 
   .header,
   .button {
@@ -130,7 +130,14 @@
   }
   
   .button {
-    grid-area: buttom;
+    grid-area: buttons-right;
+  }
+
+  .switch-button {
+    grid-area: buttons-left;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
   }
 }
 
