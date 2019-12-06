@@ -95,7 +95,7 @@
             </div>
           </div>
           <div v-if="newProduct._id" class="switch-button">
-            <SwitchButton :value="newProduct.active"/>
+            <SwitchButton :value="newProduct.active" :id="newProduct._id"/>
           </div>
           <div class="button">
             <DarkButton :class="{'hidden-btn': !newProduct._id}" class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />

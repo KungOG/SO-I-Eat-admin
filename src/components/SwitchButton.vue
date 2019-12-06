@@ -18,6 +18,10 @@ export default {
       type: Boolean,
       default: true,
     },
+    id: {
+      type: String,
+      required: true,
+    },
   },
   data: () => ({
     width: 43,
@@ -94,7 +98,7 @@ export default {
       this.position = this.state ? 100 : 0;
     },
     emit() {
-      this.$store.dispatch('updateActiveProduct', this.state);
+      this.$store.dispatch('updateActiveProduct', {active: this.state, _id: this.id});
     },
   },
 };
