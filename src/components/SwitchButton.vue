@@ -94,7 +94,7 @@ export default {
       this.position = this.state ? 100 : 0;
     },
     emit() {
-      this.$emit('input', this.state);
+      this.$store.dispatch('updateActiveProduct', this.state);
     },
   },
 };
