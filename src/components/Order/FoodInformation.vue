@@ -67,7 +67,8 @@ export default {
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
       var newOrder = order[0].orderInformation.foodItems[this.index].status = this.itemStatus
       this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
-      this.checkAllStatuses();
+      //this.checkAllStatuses();
+      this.checkTableStatus();
     },
     checkAllStatuses() {
       var orders = this.$store.state.orders.map(x => x)
@@ -78,6 +79,13 @@ export default {
 
 
       //bordet: this.table[1]
+    },
+    checkTableStatus() {
+      console.log('-->')
+        console.log(this.table[1].map(x => x.status).every(x => x === 3))
+      if(this.table[1].map(x => x.status).every(x => x === 3)) {
+        //this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+      } 
     }
   }
 };
