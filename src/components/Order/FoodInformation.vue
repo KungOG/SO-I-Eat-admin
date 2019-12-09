@@ -43,6 +43,14 @@ export default {
       type: Number,
       required: true,
     },
+    table: {
+      type: Array,
+      required: true,
+    },
+    orderStatus: {
+      type: Number,
+      required: true,
+    },
   },
   mounted() {
     this.itemStatus = this.status;
@@ -59,6 +67,17 @@ export default {
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
       var newOrder = order[0].orderInformation.foodItems[this.index].status = this.itemStatus
       this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
+      this.checkAllStatuses();
+    },
+    checkAllStatuses() {
+      var orders = this.$store.state.orders.map(x => x)
+      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
+      if(order[0].orderInformation.foodItems.map(x => x.status).every(x => x === 2)) {
+        this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+      } 
+
+
+      //bordet: this.table[1]
     }
   }
 };

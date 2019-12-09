@@ -13,6 +13,7 @@
       :id="drinkItem._id"
       :drinkItem="item"
       :orderNumber="drinkItem.code"
+      :orderStatus="drinkItem.status"
       />
     </div>
   </div>

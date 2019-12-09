@@ -15,6 +15,8 @@
         :orderNumber="orderItem.code"
         :id="orderItem._id"
         :status="item.status"
+        :table="order"
+        :orderStatus="orderItem.status"
       />
      </div>
   </div>

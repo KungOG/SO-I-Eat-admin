@@ -27,6 +27,10 @@ export default {
       type: String,
       required: true,
     },
+    orderStatus: {
+      type: Number,
+      required: true,
+    },
   },
   data: () => ({
     itemStatus: false,
@@ -38,6 +42,17 @@ export default {
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
       var newOrder = order[0].orderInformation.drinkItems[this.index].status = this.itemStatus
       this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
+      this.checkAllStatuses();
+    },
+    checkAllStatuses() {
+      var orders = this.$store.state.orders.map(x => x)
+      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
+      if(order[0].orderInformation.drinkItems.map(x => x.status).every(x => x === true)) {
+        this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
+      } 
+
+
+      //bordet: this.table[1]
     }
   }
 };

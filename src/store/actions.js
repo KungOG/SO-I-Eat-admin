@@ -54,6 +54,7 @@ export default {
     await axios.patch('https://so-i-eat-server.herokuapp.com/productionTime', productionTime);
   },
   async setOrderItemStatus(ctx, orderStatus) {
+    console.log(orderStatus)
     await axios.patch('https://so-i-eat-server.herokuapp.com/orders', orderStatus);
   },
   async removeProduct(ctx, newProduct) {
