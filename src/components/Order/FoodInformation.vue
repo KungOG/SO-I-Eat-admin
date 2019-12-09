@@ -1,5 +1,5 @@
 <template>
-  <div class='food-information'  @click="click">
+  <div class='food-information'  @click="updateStatus">
     <div class='content'>
       <div class='color' :class="[(itemStatus === 1 ? 'yellow' : ''), (itemStatus === 2 ? 'green' : '')]"/>
       <div class='info'>
@@ -53,7 +53,7 @@ export default {
     },
   },
   methods: {
-    click() {
+    updateStatus() {
       this.itemStatus < 2 ? this.itemStatus++ : this.itemStatus = 0
       var orders = this.$store.state.orders.map(x => x)
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)

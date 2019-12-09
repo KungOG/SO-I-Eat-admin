@@ -9,6 +9,8 @@
       <DrinkInformation
       v-for="(item, i) in drinkItem.orderInformation.drinkItems"
       :key="`drink-items-${i}`"
+      :index="i"
+      :id="drinkItem._id"
       :drinkItem="item"
       :orderNumber="drinkItem.code"
       />
