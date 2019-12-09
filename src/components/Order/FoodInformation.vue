@@ -39,6 +39,10 @@ export default {
       type: Number,
       required: true,
     },
+    index: {
+      type: Number,
+      required: true,
+    },
   },
   mounted() {
     this.itemStatus = this.status;
@@ -51,7 +55,10 @@ export default {
   methods: {
     click() {
       this.itemStatus < 2 ? this.itemStatus++ : this.itemStatus = 0
-      this.$store.dispatch('setOrderItemStatus', {status: this.itemStatus, _id: this.id})
+      var orders = this.$store.state.orders.map(x => x)
+      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
+      var newOrder = order[0].orderInformation.foodItems[this.index].status = this.itemStatus
+      this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
     }
   }
 };

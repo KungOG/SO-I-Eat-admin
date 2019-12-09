@@ -9,11 +9,12 @@
     <div v-for="(orderItem, i) in order[1]"  :key="i">
       <FoodInformation 
         v-for="(item, i) in orderItem.orderInformation.foodItems" 
-        :key="i" 
+        :key="i"
+        :index="i"
         :items="item" 
         :orderNumber="orderItem.code"
         :id="orderItem._id"
-        :status="orderItem.status"
+        :status="item.status"
       />
      </div>
   </div>
