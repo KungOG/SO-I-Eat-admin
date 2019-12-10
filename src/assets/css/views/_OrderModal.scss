@@ -1,0 +1,25 @@
+.order-modal {
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-overlay {
+    background: white;
+    padding: 5rem;
+    border-radius: 8px;
+    position: relative;
+  }
+
+  .upper-order-modal {
+
+  }
+  .lower-order-modal {
+    display: flex;
+  }
+}

@@ -12,6 +12,7 @@
       :index="i"
       :id="drinkItem._id"
       :drinkItem="item"
+      :table="order"
       :orderNumber="drinkItem.code"
       :orderStatus="drinkItem.status"
       />

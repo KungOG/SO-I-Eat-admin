@@ -1,5 +1,5 @@
 <template>
-  <div class='drink-information' @click="updateStatus">
+  <div class='drink-information' @click="checkOpenModal">
     <div class='content'>
       <h3>{{orderNumber}}</h3>
       <h3>{{drinkItem.productName}}</h3>
@@ -31,6 +31,10 @@ export default {
       type: Number,
       required: true,
     },
+    table: {
+      type: Array,
+      required: true,
+    },
   },
   data: () => ({
     itemStatus: false,
@@ -50,9 +54,26 @@ export default {
       if(order[0].orderInformation.drinkItems.map(x => x.status).every(x => x === true)) {
         this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
       } 
-
-
-      //bordet: this.table[1]
+    },
+    checkOpenModal() {
+      var mat = this.table[1].map(x => x.orderInformation.foodItems).map(k => k[0].status)
+      var dryck = this.table[1].map(x => x.orderInformation.drinkItems).map(k => k[0].status)
+      var matAntalKlara = mat.filter(x => x==2).length
+      var dryckAntalKlara = dryck.filter(x => x==true).length
+        console.log('Dryck -->',dryckAntalKlara)
+        console.log(dryck.length)
+        console.log('mat -->', matAntalKlara)
+      if(mat.length - matAntalKlara === 0 && dryck.length - dryckAntalKlara === 1) {
+        console.log('ok')
+        if(dryck.includes(false)) {
+          this.$store.commit('setShowModal', true);
+        } else {
+          this.updateStatus();
+        }
+      } else {
+        console.log('update')
+        this.updateStatus();
+      }
     }
   }
 };

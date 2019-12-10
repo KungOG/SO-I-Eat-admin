@@ -12,6 +12,7 @@
         <FoodCard v-for="(order, i) in foodOrders.array2" :key="`food-orders-array2-${i}`" :order="order" />
       </div>
     </div>
+    <OrderModal v-if="showModal"/>
   </div>
 </template>
 
@@ -19,6 +20,7 @@
 import Navigation from '@/components/NavigationBar.vue';
 import FoodCard from '@/components/Order/FoodCard.vue';
 import DrinkCard from '@/components/Order/DrinkCard.vue';
+import OrderModal from '@/components/OrderModal.vue';
 
 export default {
   name: 'orderboard',
@@ -29,8 +31,12 @@ export default {
     Navigation,
     DrinkCard,
     FoodCard,
+    OrderModal,
   },
   computed: {
+    showModal() {
+      return this.$store.state.showModal;
+    },
     drinkOrders() {
       let foodItems =  this.$store.getters.foodItems.map(x => x);
       foodItems.sort(function(a, b) {

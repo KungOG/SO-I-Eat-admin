@@ -3,4 +3,5 @@ export default {
   menuItems: [],
   categories: [],
   businessHours: null,
+  showModal: true,
 };

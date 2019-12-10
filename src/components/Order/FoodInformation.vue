@@ -1,5 +1,5 @@
 <template>
-  <div class='food-information'  @click="updateStatus">
+  <div class='food-information'  @click="checkOpenModal">
     <div class='content'>
       <div class='color' :class="[(itemStatus === 1 ? 'yellow' : ''), (itemStatus === 2 ? 'green' : '')]"/>
       <div class='info'>
@@ -67,8 +67,7 @@ export default {
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
       var newOrder = order[0].orderInformation.foodItems[this.index].status = this.itemStatus
       this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
-      //this.checkAllStatuses();
-      this.checkTableStatus();
+      this.checkAllStatuses();
     },
     checkAllStatuses() {
       var orders = this.$store.state.orders.map(x => x)
@@ -76,16 +75,28 @@ export default {
       if(order[0].orderInformation.foodItems.map(x => x.status).every(x => x === 2)) {
         this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
       } 
-
-
-      //bordet: this.table[1]
     },
-    checkTableStatus() {
-      console.log('-->')
-        console.log(this.table[1].map(x => x.status).every(x => x === 3))
+/*     checkTableStatus() {
       if(this.table[1].map(x => x.status).every(x => x === 3)) {
-        //this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+        console.log('alla är treor')
       } 
+    }, */
+    checkOpenModal() {
+      var jjj = this.table[1].map(x => x.orderInformation.foodItems).map(k => k[0].status)
+      var ddd = this.table[1].map(x => x.orderInformation.drinkItems).map(k => k[0].status)
+      var kkk = jjj.filter(x => x==2).length
+      var ppp = ddd.filter(x => x==true).length
+      if(jjj.length - kkk === 1 && ddd.length - ppp === 0) {
+        console.log('ok')
+        if(jjj.includes(1)) {
+          this.$store.commit('setShowModal', true)
+        } else {
+          this.updateStatus();
+        }
+      } else {
+        console.log('update')
+        this.updateStatus();
+      }
     }
   }
 };

@@ -8,4 +8,7 @@ export default {
   setCategories(state, categories) {
     state.categories = categories;
   },
+  setShowModal(state, boolean) {
+    state.showModal = boolean;
+  },
 };
