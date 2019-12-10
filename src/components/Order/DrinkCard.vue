@@ -13,6 +13,7 @@
       :id="drinkItem._id"
       :drinkItem="item"
       :table="order"
+      :status="item.status"
       :orderNumber="drinkItem.code"
       :orderStatus="drinkItem.status"
       />

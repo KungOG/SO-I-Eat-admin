@@ -11,4 +11,7 @@ export default {
   setShowModal(state, boolean) {
     state.showModal = boolean;
   },
+  setOrdersIdsToDeliver(state, id) {
+    state.orderIds = id;
+  },
 };

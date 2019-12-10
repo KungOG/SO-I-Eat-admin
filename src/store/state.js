@@ -3,5 +3,6 @@ export default {
   menuItems: [],
   categories: [],
   businessHours: null,
-  showModal: true,
+  showModal: false,
+  orderIds: [],
 };

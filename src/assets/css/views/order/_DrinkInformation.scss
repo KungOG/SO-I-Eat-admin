@@ -5,4 +5,8 @@
   border-bottom: 1px solid grey;
   padding: 15px 0;
   margin-bottom: 20px;
+
+  &.green {
+    color: $green;
+  }
 }

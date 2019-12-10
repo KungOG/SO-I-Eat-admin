@@ -17,15 +17,13 @@ import DarkButton from './DarkButton.vue';
 
 export default {
   name: 'order-modal',
-  data: () => ({
-
-  }),
   components: {
     DarkButton,
   },
   methods: {
     deliverOrder() {
       
+      this.$store.dispatch('deliverOrders')
       this.$store.commit('setShowModal', false)
     },
     cancelUpdate() {

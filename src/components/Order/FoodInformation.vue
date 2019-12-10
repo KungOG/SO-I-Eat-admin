@@ -76,25 +76,25 @@ export default {
         this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
       } 
     },
-/*     checkTableStatus() {
-      if(this.table[1].map(x => x.status).every(x => x === 3)) {
-        console.log('alla är treor')
-      } 
-    }, */
     checkOpenModal() {
-      var jjj = this.table[1].map(x => x.orderInformation.foodItems).map(k => k[0].status)
-      var ddd = this.table[1].map(x => x.orderInformation.drinkItems).map(k => k[0].status)
-      var kkk = jjj.filter(x => x==2).length
-      var ppp = ddd.filter(x => x==true).length
-      if(jjj.length - kkk === 1 && ddd.length - ppp === 0) {
-        console.log('ok')
-        if(jjj.includes(1)) {
-          this.$store.commit('setShowModal', true)
+      if(this.status === 1) {
+        var jjj = this.table[1].map(x => x.orderInformation.foodItems.map(k => k.status)).flat();
+        var ddd = this.table[1].map(x => x.orderInformation.drinkItems.map(k => k.status)).flat();
+        var id = this.table[1].map(x => x._id)
+        this.$store.commit('setOrdersIdsToDeliver', id)
+        var kkk = jjj.filter(x => x==2).length
+        var ppp = ddd.filter(x => x==true).length
+        if(jjj.length - kkk === 1 && ddd.length - ppp === 0) {
+          if(jjj.includes(1)) {
+            this.$store.commit('setOrdersIdsToDeliver', id)
+            this.$store.commit('setShowModal', true)
+          } else {
+            this.updateStatus();
+          }
         } else {
           this.updateStatus();
         }
       } else {
-        console.log('update')
         this.updateStatus();
       }
     }

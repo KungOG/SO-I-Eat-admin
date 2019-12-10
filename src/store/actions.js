@@ -60,4 +60,11 @@ export default {
   async removeProduct(ctx, newProduct) {
     await axios.delete(`https://so-i-eat-server.herokuapp.com/products/${newProduct}`);
   },
+  deliverOrders(ctx) {
+    var ids = this.state.orderIds;
+    ids.forEach(x => {
+      axios.patch(`https://so-i-eat-server.herokuapp.com/orders`, {status: 4, _id: x});
+    });
+    
+  },
 };
