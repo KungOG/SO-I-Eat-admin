@@ -22,9 +22,9 @@ export default {
   },
   methods: {
     deliverOrder() {
-      
       this.$store.dispatch('deliverOrders')
       this.$store.commit('setShowModal', false)
+      this.$store.dispatch('getOrders');
     },
     cancelUpdate() {
       this.$store.commit('setShowModal', false)

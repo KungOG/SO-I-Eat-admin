@@ -45,7 +45,7 @@ export default {
         return 0;  
       })
       var arrayy = [];
-      foodItems.forEach((x) => { 
+      foodItems.forEach((x) => {
         x[1][0].orderInformation.drinkItems.length !== 0 ? arrayy.push(x) : ''
       });
       return arrayy;

@@ -73,8 +73,15 @@ export default {
       var orders = this.$store.state.orders.map(x => x)
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
       if(order[0].orderInformation.foodItems.map(x => x.status).every(x => x === 2)) {
-        this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
-      } 
+        if(this.orderStatus === 0 || this.orderStatus === 1) {
+          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+        }
+      } else if(this.itemStatus === 0) {
+        if(this.orderStatus === 3 || this.orderStatus === 2) {
+          console.log('reset itemstatus', this.itemStatus)
+          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 2, _id: this.id})
+        }
+      }
     },
     checkOpenModal() {
       if(this.status === 1) {

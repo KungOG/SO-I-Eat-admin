@@ -57,9 +57,17 @@ export default {
     checkAllStatuses() {
       var orders = this.$store.state.orders.map(x => x)
       var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
+        console.log(this.orderStatus)
       if(order[0].orderInformation.drinkItems.map(x => x.status).every(x => x === true)) {
-        this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
-      } 
+        if(this.orderStatus === 0 || this.orderStatus === 2) {
+          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
+        }
+      } else if(this.itemStatus === false) {
+          if(this.orderStatus === 3 || this.orderStatus === 1) {
+            console.log('reset itemstatus', this.itemStatus)
+            this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 1, _id: this.id})
+          }
+        }
     },
     checkOpenModal() {
       if(this.status === false) {
