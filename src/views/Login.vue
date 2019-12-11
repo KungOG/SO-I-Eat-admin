@@ -35,7 +35,7 @@ export default {
       // Get the access token from the auth wrapper
       const token = await this.$auth.getTokenSilently();
       // Use Axios to make a call to the API
-      const { data } = await axios.get("/api/external", {
+      const { data } = await axios.get("https://so-i-eat-server.herokuapp.com/api/external", {
         headers: {
           Authorization: `Bearer ${token}`    // send the access token through the 'Authorization' header
         }
