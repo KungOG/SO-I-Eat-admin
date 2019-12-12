@@ -1,16 +1,18 @@
 <template>
   <div class='set-time'>
-    <div>
-      <DarkButton :buttonText="'Öppna'" @click.native="(status='open')" :class="status === 'open' ? 'active' : ''"/>
-      <DarkButton :buttonText="'Stäng'" @click.native="(status='closed')" :class="status === 'closed' ? 'active' : ''"/>
+    <div class='set-time-button-wrapper'>
+      <DarkButton class='set-time-open-button' :buttonText="buttonText" @click.native="(status='open')" :class="status === 'open' ? 'active' : ''"/>
       <div class='open-business'>
-        <h3>Starttid</h3>
+        <h3>ÖPPNAR</h3>
         <span> {{selectedOpenHour}} </span>
       </div>
+    </div>
+    <div class='set-time-button-wrapper'>
+      <DarkButton class='set-time-close-button' :buttonText="'Stäng'" @click.native="(status='closed')" :class="status === 'closed' ? 'active' : ''"/>
       <div class='closed-business'>
-        <h3>Stopptid</h3>
+        <h3>STÄNGER</h3>
         <span> {{selectedCloseHour}} </span>
-      </div>
+     </div>
     </div>
   </div>
 </template>
@@ -31,6 +33,7 @@ export default {
     status: null,
     statusId: null,
     open: false,
+    buttonText: 'Öppna'
   }),
   computed: {
     closeHours() {
