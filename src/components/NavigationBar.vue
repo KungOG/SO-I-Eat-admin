@@ -1,7 +1,15 @@
 <template>
   <div class='navigation'>
     <div class='logo'>
-      <img :src='Icon' alt='Icon logo' />
+      <img :src='Icon' alt='Icon logo' @click="activateHamburger" />
+      <div v-if="showHamburger" :class="showHamburger === true ? '-activeBackground' : ''">
+        <div v-if="showHamburger" :class="showHamburger === true ? '-active' : ''">
+          <div :class="showHamburger === true ? '-closeHamburger' : ''" @click="activateHamburger">X</div>
+          <span>Gå hit</span>
+          <span>Gå hit</span>
+          <span>Gå hit</span>
+        </div>
+      </div>
     </div>
     <div class='nav-orders' v-if="$route.path == '/orderboard'">
       <img :src='Orders' alt="This is icon for orders" />
@@ -73,6 +81,7 @@ export default {
       productionTime: '',
       productionTimeId: null,
       categoryToEdit: 'förrätt',
+      showHamburger: true,
     }
   },
   computed: {
@@ -85,6 +94,10 @@ export default {
     this.getProductionTime();
   },
   methods: {
+    activateHamburger() {
+      this.showHamburger = !this.showHamburger;
+      console.log('click', this.showHamburger);
+    },
     async updateProductionTime(time) {
       this.productionTime = time;
       await this.$store.dispatch('updateProductionTime', {productionTime: time, _id: this.productionTimeId});
