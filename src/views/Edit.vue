@@ -105,11 +105,11 @@
             </div>
             <div class='button-wrapper'>
               <div class='edit-admin-btn -add' @click.native="createNewProduct" >
-                <img :src="require('@/assets/icons/' + icons.bin)" alt="Add item to database icon">
+                <img :src="require('@/assets/icons/' + icons.add)" alt="Add item to database icon">
                 <span>Lägg till</span>
               </div>
               <div class='edit-admin-btn -cancel' @click.native="emptyNewProductData">
-                <img :src="require('@/assets/icons/' + icons.bin)" alt="Cancel icon">
+                <img :src="require('@/assets/icons/' + icons.cross)" alt="Cancel icon">
                 <span>Avbryt</span>
               </div>
             </div>
@@ -158,6 +158,8 @@ export default {
     icons: {
       bin: 'Bin.svg',
       search: 'Search.svg',
+      add: 'Add.svg',
+      cross: 'Cross.svg',
     },
   }),
   beforeMount() {
