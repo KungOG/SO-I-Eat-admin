@@ -54,10 +54,10 @@
               <div class="input-wrapper">
                 <div class="container" v-for="(proteinType, i) in proteinTypes" :key="`proteinType-${i}`" >
                   <Checkbox :dataValue="newProduct.protein.includes(proteinType)" :value="proteinType" @input="arrayFullOfProtein"/>
-                  <label v-if="proteinType === 'Pork'" :for="proteinType">Fläsk</label>  
-                  <label v-if="proteinType === 'Beef'" :for="proteinType">Biff</label>  
-                  <label v-if="proteinType === 'Chicken'" :for="proteinType">Kyckling</label>  
-                  <label v-if="proteinType === 'Shrimp'" :for="proteinType">Räkor</label>  
+                  <label v-if="proteinType === 'Pork'">Fläsk</label>  
+                  <label v-if="proteinType === 'Beef'">Biff</label>  
+                  <label v-if="proteinType === 'Chicken'">Kyckling</label>  
+                  <label v-if="proteinType === 'Shrimp'">Räkor</label>  
                 </div>
               </div>
               <br>

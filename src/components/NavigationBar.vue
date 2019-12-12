@@ -81,7 +81,7 @@ export default {
       productionTime: '',
       productionTimeId: null,
       categoryToEdit: 'förrätt',
-      showHamburger: true,
+      showHamburger: false,
     }
   },
   computed: {
@@ -96,7 +96,6 @@ export default {
   methods: {
     activateHamburger() {
       this.showHamburger = !this.showHamburger;
-      console.log('click', this.showHamburger);
     },
     async updateProductionTime(time) {
       this.productionTime = time;
