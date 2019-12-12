@@ -54,7 +54,10 @@
               <div class="input-wrapper">
                 <div class="container" v-for="(proteinType, i) in proteinTypes" :key="`proteinType-${i}`" >
                   <Checkbox :dataValue="newProduct.protein.includes(proteinType)" :value="proteinType" @input="arrayFullOfProtein"/>
-                  <label :for="proteinType">{{proteinType}}</label>  
+                  <label v-if="proteinType === 'Pork'" :for="proteinType">Fläsk</label>  
+                  <label v-if="proteinType === 'Beef'" :for="proteinType">Biff</label>  
+                  <label v-if="proteinType === 'Chicken'" :for="proteinType">Kyckling</label>  
+                  <label v-if="proteinType === 'Shrimp'" :for="proteinType">Räkor</label>  
                 </div>
               </div>
               <br>
@@ -63,11 +66,11 @@
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="(x) => {newProduct.spice = x}"/>
+                  <Checkbox :dataValue="newProduct.spice" :value="isSpice" @input="(x) => {newProduct.spice = x}"/>
                   <label for="Yes">Ja</label>
                 </div>
                 <div class="container">
-                  <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="(x) => {newProduct.spice = x}"/>
+                  <Checkbox :dataValue="!newProduct.spice" :value="!isSpice" @input="(x) => {newProduct.spice = x}"/>
                   <label for="No">Nej</label>  
                 </div>
               </div>
@@ -141,7 +144,7 @@ export default {
     categoryToEdit: 'förrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
-    boolean: true,
+    isSpice: true,
     buttonText: 'Lägg till',
     newProduct: {
       productNr: 0,
@@ -186,7 +189,14 @@ export default {
       })
     },
     categories() {
-      return this.$store.state.categories;
+      if(this.categoryToEdit === 'huvudrätt') {
+        return this.$store.state.categories.filter(
+          x => x.categoryName !== 'Smått' 
+          && x.categoryName !== 'Efterrätt' 
+          && x.categoryName !== 'Dryck');
+      } else {
+        return this.$store.state.categories;
+      }
     },
   },
   methods: {

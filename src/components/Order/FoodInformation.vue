@@ -5,7 +5,10 @@
       <div class='info'>
         <h3>{{orderNumber}}</h3>
         <h3>{{items.productName}}</h3>
-        <span>{{items.protein}}</span>
+        <span v-if="items.protein === 'Shrimp'" :for="proteinType">Räkor</span>
+        <span v-if="items.protein === 'Beef'" :for="proteinType">Biff</span>
+        <span v-if="items.protein === 'Chicken'" :for="proteinType">Kyckling</span>
+        <span v-if="items.protein === 'Pork'" :for="proteinType">Fläsk</span>
       </div>
       <div class='added-items'>
         <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
