@@ -4,6 +4,7 @@
     <div class="content-wrapper">
       <section>
         <div class="search-bar">
+          <img class='search-icon' :src="require('@/assets/icons/' + icons.search)" alt="Search item from database icon" />
           <input type="text" v-model="search" placeholder="Sök">
         </div>
         <div class="items-list">
@@ -46,7 +47,7 @@
             </div>
             <div class="description">
               <label>Beskrivning</label>
-              <textarea type="text" v-model="newProduct.description" />
+              <textarea type="text" maxlength="150" v-model="newProduct.description" />
             </div>
             <div class="protein" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
               <span>Huvudingredienser</span>
@@ -98,10 +99,19 @@
             <SwitchButton :value="newProduct.active" :id="newProduct._id"/>
           </div>
           <div class="button">
-            <DarkButton :class="{'hidden-btn': !newProduct._id}" class="remove" buttonText="Ta bort" @click.native="removeProductFromDB" />
-            <div class="button-wrapper">
-              <DarkButton class="-add" :buttonText="buttonText" @click.native="createNewProduct" />
-              <DarkButton buttonText="Avbryt" @click.native="emptyNewProductData" />
+            <div :class="{'hidden-btn': !newProduct._id}" class="edit-admin-btn -remove" @click.native="removeProductFromDB">
+              <img :src="require('@/assets/icons/' + icons.bin)" alt="Remove item from database icon">
+              <span>Ta bort</span>
+            </div>
+            <div class='button-wrapper'>
+              <div class='edit-admin-btn -add' @click.native="createNewProduct" >
+                <img :src="require('@/assets/icons/' + icons.bin)" alt="Add item to database icon">
+                <span>Lägg till</span>
+              </div>
+              <div class='edit-admin-btn -cancel' @click.native="emptyNewProductData">
+                <img :src="require('@/assets/icons/' + icons.bin)" alt="Cancel icon">
+                <span>Avbryt</span>
+              </div>
             </div>
           </div>
         </div>
@@ -144,6 +154,10 @@ export default {
       spice: false,
       ingredients: [],
       extras: [],
+    },
+    icons: {
+      bin: 'Bin.svg',
+      search: 'Search.svg',
     },
   }),
   beforeMount() {

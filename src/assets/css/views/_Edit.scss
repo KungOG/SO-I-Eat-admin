@@ -13,6 +13,14 @@
         .search-bar {
           background: white;
           margin: 10px;
+          position: relative;
+
+          .search-icon {
+            position: absolute;
+            right: 0;
+            top: 5px;
+            height: 80%;
+          }
 
           > input {
             font-size: 16px;
@@ -33,10 +41,12 @@
 
             > li {
               border-top: 1px solid black;
-              padding: 15px; 
+              padding: 15px;
+              cursor: pointer;
+              text-transform: uppercase;
 
               > span {
-                margin: 10px; 
+                margin: 10px;
               }
             }
           }
@@ -69,13 +79,13 @@
                   border-bottom: 1px solid black;
                   
                   &.active {
-                    background: green;
+                    background: $green;
                   }
                 }
 
                 &.set-time-close-button {
                   &.active {
-                    background: red;
+                    background: $main-color;
                   }
                 }
               }
@@ -146,11 +156,38 @@
     display: flex;
   }
 
-  .button > .button-wrapper > .dark-admin-btn {
-    margin: 0 5px;
+  .button > .edit-admin-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
     
-    &.-add {
-      width: 70px;
+    &.-remove {
+      width: 80px;
+    }
+    
+    &.hidden-btn {
+      visibility: hidden;
+    }
+  }
+  .button > .button-wrapper > .edit-admin-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin: 0 5px;
+    cursor: pointer;
+    
+    &.-add,
+    &.-cancel {
+      width: 80px;
     }
   }
   .divider {
@@ -229,10 +266,13 @@
     border: 1px solid #cdcdcd;
     margin: 9px 0;
     padding-left: 5px;
+    cursor: pointer;
   }
 
   .description > textarea {
-    height: 100px;
+    min-height: 90px;
+    max-height: 90px;
+    max-width: 100%;
     margin: 9px 0;
   }
 
@@ -332,9 +372,10 @@
     display: flex;
     flex-wrap: wrap;
     margin-top: 9px;
+    cursor: pointer;
     
     > .container {
-      width: 119px;
+      width: 125px;
       display: flex;
       align-items: center;
       margin-bottom: 10px;
