@@ -3,12 +3,12 @@
 
   .content-wrapper {
     display: flex;
-    height: calc(100% - 80px);
+    height: calc(100% - 85px);
 
     > section {
       &:first-child {
         width: calc(100% - 65%);
-        height: calc(100% - 122px);
+        height: calc(100% - 125px);
 
         .search-bar {
           background: white;
@@ -23,7 +23,7 @@
           }
 
           > input {
-            font-size: 16px;
+            font-size: 18px;
             padding: 15px 0 15px 20px;
             width: calc(100% - 20px);
           } 
@@ -40,7 +40,7 @@
             margin: 0;
 
             > li {
-              border-top: 1px solid black;
+              border-top: 1px solid $main-secondary-color;
               padding: 15px;
               cursor: pointer;
               text-transform: uppercase;
@@ -135,7 +135,7 @@
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr 100px 1fr;
-  grid-template-rows: .5fr 2fr .5fr;
+  grid-template-rows: .5fr 2fr .4fr;
   grid-template-areas: 
   "top top top"
   "middle-left divider middle-right"
@@ -253,6 +253,7 @@
       border: 1px solid #cdcdcd;
       margin: 9px 0;
       padding-left: 5px;
+      font-size: 18px;
     }
   }
 
@@ -267,6 +268,7 @@
     margin: 9px 0;
     padding-left: 5px;
     cursor: pointer;
+    font-size: 18px;
   }
 
   .description > textarea {
@@ -274,6 +276,7 @@
     max-height: 90px;
     max-width: 100%;
     margin: 9px 0;
+    font-size: 18px;
   }
 
   .protein,
@@ -302,6 +305,7 @@
     justify-content: flex-start;
 
     > input {
+      font-size: 18px;
       border: 1px solid #cdcdcd;
     }
   }
@@ -353,6 +357,7 @@
        border: 1px solid #cdcdcd;
        margin: 9px 0;
        padding-left: 5px;
+       font-size: 18px;
      }
 
      > .container {
