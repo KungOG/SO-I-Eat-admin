@@ -23,7 +23,6 @@
           }
 
           > input {
-            font-size: 18px;
             padding: 15px 0 15px 20px;
             width: calc(100% - 20px);
           } 
@@ -134,7 +133,7 @@
   background: white;
   height: 100%;
   width: 100%;
-  grid-template-columns: 1fr 100px 1fr;
+  grid-template-columns: 1fr 95px 1fr;
   grid-template-rows: .5fr 2fr .4fr;
   grid-template-areas: 
   "top top top"
@@ -188,6 +187,10 @@
     &.-add,
     &.-cancel {
       width: 80px;
+    }
+
+    &.-cancel > img {
+      transform: rotate(45deg);
     }
   }
   .divider {
@@ -253,7 +256,6 @@
       border: 1px solid #cdcdcd;
       margin: 9px 0;
       padding-left: 5px;
-      font-size: 18px;
     }
   }
 
@@ -276,7 +278,6 @@
     max-height: 90px;
     max-width: 100%;
     margin: 9px 0;
-    font-size: 18px;
   }
 
   .protein,
@@ -305,7 +306,6 @@
     justify-content: flex-start;
 
     > input {
-      font-size: 18px;
       border: 1px solid #cdcdcd;
     }
   }
@@ -357,7 +357,6 @@
        border: 1px solid #cdcdcd;
        margin: 9px 0;
        padding-left: 5px;
-       font-size: 18px;
      }
 
      > .container {

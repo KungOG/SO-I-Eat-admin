@@ -27,26 +27,26 @@
           </div>
           <div class='wrapper-left'>
             <div class="number">
-              <label>Nummer</label>
+              <span>Nummer</span>
               <input type="number" v-model.number.lazy="newProduct.productNr">
             </div>
             <div class="price">
-              <label>Pris</label>
+              <span>Pris</span>
               <input type="number" v-model.number="newProduct.price">
             </div>
             <div class="name">
-              <label>Benämning</label>
+              <span>Benämning</span>
               <input type="text" v-model.lazy="newProduct.productName">
             </div>
             <div class="category">
-              <label>Kategori</label>
+              <span>Kategori</span>
               <select v-model="newProduct.category">
                 <option disabled value="">Välj kategori</option>
                 <option v-for="category in categories" :key="category.categoryId" type="number" :value="category.categoryId">{{category.categoryName}}</option>
               </select>
             </div>
             <div class="description">
-              <label>Beskrivning</label>
+              <span>Beskrivning</span>
               <textarea type="text" maxlength="150" v-model="newProduct.description" />
             </div>
             <div class="protein" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
@@ -78,7 +78,7 @@
           </div>
           <div class="wrapper-right">
             <div class="ingredients" :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
-              <label>Redigerbara ingredienser</label>
+              <span>Redigerbara ingredienser</span>
               <input type="text" v-model="newProduct.ingredients[0]">
               <input type="text" v-model="newProduct.ingredients[1]">
               <input type="text" v-model="newProduct.ingredients[2]">
@@ -109,7 +109,7 @@
                 <span>Lägg till</span>
               </div>
               <div class='edit-admin-btn -cancel' @click.native="emptyNewProductData">
-                <img :src="require('@/assets/icons/' + icons.cross)" alt="Cancel icon">
+                <img :src="require('@/assets/icons/' + icons.add)" alt="Cancel icon">
                 <span>Avbryt</span>
               </div>
             </div>

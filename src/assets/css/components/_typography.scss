@@ -27,7 +27,7 @@ h3 {
 }
 
 span {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 20px;
   font-family: $regular-font;
 }
@@ -47,6 +47,12 @@ li {
   list-style-type: none;
 }
 
+input {
+  font-family: $regular-font;
+  font-size: 18px;
+}
+
 label {
+  font-family: $regular-font;
   font-size: 18px;
 }
