@@ -30,11 +30,13 @@ export default {
   },
   methods: {
     async callApi() {
-      localStorage.token = await this.$auth.getTokenSilently();
+      let token = await this.$auth.getTokenSilently();
+      localStorage.token = token
+      console.log(token)
     },
     async login() {
       await this.$auth.loginWithRedirect();
-      localStorage.token = await this.$auth.getTokenSilently();
+
     },
     logout() {
       this.$auth.logout({
