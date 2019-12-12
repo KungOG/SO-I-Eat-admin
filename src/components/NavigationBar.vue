@@ -51,7 +51,7 @@
 <script>
 import Orders from '@/assets/icons/Menu.svg';
 import Timer from '@/assets/icons/Clock.svg';
-import Icon from '@/assets/icons/Group.svg';
+import Icon from '@/assets/icons/FullLogo.svg';
 import LightButton from '@/components/LightButton.vue';
 import axios from 'axios';
 
@@ -85,8 +85,9 @@ export default {
     this.getProductionTime();
   },
   methods: {
-    updateProductionTime(time) {
-      this.$store.dispatch('updateProductionTime', {productionTime: time, _id: this.productionTimeId});
+    async updateProductionTime(time) {
+      this.productionTime = time;
+      await this.$store.dispatch('updateProductionTime', {productionTime: time, _id: this.productionTimeId});
       this.getProductionTime();
     },
     setCategoryToEdit(cat) {
