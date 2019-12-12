@@ -21,8 +21,8 @@ export default {
     DarkButton,
   },
   methods: {
-    deliverOrder() {
-      this.$store.dispatch('deliverOrders')
+    async deliverOrder() {
+      await this.$store.dispatch('deliverOrders')
       this.$store.commit('setShowModal', false)
       this.$store.dispatch('getOrders');
     },

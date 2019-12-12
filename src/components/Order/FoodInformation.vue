@@ -5,10 +5,10 @@
       <div class='info'>
         <h3>{{orderNumber}}</h3>
         <h3>{{items.productName}}</h3>
-        <span v-if="items.protein === 'Shrimp'" :for="proteinType">Räkor</span>
-        <span v-if="items.protein === 'Beef'" :for="proteinType">Biff</span>
-        <span v-if="items.protein === 'Chicken'" :for="proteinType">Kyckling</span>
-        <span v-if="items.protein === 'Pork'" :for="proteinType">Fläsk</span>
+        <span v-if="items.protein === 'Shrimp'">Räkor</span>
+        <span v-if="items.protein === 'Beef'" >Biff</span>
+        <span v-if="items.protein === 'Chicken'">Kyckling</span>
+        <span v-if="items.protein === 'Pork'">Fläsk</span>
       </div>
       <div class='added-items'>
         <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
@@ -63,38 +63,43 @@ export default {
       this.itemStatus = this.status;
     },
   },
+  computed: {
+    order() {
+      var orders = this.$store.state.orders.map(x => x);
+      return orders.splice(orders.findIndex(x => x._id === this.id), 1)
+    }
+  },
   methods: {
-    updateStatus() {
+    async updateStatus() {
       this.itemStatus < 2 ? this.itemStatus++ : this.itemStatus = 0
-      var orders = this.$store.state.orders.map(x => x)
-      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
-      var newOrder = order[0].orderInformation.foodItems[this.index].status = this.itemStatus
-      this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
+      this.order[0].orderInformation.foodItems[this.index].status = this.itemStatus
+      await this.$store.dispatch('setOrderItemStatus', {orderInformation: this.order[0].orderInformation, _id: this.id})
+      await this.$store.dispatch('getOrders');
       this.checkAllStatuses();
     },
-    checkAllStatuses() {
-      var orders = this.$store.state.orders.map(x => x)
-      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
-      if(order[0].orderInformation.foodItems.map(x => x.status).every(x => x === 2)) {
+    async checkAllStatuses() {
+      if(this.order[0].orderInformation.foodItems.map(x => x.status).every(x => x === 2)) {
         if(this.orderStatus === 0 || this.orderStatus === 1) {
-          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+          await this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 2, _id: this.id})
+          await this.$store.dispatch('getOrders');
         }
       } else if(this.itemStatus === 0) {
         if(this.orderStatus === 3 || this.orderStatus === 2) {
-          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 2, _id: this.id})
+          await this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 2, _id: this.id})
+          await this.$store.dispatch('getOrders');
         }
       }
     },
     checkOpenModal() {
-      if(this.status === 1) {
-        var jjj = this.table[1].map(x => x.orderInformation.foodItems.map(k => k.status)).flat();
-        var ddd = this.table[1].map(x => x.orderInformation.drinkItems.map(k => k.status)).flat();
+      if(this.itemStatus === 1) {
+        var mat = this.table[1].map(x => x.orderInformation.foodItems.map(k => k.status)).flat();
+        var dryck = this.table[1].map(x => x.orderInformation.drinkItems.map(k => k.status)).flat();
         var id = this.table[1].map(x => x._id)
         this.$store.commit('setOrdersIdsToDeliver', id)
-        var kkk = jjj.filter(x => x==2).length
-        var ppp = ddd.filter(x => x==true).length
-        if(jjj.length - kkk === 1 && ddd.length - ppp === 0) {
-          if(jjj.includes(1)) {
+        var matAntalKlara = mat.filter(x => x===2).length
+        var dryckAntalKlara = dryck.filter(x => x===true).length
+        if(mat.length - matAntalKlara === 1 && dryck.length - dryckAntalKlara === 0) {
+          if(mat.includes(1)) {
             this.$store.commit('setOrdersIdsToDeliver', id)
             this.$store.commit('setShowModal', true)
           } else {
