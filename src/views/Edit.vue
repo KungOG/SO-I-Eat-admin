@@ -38,7 +38,7 @@
               <label>Benämning</label>
               <input type="text" v-model.lazy="newProduct.productName">
             </div>
-            <div class="category">
+            <div class="category" :class="{'-inactive': categoryToEdit !== 'huvudrätt'}">
               <label>Kategori</label>
               <select v-model="newProduct.category">
                 <option disabled value="">Välj kategori</option>
@@ -66,11 +66,11 @@
               <span>Justerbar styrka</span>
               <div class="input-wrapper">
                 <div class="container">
-                  <Checkbox :dataValue="newProduct.spice" :value="boolean" @input="(x) => {newProduct.spice = x}"/>
+                  <Checkbox :dataValue="newProduct.spice" :value="isSpice" @input="(x) => {newProduct.spice = x}"/>
                   <label for="Yes">Ja</label>
                 </div>
                 <div class="container">
-                  <Checkbox :dataValue="!newProduct.spice" :value="!boolean" @input="(x) => {newProduct.spice = x}"/>
+                  <Checkbox :dataValue="!newProduct.spice" :value="!isSpice" @input="(x) => {newProduct.spice = x}"/>
                   <label for="No">Nej</label>  
                 </div>
               </div>
@@ -144,7 +144,7 @@ export default {
     categoryToEdit: 'förrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
-    boolean: true,
+    isSpice: true,
     buttonText: 'Lägg till',
     newProduct: {
       productNr: 0,
@@ -189,7 +189,14 @@ export default {
       })
     },
     categories() {
-      return this.$store.state.categories;
+      if(this.categoryToEdit === 'huvudrätt') {
+        return this.$store.state.categories.filter(
+          x => x.categoryName !== 'Smått' 
+          && x.categoryName !== 'Efterrätt' 
+          && x.categoryName !== 'Dryck');
+      } else {
+        return this.$store.state.categories;
+      }
     },
   },
   methods: {
