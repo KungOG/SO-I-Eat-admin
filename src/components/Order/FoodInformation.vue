@@ -78,7 +78,6 @@ export default {
         }
       } else if(this.itemStatus === 0) {
         if(this.orderStatus === 3 || this.orderStatus === 2) {
-          console.log('reset itemstatus', this.itemStatus)
           this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 2, _id: this.id})
         }
       }

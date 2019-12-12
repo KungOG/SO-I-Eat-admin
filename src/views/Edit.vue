@@ -183,13 +183,11 @@ export default {
         .then(
           this.emptyNewProductData()
         )
-        console.log('UPDATE ---> ',this.newProduct);
       } else {
         this.$store.dispatch('createProduct', this.newProduct)
         .then(
           this.emptyNewProductData()
         )
-        console.log('CREATE ---> ',this.newProduct);
       }
     },
     showProduct(id) {

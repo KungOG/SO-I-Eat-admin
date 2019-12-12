@@ -20,13 +20,13 @@ export default new Router({
     {
       path: '/edit',
       name: 'edit',
-      beforeEnter: authGuard,
+      //beforeEnter: authGuard,
       component: () => import('./views/Edit.vue'),
     },
     {
       path: '/orderboard',
       name: 'orderboard',
-      beforeEnter: authGuard,
+      //beforeEnter: authGuard,
       component: () => import('./views/OrderBoard.vue'),
     },
   ],
