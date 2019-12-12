@@ -27,13 +27,15 @@ export default {
     width: 65px;
     height: 30px;
     margin: 0 1rem;
+    text-transform: uppercase;
 
     &.edit-btn {
-      width: 100px;
+      width: 120px;
     }
     &.light-active-btn {
-      background-color: white;
-      color: black;
+      background-color: #AC9416;
+      border: 1px solid #AC9416;
+      color: white;
       outline: 0;
     }
   }
