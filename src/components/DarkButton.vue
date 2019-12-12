@@ -27,6 +27,8 @@ export default {
     width: 65px;
     height: 30px;
     margin: 0;
+    text-transform: uppercase;
+    cursor: pointer;
 
     &.dark-active-btn {
       background-color: white;

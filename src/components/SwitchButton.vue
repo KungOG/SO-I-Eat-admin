@@ -114,6 +114,7 @@ export default {
     border-radius: 200px;
     padding: 2px;
     transition: background 0.6s;
+    cursor: pointer;
     
     .draggable {
       width: 30px;

@@ -44,6 +44,7 @@ export default {
   justify-content: center;
   align-items: center;
   margin-right: 10px;
+  cursor: pointer;
 }
 .checkbox-selected {
   background: black;

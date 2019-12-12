@@ -28,6 +28,7 @@ export default {
     height: 30px;
     margin: 0 1rem;
     text-transform: uppercase;
+    cursor: pointer;
 
     &.edit-btn {
       width: 120px;
