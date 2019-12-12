@@ -3,12 +3,12 @@
 
   .content-wrapper {
     display: flex;
-    height: calc(100% - 80px);
+    height: calc(100% - 85px);
 
     > section {
       &:first-child {
         width: calc(100% - 65%);
-        height: calc(100% - 122px);
+        height: calc(100% - 125px);
 
         .search-bar {
           background: white;
@@ -135,7 +135,7 @@
   height: 100%;
   width: 100%;
   grid-template-columns: 1fr 100px 1fr;
-  grid-template-rows: .5fr 2fr .5fr;
+  grid-template-rows: .5fr 2fr .4fr;
   grid-template-areas: 
   "top top top"
   "middle-left divider middle-right"
