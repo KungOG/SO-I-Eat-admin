@@ -97,7 +97,9 @@ export default {
   },
   methods: {
     logout() {
-      console.log('logout')
+      this.$auth.logout({
+        returnTo: window.location.origin
+      });
     },
     activateHamburger() {
       this.showHamburger = !this.showHamburger;
