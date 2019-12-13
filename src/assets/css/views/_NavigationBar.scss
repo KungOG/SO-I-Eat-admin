@@ -20,27 +20,57 @@
     }
   }
 
-  > .logo > .-activeBackground > .-active {
-    background: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  > .logo {
     position: relative;
-    border-radius: 5px;
-    width: 200px;
-    height: 250px;
 
-    > .-closeHamburger {
-      position: absolute;
-      top: 10px;
-      right: 15px;
+    > img {
       cursor: pointer;
     }
   }
 
-  > .logo > .-activeBackground {
-    background: rgba(0,0,0,0.75);
+  > .logo-dropdown {
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    color: white;
+    border-radius: 5px;
+    height: 1px;
+    width: calc(100% - 65%);
+    z-index: 100;
+    top: 80px;
+    left: 0;
+    transition: height .5s;
+  
+    &.-active {
+      height: 100%;
+    }
+
+    > .dropdown-links {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      height: 50%;
+      padding-top: 100px;
+    }
+
+    > .dropdown-links > a, span {
+      font-family: $header-font-family;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 25px;
+      font-size: 24px;
+      text-transform: uppercase;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+
+
+  > .-activeBackground {
+    background: rgba(0,0,0,0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -50,6 +80,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    cursor: pointer;
   }
 
   > .current-time {
