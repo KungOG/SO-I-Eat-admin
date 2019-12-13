@@ -1,6 +1,7 @@
 <template>
   <div class='drink-information' @click="checkOpenModal">
-    <div class='content' :class="[(itemStatus === true ? 'green' : '')]">
+    <div class="side-infomation" :class="[(itemStatus === true ? 'green' : '')]" />
+    <div class='content'>
       <h3>{{orderNumber}}</h3>
       <h3>{{drinkItem.productName}}</h3>
       <span>Stor</span>
