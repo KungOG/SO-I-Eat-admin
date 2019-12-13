@@ -39,38 +39,47 @@ export default {
       });
   },
   async updateBusinessHours(ctx, businessHours) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/businessHours', businessHours, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async updateStatus(ctx, status) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/statuses', status, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async createProduct(ctx, newProduct) {
+    let token = localStorage.token;
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async updateProduct(ctx, newProduct) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/products', newProduct, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async updateActiveProduct(ctx, active) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/products', active, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async updateProductionTime(ctx, productionTime) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/productionTime', productionTime, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async setOrderItemStatus(ctx, orderStatus) {
+    let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/orders', orderStatus, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async removeProduct(ctx, newProduct) {
+    let token = localStorage.token;
     await axios.delete(`https://so-i-eat-server.herokuapp.com/products/${newProduct}`, {
       headers: { authorization: `Bearer ${token}` }});
   },
   deliverOrders(ctx) {
+    let token = localStorage.token;
     var ids = this.state.orderIds;
     ids.forEach(x => {
       axios.patch(`https://so-i-eat-server.herokuapp.com/orders`, {status: 4, _id: x}, {

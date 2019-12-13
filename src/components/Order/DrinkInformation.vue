@@ -42,30 +42,34 @@ export default {
   data: () => ({
     itemStatus: false,
   }),
-    mounted() {
+  mounted() {
     this.itemStatus = this.status;
   },
+  computed: {
+    order() {
+      var orders = this.$store.state.orders.map(x => x);
+      return orders.splice(orders.findIndex(x => x._id === this.id), 1)
+    }
+  },
   methods: {
-    updateStatus() {
+    async updateStatus() {
       this.itemStatus = !this.itemStatus;
-      var orders = this.$store.state.orders.map(x => x)
-      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
-      var newOrder = order[0].orderInformation.drinkItems[this.index].status = this.itemStatus
-      this.$store.dispatch('setOrderItemStatus', {orderInformation: order[0].orderInformation, _id: this.id})
+      this.order[0].orderInformation.drinkItems[this.index].status = this.itemStatus
+      await this.$store.dispatch('setOrderItemStatus', {orderInformation: this.order[0].orderInformation, _id: this.id})
+      await this.$store.dispatch('getOrders');
       this.checkAllStatuses();
     },
-    checkAllStatuses() {
-      var orders = this.$store.state.orders.map(x => x)
-      var order = orders.splice(orders.findIndex(x => x._id === this.id), 1)
-        console.log(this.orderStatus)
-      if(order[0].orderInformation.drinkItems.map(x => x.status).every(x => x === true)) {
+    async checkAllStatuses() {
+      if(this.order[0].orderInformation.drinkItems.map(x => x.status).every(x => x === true)) {
         if(this.orderStatus === 0 || this.orderStatus === 2) {
-          this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
+          await this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus + 1, _id: this.id})
+          await this.$store.dispatch('getOrders');
         }
       } else if(this.itemStatus === false) {
           if(this.orderStatus === 3 || this.orderStatus === 1) {
-            console.log('reset itemstatus', this.itemStatus)
             this.$store.dispatch('setOrderItemStatus', {status: this.orderStatus - 1, _id: this.id})
+            await this.$store.dispatch('getOrders');
+
           }
         }
     },
