@@ -79,6 +79,7 @@
                   
                   &.active {
                     background: $green;
+                    color: white;
                   }
                 }
 
@@ -101,14 +102,6 @@
               
               > .closed-business > span {
                 font-size: 25px;
-              }
-              
-              > .closed-business > h3 {
-                font-size: 18px;
-              }
-
-              > .open-business > h3 {
-                font-size: 18px;
               }
             
               > .open-business > span {
@@ -256,6 +249,7 @@
       border: 1px solid #cdcdcd;
       margin: 9px 0;
       padding-left: 5px;
+      text-transform: uppercase;
     }
   }
 
@@ -271,6 +265,8 @@
     padding-left: 5px;
     cursor: pointer;
     font-size: 18px;
+    text-transform: uppercase;
+    font-family: $regular-font;
   }
 
   .description > textarea {
@@ -278,6 +274,7 @@
     max-height: 90px;
     max-width: 100%;
     margin: 9px 0;
+    font-size: 18px;
   }
 
   .protein,
