@@ -11,7 +11,6 @@ export default {
     },
     chosenValue: {
       type: String,
-      required: true,
     },
   },
 };

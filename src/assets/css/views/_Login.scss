@@ -1,3 +1,31 @@
-#app > .login {
-  background: grey;
+.login {
+  background: $main-base-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .login-content {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    hr {
+      border: 1px solid $main-border-color;
+      width: 100%;
+      margin: 3rem 0;
+    }
+
+    img {
+      width: 80%;
+    }
+
+    .login-button {
+      width: 140px;
+      height: 50px;
+      margin: 0 2rem;
+    }
+  }
 }
