@@ -1,13 +1,16 @@
 <template>
-  <div
-    class="toggle"
-    :class=[this.state_class]
-    @click.self="onClick">
+  <div class='switch-button-wrapper'>
     <div
-      class="draggable"
-      @mousedown.prevent="dragStart"
-      :style="style">
+      class="toggle"
+      :class=[this.state_class]
+      @click.self="onClick">
+      <div
+        class="draggable"
+        @mousedown.prevent="dragStart"
+        :style="style">
+      </div>
     </div>
+    <span class='switch-button-span'>{{switchButtonText}}</span>
   </div>
 </template>
 
@@ -28,6 +31,7 @@ export default {
     state: false,
     pressed: 0,
     position: 0,
+    switchButtonText: '',
   }),
   mounted() {
     this.toggle(this.value);
@@ -62,6 +66,7 @@ export default {
     },
     toggle(state) {
       this.state = state;
+      this.state === true ? this.switchButtonText = 'AKTIV PRODUKT' : this.switchButtonText = 'INAKTIV PRODUKT';
       this.position = !state ? 0 : 100;
     },
     dragging(e) {
@@ -107,6 +112,17 @@ export default {
 
 <style lang="scss">
 
+  .switch-button-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .switch-button-span {
+      margin-top: 10px;
+    }
+  }
+
+
   .toggle {
     width: 100px;
     height: 30px;
@@ -121,7 +137,6 @@ export default {
       height: 30px;
       background: white;
       border-radius: 100%;
-      box-shadow: 0px 3px 10px rgba(0,0,0, 0.6);
       transform: translateX(0%);
       transition: transform 0.05s ease-in-out;
     }
