@@ -36,7 +36,7 @@ export default {
   computed: {
     time() {
       var d = new Date(this.order[1][0].date);
-      return d.getHours().toString()+':'+d.getMinutes().toString();
+      return JSON.stringify(d).slice(12, 17);
     }
   },
 };
