@@ -1,7 +1,6 @@
 .food-information > .content {
   display: grid;
   justify-content: center;
-  border: 1px solid $main-secondary-color; 
   border-width: 0 0 1px 0;
   grid-template-columns: 15px 1.5fr 1fr 1fr;
   grid-template-rows: auto;
@@ -15,7 +14,7 @@
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
-    border: 1px solid $main-secondary-color; 
+    border-top: 1px solid $main-secondary-color; 
     border-width: 1px 0 0 0;
   }
 

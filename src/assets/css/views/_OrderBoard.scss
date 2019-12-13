@@ -11,10 +11,11 @@
       width: 20%;
     }
   
-    .food1 {
-      width: 40%;
-    }
+    .food1, 
     .food2 {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       width: 40%;
     }
   }
