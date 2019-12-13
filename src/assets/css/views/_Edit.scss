@@ -86,6 +86,7 @@
                 &.set-time-close-button {
                   &.active {
                     background: $main-color;
+                    color: white;
                   }
                 }
               }
@@ -161,11 +162,12 @@
     
     &.-remove {
       width: 80px;
-      height: 60px;
+      height: 68px; 
     }
 
     > img {
-      margin-bottom: 7px;
+      margin-bottom: 5px;
+      padding-top: 5px;
     }
     
     &.hidden-btn {
@@ -175,6 +177,7 @@
   .button > .button-wrapper > .edit-admin-btn {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     border: 1px solid black;
     border-radius: 5px;
@@ -186,15 +189,12 @@
     &.-add,
     &.-cancel {
       width: 80px;
-      height: 60px;
+      height: 68px;  
     }
 
     > img {
-      margin-bottom: 7px;
-    }
-
-    &.-cancel > img {
-      transform: rotate(45deg);
+      margin-bottom: 5px;
+      padding-top: 5px;
     }
   }
   .divider {
@@ -206,7 +206,7 @@
     > .line {
       height: 95%;
       width: 1px;
-      background: black;
+      background: $main-secondary-color;
     }
   }
   
@@ -286,6 +286,8 @@
     max-width: 100%;
     margin: 9px 0;
     font-size: 18px;
+    font-family: $regular-font;
+    border: 1px solid $main-secondary-color;
   }
 
   .protein,
@@ -298,7 +300,7 @@
       > .container {
         display: flex;
         align-items: center;
-        width: 130px;
+        width: 50%;
         margin-bottom: 10px;
       }
     }
@@ -351,9 +353,14 @@
   display: grid;
   padding-right: 50px;
   grid-template-columns: 1fr;
+  grid-template-rows: .4fr 1fr;
   grid-template-areas: 
    "ingredients"
    "extras";
+
+   .extras {
+    padding-top: 20px;
+   }
 
    .ingredients,
    .extras {
@@ -387,7 +394,7 @@
     cursor: pointer;
     
     > .container {
-      width: 125px;
+      width: 50%;
       display: flex;
       align-items: center;
       margin-bottom: 10px;

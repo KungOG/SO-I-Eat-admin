@@ -36,9 +36,9 @@ export default {
 
 <style lang="scss">
 .checkbox {
-  height: 20px;
-  width: 20px;
-  border: 1px solid black;
+  height: 28px;
+  width: 28px;
+  border: 1px solid #676565;
   border-radius: 999px;
   display: inline-flex;
   justify-content: center;
@@ -47,6 +47,6 @@ export default {
   cursor: pointer;
 }
 .checkbox-selected {
-  background: black;
+  background: #676565;
 }
 </style>

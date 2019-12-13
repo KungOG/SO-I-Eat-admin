@@ -112,7 +112,7 @@
                 <span>Lägg till</span>
               </div>
               <div class='edit-admin-btn -cancel' @click.native="emptyNewProductData">
-                <img :src="require('@/assets/icons/' + icons.add)" alt="Cancel icon">
+                <img :src="require('@/assets/icons/' + icons.cross)" alt="Cancel icon">
                 <span>Avbryt</span>
               </div>
             </div>
