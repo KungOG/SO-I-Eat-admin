@@ -25,7 +25,9 @@ import OrderModal from '@/components/OrderModal.vue';
 export default {
   name: 'orderboard',
   beforeMount() {
-    this.$store.dispatch('getOrders');
+    setInterval(() => {
+      this.$store.dispatch('getOrders');
+    }, 5000);
   },
   components: {
     Navigation,
@@ -60,7 +62,8 @@ export default {
         return 0;  
     })
       for(let i=0; i < count.length; i++) {
-        foodItems.length % 2 === 0 ? arrays.array2.push(foodItems.shift()) : arrays.array1.push(foodItems.shift())
+        foodItems.length !== 0 ? arrays.array1.push(foodItems.shift()) : '';
+        foodItems.length !== 0 ? arrays.array2.push(foodItems.shift()) : '';
       }
       return arrays
     },
