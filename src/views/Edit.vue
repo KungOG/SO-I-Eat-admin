@@ -38,7 +38,7 @@
               <span>Benämning</span>
               <input type="text" v-model.lazy="newProduct.productName">
             </div>
-            <div class="category">
+            <div class="category" :class="{'-inactive': categoryToEdit !== 'huvudrätt'}">
               <span>Kategori</span>
               <select v-model="newProduct.category">
                 <option disabled value="">Välj kategori</option>
