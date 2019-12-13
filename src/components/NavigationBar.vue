@@ -1,15 +1,16 @@
 <template>
   <div class='navigation'>
+    <div class='logo-dropdown' :class="showHamburger === true ? '-active' : ''">
+      <div v-if="burgerText" class='dropdown-links'>
+        <router-link to="/edit">redigera</router-link>
+        <router-link to="/orderboard">ordrar</router-link>
+        <router-link to="/archive">arkiv</router-link>
+        <span @click="logout">logga ut</span>
+      </div>
+    </div>
+    <div v-if="showHamburger" :class="showHamburger === true ? '-activeBackground' : ''" @click="activateHamburger" />
     <div class='logo'>
       <img :src='Icon' alt='Icon logo' @click="activateHamburger" />
-      <div v-if="showHamburger" :class="showHamburger === true ? '-activeBackground' : ''">
-        <div v-if="showHamburger" :class="showHamburger === true ? '-active' : ''">
-          <div :class="showHamburger === true ? '-closeHamburger' : ''" @click="activateHamburger">X</div>
-          <span>Gå hit</span>
-          <span>Gå hit</span>
-          <span>Gå hit</span>
-        </div>
-      </div>
     </div>
     <div class='nav-orders' v-if="$route.path == '/orderboard'">
       <img :src='Orders' alt="This is icon for orders" />
@@ -82,6 +83,7 @@ export default {
       productionTimeId: null,
       categoryToEdit: 'förrätt',
       showHamburger: false,
+      burgerText: false,
     }
   },
   computed: {
@@ -94,8 +96,14 @@ export default {
     this.getProductionTime();
   },
   methods: {
+    logout() {
+      console.log('logout')
+    },
     activateHamburger() {
       this.showHamburger = !this.showHamburger;
+      setTimeout(() => {
+        this.burgerText = !this.burgerText
+      }, 100);
     },
     async updateProductionTime(time) {
       this.productionTime = time;
