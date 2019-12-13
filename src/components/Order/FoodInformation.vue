@@ -4,7 +4,7 @@
       <div class='color' :class="[(itemStatus === 1 ? 'yellow' : ''), (itemStatus === 2 ? 'green' : '')]"/>
       <div class='info'>
         <h3>{{orderNumber}}</h3>
-        <h3>{{items.productName}}</h3>
+        <h3 class='product-name'>{{items.productName}}</h3>
         <span v-if="items.protein === 'Shrimp'">Räkor</span>
         <span v-if="items.protein === 'Beef'" >Biff</span>
         <span v-if="items.protein === 'Chicken'">Kyckling</span>

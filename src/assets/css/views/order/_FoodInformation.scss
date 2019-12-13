@@ -35,6 +35,10 @@
 
   .info {
     grid-area: info;
+
+    .product-name {
+      font-size: 18px;
+    }
   }
 
   .added-items {
