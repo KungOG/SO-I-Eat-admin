@@ -102,16 +102,16 @@
             <SwitchButton :value="newProduct.active" :id="newProduct._id"/>
           </div>
           <div class="button">
-            <div :class="{'hidden-btn': !newProduct._id}" class="edit-admin-btn -remove" @click.native="removeProductFromDB">
+            <div :class="{'hidden-btn': !newProduct._id}" class="edit-admin-btn -remove" @click="removeProductFromDB">
               <img :src="require('@/assets/icons/' + icons.bin)" alt="Remove item from database icon">
               <span>Ta bort</span>
             </div>
             <div class='button-wrapper'>
-              <div class='edit-admin-btn -add' @click.native="createNewProduct" >
+              <div class='edit-admin-btn -add' @click="createNewProduct" >
                 <img :src="require('@/assets/icons/' + icons.add)" alt="Add item to database icon">
                 <span>Lägg till</span>
               </div>
-              <div class='edit-admin-btn -cancel' @click.native="emptyNewProductData">
+              <div class='edit-admin-btn -cancel' @click="emptyNewProductData">
                 <img :src="require('@/assets/icons/' + icons.cross)" alt="Cancel icon">
                 <span>Avbryt</span>
               </div>
