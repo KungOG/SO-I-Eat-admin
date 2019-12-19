@@ -28,7 +28,7 @@
           <div class='wrapper-left'>
             <div class="number">
               <span>Nummer</span>
-              <input type="number" v-model.number.lazy="newProduct.productNr">
+              <input type="text" v-model.number.lazy="newProduct.productNr">
             </div>
             <div class="price">
               <span>Pris</span>

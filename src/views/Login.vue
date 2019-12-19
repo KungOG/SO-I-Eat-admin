@@ -1,7 +1,7 @@
 <template>
   <div class='login'>
     <section class="login-content">
-      <img :src="icon" alt="">
+      <img :src="icon" alt="Full size business logo">
       <hr>
       <div v-if="!$auth.loading">
         <LightButton class="login-button" buttonText="logga in" v-if="!$auth.isAuthenticated" @click.native="login" />
