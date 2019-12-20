@@ -22,9 +22,13 @@
 </template>
 
 <script>
+// eslint-disable-next-line no-unused-vars
 import axios from 'axios';
+// eslint-disable-next-line import/no-unresolved
 import Modal from '@/components/Modal.vue';
+// eslint-disable-next-line import/no-unresolved
 import LightButton from '@/components/LightButton.vue';
+// eslint-disable-next-line import/no-unresolved
 import Icon from '@/assets/icons/FullLogo.svg';
 
 export default {
