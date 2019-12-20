@@ -5,13 +5,7 @@
 
 @import './views/OrderBoard.scss';
 @import './views/Login.scss';
-@import './views/EditDish.scss';
 @import './views/Edit.scss';
-@import './views/CreateDish.scss';
-@import './views/Archive.scss';
-@import './views/ArchiveItem.scss';
-@import './views/CardOrder.scss';
-@import './views/MenuList.scss';
 @import './views/NavigationBar.scss';
 @import './views/Modal.scss';
 @import './views/OrderModal.scss';
@@ -20,3 +14,7 @@
 @import './views/order/FoodCard.scss';
 @import './views/order/DrinkInformation.scss';
 @import './views/order/FoodInformation.scss';
+
+
+@import './views/edit/CreateDish.scss';
+@import './views/edit/SearchFunction.scss';

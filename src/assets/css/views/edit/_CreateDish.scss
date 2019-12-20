@@ -1,0 +1,283 @@
+.edit > .content-wrapper > .field > .grid-wrapper {
+  display: grid;
+  background: white;
+  height: 100%;
+  width: 100%;
+  grid-template-columns: 1fr 95px 1fr;
+  grid-template-rows: .5fr 2fr .4fr;
+  grid-template-areas: 
+  "top top top"
+  "middle-left divider middle-right"
+  "buttons-left . buttons-right";
+
+  .header,
+  .button {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .header {
+    grid-area: top;
+
+    > .activate-search {
+      top: 40px;
+      right: 25px;
+      position: absolute;
+    }
+  }
+
+  .button > .button-wrapper {
+    display: flex;
+  }
+
+  .button > .edit-admin-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    &.-remove {
+      width: 80px;
+      height: 68px; 
+    }
+
+    > img {
+      margin-bottom: 5px;
+      padding-top: 5px;
+    }
+
+    &.hidden-btn {
+      visibility: hidden;
+    }
+  }
+
+  .button > .button-wrapper > .edit-admin-btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-transform: uppercase;
+    margin: 0 5px;
+    cursor: pointer;
+    
+    &.-add,
+    &.-cancel {
+      width: 80px;
+      height: 68px;  
+    }
+
+    > img {
+      margin-bottom: 5px;
+      padding-top: 5px;
+    }
+  }
+  .divider {
+    grid-area: divider;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > .line {
+      height: 95%;
+      width: 1px;
+      background: $main-secondary-color;
+    }
+  }
+  
+  .wrapper-left {
+    grid-area: middle-left;
+  }
+
+  .wrapper-right {
+    grid-area: middle-right;
+  }
+  
+  .button {
+    grid-area: buttons-right;
+  }
+
+  .switch-button {
+    grid-area: buttons-left;
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+  }
+}
+
+.edit > .content-wrapper > .field > .grid-wrapper > .wrapper-left {
+  display: grid;
+  padding-left: 50px;
+  grid-template-columns: .5fr 1fr;
+  grid-template-areas: 
+   "number price"
+   "dish dish"
+   "category category"
+   "description description"
+   "description description"
+   "protein protein"
+   "spice spice";
+  
+  .number,
+  .name,
+  .ingredients,
+  .price,
+  .protein,
+  .spice {
+    display: flex;
+    flex-direction: column;
+
+    > input {
+      height: 35px;
+      border: 1px solid #cdcdcd;
+      margin: 9px 0;
+      padding-left: 5px;
+      text-transform: uppercase;
+    }
+  }
+
+  .price {
+    padding-left: 10px;
+  }
+
+  .category > select {
+    height: 35px;
+    width: 100%;
+    border: 1px solid #cdcdcd;
+    margin: 9px 0;
+    padding-left: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: $regular-font;
+  }
+
+  .description > textarea {
+    min-height: 90px;
+    max-height: 90px;
+    max-width: 100%;
+    margin: 9px 0;
+    font-size: 18px;
+    font-family: $regular-font;
+    border: 1px solid $main-secondary-color;
+  }
+
+  .protein,
+  .spice {
+    .input-wrapper {
+      display: flex;
+      margin-top: 9px;
+      flex-wrap: wrap;
+      
+      > .container {
+        display: flex;
+        align-items: center;
+        width: 50%;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .number > input {
+    width: 100px;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    > input {
+      border: 1px solid #cdcdcd;
+    }
+  }
+
+  .number {
+    grid-area: number;
+  }
+
+  .category {
+    grid-area: category;
+  }
+
+  .name {
+    grid-area: dish;
+  }
+
+  .description {
+    grid-area: description;
+  }
+
+  .price {
+    grid-area: price;
+  }
+
+  .protein {
+    grid-area: protein;
+  }
+
+  .spice {
+    grid-area: spice;
+  }
+}
+
+.edit > .content-wrapper > .field > .grid-wrapper > .wrapper-right {
+  display: grid;
+  padding-right: 50px;
+  grid-template-columns: 1fr;
+  grid-template-rows: .4fr 1fr;
+  grid-template-areas: 
+   "ingredients"
+   "extras";
+
+   .extras {
+    padding-top: 20px;
+   }
+
+   .ingredients,
+   .extras {
+     display: flex;
+     flex-direction: column;
+   
+     > input {
+       height: 35px;
+       border: 1px solid #cdcdcd;
+       margin: 9px 0;
+       padding-left: 5px;
+     }
+
+     > .container {
+      display: flex;
+     }
+   }
+
+   .ingredients {
+    grid-area: ingredients;
+  }
+
+  .extras {
+    grid-area: extras;
+  }
+
+  .extras > .input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 9px;
+    cursor: pointer;
+    
+    > .container {
+      width: 50%;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  }
+}

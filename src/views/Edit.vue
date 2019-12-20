@@ -2,7 +2,10 @@
   <div class='edit'>
     <Navigation @setActiveCategoryToEdit="setActiveCategory"/>
     <div class="content-wrapper">
-      <section>
+      <div class='fader' :class="activatedSearch === true ? '-active' : ''" @click="showSearch">
+        <span class='close-down-search'>x</span>
+      </div>
+      <section class='search-slidein' :class="activatedSearch === true ? '-active' : ''">
         <div class="search-bar">
           <img class='search-icon' :src="require('@/assets/icons/' + icons.search)" alt="Search item from database icon" />
           <input type="text" v-model="search" placeholder="Sök">
@@ -22,6 +25,7 @@
       <section class='field'>
         <div class="grid-wrapper">
           <div class="header">
+            <img class='activate-search' :src="require('@/assets/icons/' + icons.search)" alt="Search item from database icon" @click="showSearch" />
             <h1 v-if="!newProduct._id">Skapa ny {{ categoryToEdit }}</h1>
             <h1 v-else>Redigera {{ newProduct.productName }}</h1>
           </div>
@@ -140,6 +144,7 @@ export default {
     SwitchButton,
   },
   data: () => ({
+    activatedSearch: false,
     search: '',
     categoryToEdit: 'förrätt',
     addons: [{name: 'Bambuskott', price: 5}, {name: 'Tomat', price: 5}, {name: 'Lök', price: 5}, {name: 'Ananas', price: 5}, {name: 'Banan', price: 5}],
@@ -200,6 +205,9 @@ export default {
     },
   },
   methods: {
+    showSearch() {
+      this.activatedSearch = !this.activatedSearch;
+    },
     removeProductFromDB() {
       this.$store.dispatch('removeProduct', this.newProduct._id)
     },
