@@ -4,7 +4,6 @@
       <img :src="icon" alt="Full size business logo">
       <div class='line-divider'>
         <div class='line' />
-        <div class='loading-line' />
       </div>
       <div v-if="!$auth.loading">
         <LightButton class="login-button" buttonText="logga in"
@@ -18,6 +17,7 @@
       </div>
     </section>
     <Modal v-if="showModal" @closeModal="showModal = false"/>
+    <Loading />
   </div>
 </template>
 
@@ -26,6 +26,8 @@
 import axios from 'axios';
 // eslint-disable-next-line import/no-unresolved
 import Modal from '@/components/Modal.vue';
+// eslint-disable-next-line import/no-unresolved
+import Loading from '@/components/Loading.vue';
 // eslint-disable-next-line import/no-unresolved
 import LightButton from '@/components/LightButton.vue';
 // eslint-disable-next-line import/no-unresolved
@@ -36,6 +38,7 @@ export default {
   components: {
     Modal,
     LightButton,
+    Loading,
   },
   data: () => ({
     showModal: false,

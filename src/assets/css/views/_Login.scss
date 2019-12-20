@@ -1,4 +1,4 @@
-.login {
+.login{
   background: $main-base-color;
   display: flex;
   justify-content: center;
@@ -27,21 +27,6 @@
       top: calc(50% + 1px);
       height: 1px;
       width: 100%;
-    }
-
-    .loading-line {
-      background: $secondary-color;
-      position: absolute;
-      width: 0;
-      height: 3px;
-      top: 50%;
-      left: 0;
-      z-index: 10;
-
-      &.-active {
-        width: 100%;
-        transition: width 3s;
-      }
     }
 
     img {
