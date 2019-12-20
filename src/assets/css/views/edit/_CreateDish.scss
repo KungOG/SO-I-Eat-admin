@@ -169,7 +169,7 @@
     font-family: $regular-font;
     border: 1px solid $main-secondary-color;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1385px) {
       font-size: 14px;
     }
   }
@@ -272,7 +272,7 @@
     margin-top: 9px;
     cursor: pointer;
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1385px) {
       overflow: scroll;
       height: 400px;
     }
@@ -283,7 +283,7 @@
       align-items: center;
       margin-bottom: 10px;
       
-      @media (max-width: 1024px) {
+      @media (max-width: 1385px) {
         width: 50%;
       }
     }
