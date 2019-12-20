@@ -7,7 +7,7 @@
     height: calc(100% - 85px);
 
     .fader {
-      display: none;
+      background: rgba(0,0,0,0.1);
       transition: background .5s;
 
       &.-active {
@@ -35,8 +35,12 @@
       width: calc(100% - 65%);
       height: calc(100%);
       z-index: 100;
-      transform: translateX(-500px);
+      transform: translateX(-3000px);
       transition: transform .7s ease-out;
+      
+      @media screen and (max-width: 1400px) {
+        transform: translateX(-500px);
+      }
 
       &.-active {
         transform: translateX(0);

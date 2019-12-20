@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Carrois+Gothic|News+Cycle:400,700&display=swap');
 
 $header-font-family: 'News Cycle', sans-serif;
+$regular-font: 'Carrois Gothic', sans-serif;
+$header-font: 'News Cycle', sans-serif;
 
 $main-color: #AA0909;
 $secondary-color: #AC9416;
@@ -8,26 +10,17 @@ $main-secondary-color: #c4c4c4;
 $main-base-color: #131313;
 $green: #699D65;
 $light-gold: #C5B45C;
-
 $main-border-color: #676565;
-
-// $secondary-base-color: ;
-$regular-font: 'Carrois Gothic', sans-serif;
-$header-font: 'News Cycle', sans-serif;
 
 #app {
   color :$main-base-color;
 
   .mobile {
-    @media (min-width: 768px) {
-      display: none;
-    }
+    @media (min-width: 768px) { display: none; }
   }
-  
+
   .desktop {
-    @media (max-width: 768px) {
-      display: none;
-    }
+    @media (max-width: 768px) { display: none; }
   }
 
   .-inactive {

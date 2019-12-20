@@ -116,6 +116,7 @@ export default {
   flex-direction: column;
   align-items: center;
   width: 100px;
+  @media screen and (min-width: 2400px) { width: 226px; }
 
   .switch-button-span {
     margin-top: 10px;
@@ -136,6 +137,11 @@ export default {
     height: 15px;
   }
 
+  @media screen and (min-width: 2400px) {
+    width: 150px;
+    height: 45px;
+  }
+
   .draggable {
     width: 30px;
     height: 30px;
@@ -147,6 +153,10 @@ export default {
     @media (max-width: 1024px) {
       width: 15px;
       height: 15px;
+    }
+    @media screen and (min-width: 2400px) {
+      width: 45px;
+      height: 45px;
     }
   }
   

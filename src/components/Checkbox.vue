@@ -46,9 +46,14 @@ export default {
   margin-right: 10px;
   cursor: pointer;
 
-  @media (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     height: 18px;
     width: 18px;
+  }
+
+  @media screen and (min-width: 2400px) {
+    height: 35px;
+    width: 35px;
   }
 }
 .checkbox-selected {

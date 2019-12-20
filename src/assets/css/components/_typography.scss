@@ -13,42 +13,39 @@ h1 {
   font-size: 20px;
   line-height: 24px;
   color: $main-secondary-color;
+  @media screen and (min-width: 2400px) { font-size: 54px; }
 }
 
 h2 {
   font-size: 20px;
   line-height: 24px;
+  @media screen and (min-width: 2400px) { font-size: 50px; }
 }
 
 h3 {
   font-size: 16px;
   line-height: 20px;
   color: $main-base-color;
+  @media screen and (min-width: 2400px) { font-size: 45px; }
 }
 
 span {
   font-size: 16px;
   line-height: 20px;
   font-family: $regular-font;
-
-  @media (max-width: 1024px) {
-    font-size: 12px;
-  }
+  @media screen and (max-width: 1050px) { font-size: 12px; }
+  @media screen and (min-width: 2400px) { font-size: 34px; }
 }
 
 a {
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
-
-  @media (max-width: 1024px) {
-    font-size: 12px;
-  }
+  @media screen and (max-width: 1050px) { font-size: 12px; }
+  @media screen and (min-width: 2400px) { font-size: 34px; }
 }
 
-p {
-  font-family: $regular-font;
-}
+p { font-family: $regular-font }
 
 li {
   font-family: $regular-font;
@@ -58,18 +55,13 @@ li {
 input {
   font-family: $regular-font;
   font-size: 18px;
-
-  @media (max-width: 1024px) {
-    font-size: 14px;
-  }
+  @media screen and (max-width: 1050px) { font-size: 14px; }
+  @media screen and (min-width: 2400px) { font-size: 38px; }
 }
 
 label {
   font-family: $regular-font;
   font-size: 18px;
-  
-  @media (max-width: 1024px) {
-    font-family: $regular-font;
-    font-size: 16px;
-  }
+  @media screen and (max-width: 1050px) { font-size: 16px; }
+  @media screen and (min-width: 2400px) { font-size: 40px; }
 }
