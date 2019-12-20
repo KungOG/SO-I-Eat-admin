@@ -24,7 +24,7 @@
     > .line-divider > .line {
       background: $main-secondary-color;
       position: absolute;
-      top: 50%;
+      top: calc(50% + 1px);
       height: 1px;
       width: 100%;
     }

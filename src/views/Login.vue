@@ -7,8 +7,10 @@
         <div class='loading-line' />
       </div>
       <div v-if="!$auth.loading">
-        <LightButton class="login-button" buttonText="logga in" v-if="!$auth.isAuthenticated" @click.native="login" />
-        <LightButton class="login-button" buttonText="logga in" v-if="$auth.isAuthenticated" @click.native="logout" />
+        <LightButton class="login-button" buttonText="logga in"
+        v-if="!$auth.isAuthenticated" @click.native="login" />
+        <LightButton class="login-button" buttonText="logga in"
+        v-if="$auth.isAuthenticated" @click.native="logout" />
         <LightButton class="login-button" buttonText="webbhandel" />
       </div>
       <div>
@@ -20,8 +22,8 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Modal from '@/components/Modal.vue';
-import axios from 'axios'
 import LightButton from '@/components/LightButton.vue';
 import Icon from '@/assets/icons/FullLogo.svg';
 
@@ -30,7 +32,6 @@ export default {
   components: {
     Modal,
     LightButton,
-    Icon,
   },
   data: () => ({
     showModal: false,
@@ -41,20 +42,18 @@ export default {
   },
   methods: {
     async callApi() {
-      let token = await this.$auth.getTokenSilently();
-      localStorage.token = token
-      console.log(token)
+      const token = await this.$auth.getTokenSilently();
+      localStorage.token = token;
+      console.log(token);
     },
     async login() {
       await this.$auth.loginWithRedirect();
-
     },
     logout() {
       this.$auth.logout({
-        returnTo: window.location.origin
+        returnTo: window.location.origin,
       });
-    }
+    },
   }
 };
 </script>
-
