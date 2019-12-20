@@ -2,7 +2,10 @@
   <div class='login'>
     <section class="login-content">
       <img :src="icon" alt="Full size business logo">
-      <hr>
+      <div class='line-divider'>
+        <hr class='line'>
+        <hr class='loading-line'>
+      </div>
       <div v-if="!$auth.loading">
         <LightButton class="login-button" buttonText="logga in" v-if="!$auth.isAuthenticated" @click.native="login" />
         <LightButton class="login-button" buttonText="logga in" v-if="$auth.isAuthenticated" @click.native="logout" />
