@@ -3,8 +3,8 @@
     <section class="login-content">
       <img :src="icon" alt="Full size business logo">
       <div class='line-divider'>
-        <hr class='line'>
-        <hr class='loading-line'>
+        <div class='line' />
+        <div class='loading-line' />
       </div>
       <div v-if="!$auth.loading">
         <LightButton class="login-button" buttonText="logga in" v-if="!$auth.isAuthenticated" @click.native="login" />

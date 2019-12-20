@@ -16,21 +16,27 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
       width: 100%;
       height: 100px;
     }
 
     > .line-divider > .line {
-      border: 1px solid #676565;
+      background: $main-secondary-color;
+      position: absolute;
+      top: 50%;
+      height: 1px;
       width: 100%;
-      position: relative;
     }
-
+    
     .loading-line {
-      position: relative;
+      background: $main-color;
+      position: absolute;
+      width: 0;
+      height: 3px;
+      top: 50%;
+      left: 0;
       z-index: 10;
-      right: 0;
-      width: 10px;
       
       &.-active {
         width: 100%;
