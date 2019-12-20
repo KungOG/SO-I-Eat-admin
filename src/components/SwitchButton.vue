@@ -39,15 +39,15 @@ export default {
   computed: {
     style() {
       return {
-        transform: `translateX(${this.pos_percentage})`
-      }
+        transform: `translateX(${this.pos_percentage})`,
+      };
     },
     pos_percentage() {
-      return `${this.position / this.width * 100}%`
+      return `${this.position / this.width * 100}%`;
     },
     state_class() {
       if (this.state) {
-        return 'active'
+        return 'active';
       }
     },
   },
@@ -66,12 +66,14 @@ export default {
     },
     toggle(state) {
       this.state = state;
+      // eslint-disable-next-line no-unused-expressions
       this.state === true ? this.switchButtonText = 'AKTIV PRODUKT' : this.switchButtonText = 'INAKTIV PRODUKT';
       this.position = !state ? 0 : 100;
     },
     dragging(e) {
-      const pos = e.clientX - this.$el.offsetLeft; 
+      const pos = e.clientX - this.$el.offsetLeft;
       const percent = pos / this.width * 100;
+      // eslint-disable-next-line no-nested-ternary
       this.position = percent <= 0
         ? 0
         : percent >= 100
@@ -87,7 +89,7 @@ export default {
       window.removeEventListener('mousemove', this.dragging);
       window.removeEventListener('mouseup', this.dragStop);
       this.resolvePosition();
-      clearInterval(this.$options.interval)
+      clearInterval(this.$options.interval);
       if (this.pressed < 30) {
         this.toggle(!this.state);
       }
@@ -96,18 +98,18 @@ export default {
     },
     startTimer() {
       this.$options.interval = setInterval(() => {
-        this.pressed++
+        this.pressed++;
       }, 1);
     },
     resolvePosition() {
       this.position = this.state ? 100 : 0;
     },
     emit() {
-      this.$store.dispatch('updateActiveProduct', {active: this.state, _id: this.id});
+      this.$store.dispatch('updateActiveProduct', { active: this.state, _id: this.id });
     },
   },
 };
-//https://codepen.io/nickforddesign/pen/NMqwLj
+// https://codepen.io/nickforddesign/pen/NMqwLj
 </script>
 
 <style lang="scss">
@@ -131,7 +133,7 @@ export default {
   padding: 2px;
   transition: background .6s;
   cursor: pointer;
-  
+
   @media (max-width: 1024px) {
     width: 50px;
     height: 15px;
@@ -159,7 +161,7 @@ export default {
       height: 45px;
     }
   }
-  
+
   &.active {
     background: #699D65;
     transition: background 0.6s;
