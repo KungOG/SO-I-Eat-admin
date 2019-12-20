@@ -28,7 +28,7 @@
       height: 1px;
       width: 100%;
     }
-    
+
     .loading-line {
       background: $secondary-color;
       position: absolute;
@@ -37,7 +37,7 @@
       top: 50%;
       left: 0;
       z-index: 10;
-      
+
       &.-active {
         width: 100%;
         transition: width 3s;
