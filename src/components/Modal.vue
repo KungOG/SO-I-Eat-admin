@@ -2,7 +2,7 @@
   <main class='modal'>
     <section>
       <h5>Sätt dagens öppettider</h5>
-    </section>  
+    </section>
     <section class='time-section'>
       <div class='open-business'>
         <h3>Starttid</h3>
@@ -57,7 +57,7 @@ export default {
       '20.00',
       '21.00',
       '22.00',
-      '23.00'
+      '23.00',
     ],
     selectedOpenHour: '11.00',
     selectedCloseHour: '20.00',
@@ -76,19 +76,21 @@ export default {
       this.$emit('closeModal');
     },
     updateBusinessHours() {
-      this.$store.dispatch('updateBusinessHours', {_id: this.id, closed: this.selectedCloseHour, open: this.selectedOpenHour});
+      this.$store.dispatch('updateBusinessHours', { _id: this.id, closed: this.selectedCloseHour, open: this.selectedOpenHour });
     },
     updateStatus() {
-      this.$store.dispatch('updateStatus', {status: 'open', _id: this.statusId});
+      this.$store.dispatch('updateStatus', { status: 'open', _id: this.statusId });
     },
     getBusinessHours() {
       const url = 'https://so-i-eat-server.herokuapp.com/businessHours';
       axios
         .get(url)
         .then((response) => {
+          // eslint-disable-next-line no-underscore-dangle
           this.id = response.data[0]._id;
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.log(error);
         });
     },
@@ -97,12 +99,14 @@ export default {
       axios
         .get(url)
         .then((response) => {
+          // eslint-disable-next-line no-underscore-dangle
           this.statusId = response.data[0]._id;
         })
         .catch((error) => {
+          // eslint-disable-next-line no-console
           console.log(error);
         });
-    }
+    },
   },
-}
+};
 </script>
