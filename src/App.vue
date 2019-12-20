@@ -6,12 +6,11 @@
 
 <script>
 export default {
-  beforeCreate () {
+  beforeCreate() {
     this.$store.dispatch('getOrders');
   },
-}
+};
 </script>
-
 
 <style lang="scss">
 @import '@/assets/css/app.scss';
