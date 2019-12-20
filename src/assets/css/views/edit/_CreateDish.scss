@@ -3,7 +3,7 @@
   background: white;
   height: 100%;
   width: 100%;
-  grid-template-columns: 1fr 95px 1fr;
+  grid-template-columns: .5fr 95px 1fr;
   grid-template-rows: .5fr 2fr .4fr;
   grid-template-areas: 
   "top top top"
@@ -168,6 +168,10 @@
     font-size: 18px;
     font-family: $regular-font;
     border: 1px solid $main-secondary-color;
+
+    @media (max-width: 1024px) {
+      font-size: 14px;
+    }
   }
 
   .protein,
@@ -232,15 +236,10 @@
 .edit > .content-wrapper > .field > .grid-wrapper > .wrapper-right {
   display: grid;
   padding-right: 50px;
-  grid-template-columns: 1fr;
-  grid-template-rows: .4fr 1fr;
+  grid-template-columns: .7fr 30px 1fr;
+  grid-template-rows: 1fr;
   grid-template-areas: 
-   "ingredients"
-   "extras";
-
-   .extras {
-    padding-top: 20px;
-   }
+   "ingredients . extras";
 
    .ingredients,
    .extras {
@@ -272,12 +271,21 @@
     flex-wrap: wrap;
     margin-top: 9px;
     cursor: pointer;
-    
+
+    @media (max-width: 1024px) {
+      overflow: scroll;
+      height: 400px;
+    }
+
     > .container {
-      width: 50%;
+      width: 33%;
       display: flex;
       align-items: center;
       margin-bottom: 10px;
+      
+      @media (max-width: 1024px) {
+        width: 50%;
+      }
     }
   }
 }

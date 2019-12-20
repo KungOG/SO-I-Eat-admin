@@ -45,6 +45,11 @@ export default {
   align-items: center;
   margin-right: 10px;
   cursor: pointer;
+
+  @media (max-width: 1024px) {
+    height: 18px;
+    width: 18px;
+  }
 }
 .checkbox-selected {
   background: #676565;

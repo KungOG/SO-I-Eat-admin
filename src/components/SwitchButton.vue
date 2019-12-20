@@ -111,56 +111,65 @@ export default {
 </script>
 
 <style lang="scss">
+.switch-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
 
-  .switch-button-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .switch-button-span {
+    margin-top: 10px;
+  }
+}
 
-    .switch-button-span {
-      margin-top: 10px;
-    }
+.toggle {
+  width: 100px;
+  height: 30px;
+  background: #AA0909;
+  border-radius: 200px;
+  padding: 2px;
+  transition: background .6s;
+  cursor: pointer;
+  
+  @media (max-width: 1024px) {
+    width: 50px;
+    height: 15px;
   }
 
-
-  .toggle {
-    width: 100px;
+  .draggable {
+    width: 30px;
     height: 30px;
-    background: #AA0909;;
-    border-radius: 200px;
-    padding: 2px;
+    background: white;
+    border-radius: 100%;
+    transform: translateX(0%);
+    transition: transform 0.05s ease-in-out;
+
+    @media (max-width: 1024px) {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  
+  &.active {
+    background: #699D65;
     transition: background 0.6s;
-    cursor: pointer;
-    
-    .draggable {
-      width: 30px;
-      height: 30px;
-      background: white;
-      border-radius: 100%;
-      transform: translateX(0%);
-      transition: transform 0.05s ease-in-out;
-    }
-    
-    &.active {
-      background: #699D65;
-      transition: background 0.6s;
-    }
   }
+}
 
-  .app {
-    display: flex;
-  }
+.app {
+  display: flex;
+}
 
-  .switches {
-    margin-right: 30px
-  }
+.switches {
+  margin-right: 30px
+}
 
-  pre {
-    margin: 0;
-    background: #513d56;
-    color: #efefef;
-    padding: 20px;
-    border-radius: 6px;
-    width: 200px;
-  }
+pre {
+  margin: 0;
+  background: #513d56;
+  color: #efefef;
+  padding: 20px;
+  border-radius: 6px;
+  width: 200px;
+}
 </style>

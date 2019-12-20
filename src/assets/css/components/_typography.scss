@@ -30,12 +30,20 @@ span {
   font-size: 16px;
   line-height: 20px;
   font-family: $regular-font;
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
 }
 
 a {
   font-size: 16px;
   line-height: 20px;
   text-decoration: none;
+
+  @media (max-width: 1024px) {
+    font-size: 12px;
+  }
 }
 
 p {
@@ -50,9 +58,18 @@ li {
 input {
   font-family: $regular-font;
   font-size: 18px;
+
+  @media (max-width: 1024px) {
+    font-size: 14px;
+  }
 }
 
 label {
   font-family: $regular-font;
   font-size: 18px;
+  
+  @media (max-width: 1024px) {
+    font-family: $regular-font;
+    font-size: 16px;
+  }
 }
