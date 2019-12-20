@@ -1,5 +1,8 @@
 <template>
-  <button class="light-admin-btn" :class="buttonText === chosenValue ? 'light-active-btn' : '' ">{{buttonText}}</button>   
+  <button class="light-admin-btn"
+  :class="buttonText === chosenValue ? 'light-active-btn' : '' ">
+    {{buttonText}}
+  </button>
 </template>
 
 <script>
@@ -22,7 +25,7 @@ export default {
     border-radius: 5px;
     color: white;
     background: none;
-    font-size: 16px; 
+    font-size: 16px;
     width: 65px;
     height: 30px;
     margin: 0 1rem;
