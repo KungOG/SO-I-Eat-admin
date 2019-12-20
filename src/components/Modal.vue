@@ -13,7 +13,7 @@
         </select>
       </div>
       <div class='closed-business'>
-        <h3>Stoptid</h3>
+        <h3>Stopptid</h3>
         <select v-model="selectedCloseHour">
           <option :value="hour" v-for="hour in closeHours" :key="`close-hour-${hour}`">
             {{hour}}

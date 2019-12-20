@@ -1,14 +1,34 @@
 .modal {
-  background: grey;
-  position: absolute;
+  background: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 50%;
-  left: 50%;
-  right: 50%;
+  position: absolute;
+  color: white;
+  top: 25%;
   z-index: 100;
   height: 250px;
   width: 250px;
+  border-radius: 5px;
+  border: 2px solid white;
+  transform: translateY(-700px);
+  transition: transform 1s ease-in-out;
+
+  &.-active {
+    transform: translateY(0);
+  }
+
+  > .time-section > .open-business > h3 {
+    color: white;
+  }
+
+  > .time-section > .closed-business > h3 {
+    color: white;
+  }
+
+  > .modal-button > .dark-admin.btn {
+    color: white;
+    border: 1px solid white;
+  }
 }

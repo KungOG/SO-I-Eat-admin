@@ -115,7 +115,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100px;
+  width: 150px;
   @media screen and (min-width: 2400px) { width: 226px; }
 
   .switch-button-span {
