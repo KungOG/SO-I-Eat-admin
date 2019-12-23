@@ -254,7 +254,7 @@ export default {
       if (this.categoryToEdit === 'huvudrätt') {
         return this.$store.state.categories.filter(
           x => x.categoryName !== 'Smått'
-          && x.categoryName !== 'Efterrätt'
+          && x.categoryName !== 'Sött'
           && x.categoryName !== 'Dryck',
         );
       }
