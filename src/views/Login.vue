@@ -8,7 +8,7 @@
       <div v-if="!$auth.loading">
         <LightButton class="login-button" buttonText="logga in"
         v-if="!$auth.isAuthenticated" @click.native="login" />
-        <LightButton class="login-button" buttonText="logga in"
+        <LightButton class="login-button" buttonText="logga ut"
         v-if="$auth.isAuthenticated" @click.native="logout" />
         <LightButton class="login-button" buttonText="webbhandel" />
       </div>
