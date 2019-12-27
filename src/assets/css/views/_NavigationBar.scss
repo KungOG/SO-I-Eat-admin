@@ -1,5 +1,5 @@
 .navigation {
-  background: black;
+  background: $main-base-color;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -29,7 +29,7 @@
   }
 
   > .logo-dropdown {
-    background: black;
+    background: $main-base-color;
     display: flex;
     flex-direction: column;
     align-items: center;
