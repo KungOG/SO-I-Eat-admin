@@ -109,7 +109,7 @@ export default {
     },
     async updateProductionTime(time) {
       this.productionTime = time;
-      await this.$store.dispatch('updateProductionTime', {productionTime: time, _id: this.productionTimeId});
+      await this.$store.dispatch('updateProductionTime', {time: time, _id: this.productionTimeId});
       this.getProductionTime();
     },
     setCategoryToEdit(cat) {

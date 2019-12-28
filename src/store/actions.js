@@ -65,7 +65,7 @@ export default {
   },
   async updateProductionTime(ctx, productionTime) {
     let token = localStorage.token;
-    await axios.patch('https://so-i-eat-server.herokuapp.com/productionTime', productionTime, {
+    await axios.patch('https://so-i-eat-server.herokuapp.com/deliveryTimes', productionTime, {
       headers: { authorization: `Bearer ${token}` }});
   },
   async setOrderItemStatus(ctx, orderStatus) {

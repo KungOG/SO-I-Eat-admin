@@ -172,10 +172,10 @@ export default {
     categoryToEdit: 'förrätt',
     addons: [
       { name: 'Vitlök', price: 5 },
-      { name: 'Gul lök', price: 5 },
+      { name: 'Lök', price: 5 },
       { name: 'Vitkål', price: 5 },
       { name: 'Paprika', price: 5 },
-      { name: 'Morätter', price: 5 },
+      { name: 'Morötter', price: 5 },
       { name: 'Broccoli', price: 5 },
       { name: 'Blomkål', price: 5 },
       { name: 'Cashewnötter', price: 5 },
@@ -244,7 +244,7 @@ export default {
         if (this.categoryToEdit === 'förrätt') {
           return item.category === 0;
         }
-        return item.category < 6;
+        return item.category < 6 && item.category !== 0;
       });
     },
     filterMenuItems() {
