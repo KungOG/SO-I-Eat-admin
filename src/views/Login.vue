@@ -12,12 +12,8 @@
         v-if="$auth.isAuthenticated" @click.native="logout" />
         <LightButton class="login-button" buttonText="webbhandel" />
       </div>
-      <div>
-        <button @click="callApi">Call</button>
-      </div>
     </section>
     <Modal v-if="showModal" @closeModal="showModal = false"/>
-    <Loading />
   </div>
 </template>
 
@@ -48,11 +44,6 @@ export default {
     this.showModal = true;
   },
   methods: {
-    async callApi() {
-      const token = await this.$auth.getTokenSilently();
-      localStorage.token = token;
-      console.log(token);
-    },
     async login() {
       await this.$auth.loginWithRedirect();
     },

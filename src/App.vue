@@ -6,9 +6,7 @@
 
 <script>
 export default {
-  beforeCreate() {
-    this.$store.dispatch('getOrders');
-  },
+
 };
 </script>
 

@@ -10,10 +10,15 @@
   "middle-left divider middle-right"
   "buttons-left . buttons-right";
 
-  .header,
-  .button {
+  .header {
     display: flex;
     justify-content: space-around;
+    align-items: center;
+  }
+
+  .button {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
@@ -29,6 +34,7 @@
 
   .button > .button-wrapper {
     display: flex;
+    margin-right: 50px;
   }
 
   .button > .edit-admin-btn {
@@ -176,8 +182,8 @@
   }
 
   .description > textarea {
-    min-height: 90px;
-    max-height: 90px;
+    min-height: 70px;
+    max-height: 70px;
     max-width: 100%;
     margin: 9px 0;
     font-size: 18px;

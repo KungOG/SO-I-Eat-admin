@@ -17,8 +17,11 @@ import Icon from '@/assets/icons/FullLogo.svg';
 
 export default {
   name: 'loading',
-  mounted() {
+  async mounted() {
     this.activateLoading();
+    const token = await this.$auth.getTokenSilently();
+      localStorage.token = token;
+      console.log(token);
   },
   data: () => ({
     icon: Icon,
@@ -29,12 +32,14 @@ export default {
     activateLoading() {
       setTimeout(() => {
         this.loading = true;
+        this.$store.dispatch('getOrders');
         this.callDestroy();
       }, 2000);
     },
     callDestroy() {
       setTimeout(() => {
         this.selfDestroy = true;
+        this.$router.push('/orderboard')
       }, 3000);
     },
   }

@@ -24,6 +24,11 @@ export default new Router({
       component: () => import('./views/Edit.vue'),
     },
     {
+      path: '/loading',
+      name: 'loading',
+      component: () => import('./components/Loading.vue'),
+    },
+    {
       path: '/orderboard',
       name: 'orderboard',
       // beforeEnter: authGuard,
