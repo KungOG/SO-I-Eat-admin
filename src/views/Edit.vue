@@ -3,7 +3,7 @@
     <Navigation @setActiveCategoryToEdit="setActiveCategory"/>
     <div class="content-wrapper">
       <div class='fader' :class="activatedSearch === true ? '-active' : ''" @click="showSearch">
-        <span class='close-down-search'>x</span>
+        <img class='close-down-search' :src="require('@/assets/icons/' + icons.whiteCross)" alt="Cancel icon">
       </div>
       <section class='search-slidein' :class="activatedSearch === true ? '-active' : ''">
         <div class="search-bar">
@@ -226,6 +226,7 @@ export default {
       search: 'Search.svg',
       add: 'Add.svg',
       cross: 'Cross.svg',
+      whiteCross: 'WhiteCross.svg',
     },
   }),
   beforeMount() {
