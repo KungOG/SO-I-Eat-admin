@@ -20,8 +20,7 @@ export default {
   async mounted() {
     this.activateLoading();
     const token = await this.$auth.getTokenSilently();
-      localStorage.token = token;
-      console.log(token);
+    localStorage.token = token;
   },
   data: () => ({
     icon: Icon,
@@ -39,10 +38,10 @@ export default {
     callDestroy() {
       setTimeout(() => {
         this.selfDestroy = true;
-        this.$router.push('/orderboard')
+        this.$router.push('/orderboard');
       }, 3000);
     },
-  }
+  },
 };
 </script>
 <style lang="scss">

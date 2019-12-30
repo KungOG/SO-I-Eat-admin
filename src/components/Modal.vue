@@ -1,29 +1,31 @@
 <template>
   <main class='modal'>
-    <section>
-      <h5>Sätt dagens öppettider</h5>
-    </section>
-    <section class='time-section'>
-      <div class='open-business'>
-        <h3>Starttid</h3>
-        <select v-model="selectedOpenHour">
-          <option :value="hour" v-for="hour in openHours" :key="`open-hour-${hour}`">
-            {{hour}}
-          </option>
-        </select>
-      </div>
-      <div class='closed-business'>
-        <h3>Stopptid</h3>
-        <select v-model="selectedCloseHour">
-          <option :value="hour" v-for="hour in closeHours" :key="`close-hour-${hour}`">
-            {{hour}}
-          </option>
-        </select>
-      </div>
-    </section>
-    <section class='modal-button'>
-       <DarkButton :buttonText="'OK'" @click.native="openRestaurant" />
-    </section>
+    <div class='modal-overlay'>
+      <section>
+        <h2>Dagens öppettider</h2>
+      </section>
+      <section class='time-section'>
+        <div class='open-business'>
+          <h3>Starttid</h3>
+          <select v-model="selectedOpenHour">
+            <option :value="hour" v-for="hour in openHours" :key="`open-hour-${hour}`">
+              {{hour}}
+            </option>
+          </select>
+        </div>
+        <div class='closed-business'>
+          <h3>Stopptid</h3>
+          <select v-model="selectedCloseHour">
+            <option :value="hour" v-for="hour in closeHours" :key="`close-hour-${hour}`">
+              {{hour}}
+            </option>
+          </select>
+        </div>
+      </section>
+      <section class='modal-button'>
+        <DarkButton :buttonText="'OK'" @click.native="openRestaurant" />
+      </section>
+    </div>
   </main>
 </template>
 

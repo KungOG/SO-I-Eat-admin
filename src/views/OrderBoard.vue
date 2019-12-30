@@ -19,7 +19,8 @@
         :order="order" />
       </div>
     </div>
-    <OrderModal v-if="showModal"/>
+    <OrderModal v-if="showOrderModal"/>
+    <Modal v-if="showOpeningModal" @closeModal="closeOpeningModal"/>
   </div>
 </template>
 
@@ -32,51 +33,75 @@ import FoodCard from '@/components/Order/FoodCard.vue';
 import DrinkCard from '@/components/Order/DrinkCard.vue';
 // eslint-disable-next-line import/no-unresolved
 import OrderModal from '@/components/OrderModal.vue';
+// eslint-disable-next-line import/no-unresolved
+import Modal from '@/components/Modal.vue';
+
 
 export default {
   name: 'orderboard',
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.prevRoute = from;
+    });
+  },
   beforeMount() {
     setInterval(() => {
       this.$store.dispatch('getOrders');
     }, 5000);
   },
+  mounted() {
+    setTimeout(() => {
+      this.prevRoute.name === 'loading' ? this.showOpeningModal = true : this.showOpeningModal = false;
+    }, 1000);
+  },
+  data: () => ({
+    showOpeningModal: false,
+    prevRoute: null,
+  }),
   components: {
     Navigation,
     DrinkCard,
     FoodCard,
     OrderModal,
+    Modal,
   },
   computed: {
-    showModal() {
+    showOrderModal() {
       return this.$store.state.showModal;
     },
     drinkOrders() {
       const foodItems = this.$store.getters.foodItems.map(x => x);
-      foodItems.sort(function (a, b) {
+      foodItems.sort((a, b) => {
         if (a[1][0].date < b[1][0].date) return -1;
         if (a[1][0].date > b[1][0].date) return 1;
         return 0;
-      })
-      var arrayy = [];
-      foodItems.forEach((x) => {
-        x[1][0].orderInformation.drinkItems.length !== 0 ? arrayy.push(x) : ''
       });
-      return arrayy;
+      const newArray = [];
+      foodItems.forEach((x) => {
+        x[1][0].orderInformation.drinkItems.length !== 0 ? newArray.push(x) : '';
+      });
+      return newArray;
     },
     foodOrders() {
       const foodItems = this.$store.getters.foodItems.map(x => x);
       const count = this.$store.getters.foodItems;
-      const arrays = {array1: [], array2: []}
-      foodItems.sort(function (a, b) {
+      const arrays = { array1: [], array2: [] };
+      foodItems.sort((a, b) => {
         if (a[1][0].date < b[1][0].date) return -1;
         if (a[1][0].date > b[1][0].date) return 1;
-        return 0;  
-    })
-      for(let i=0; i < count.length; i++) {
+        return 0;
+      });
+      for (let i = 0; i < count.length; i++) {
         foodItems.length !== 0 ? arrays.array1.push(foodItems.shift()) : '';
         foodItems.length !== 0 ? arrays.array2.push(foodItems.shift()) : '';
       }
       return arrays;
+    },
+  },
+  methods: {
+    closeOpeningModal() {
+      this.prevRoute = null;
+      this.showOpeningModal = false;
     },
   },
 };

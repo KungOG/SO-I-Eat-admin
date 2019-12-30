@@ -13,17 +13,12 @@
         <LightButton class="login-button" buttonText="webbhandel" />
       </div>
     </section>
-    <Modal v-if="showModal" @closeModal="showModal = false"/>
   </div>
 </template>
 
 <script>
 // eslint-disable-next-line no-unused-vars
 import axios from 'axios';
-// eslint-disable-next-line import/no-unresolved
-import Modal from '@/components/Modal.vue';
-// eslint-disable-next-line import/no-unresolved
-import Loading from '@/components/Loading.vue';
 // eslint-disable-next-line import/no-unresolved
 import LightButton from '@/components/LightButton.vue';
 // eslint-disable-next-line import/no-unresolved
@@ -32,20 +27,14 @@ import Icon from '@/assets/icons/FullLogo.svg';
 export default {
   name: 'login',
   components: {
-    Modal,
     LightButton,
-    Loading,
   },
   data: () => ({
-    showModal: false,
     icon: Icon,
   }),
-  async mounted() {
-    this.showModal = true;
-  },
   methods: {
-    async login() {
-      await this.$auth.loginWithRedirect();
+    login() {
+      this.$auth.loginWithRedirect();
     },
     logout() {
       this.$auth.logout({

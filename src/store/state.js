@@ -5,4 +5,5 @@ export default {
   businessHours: null,
   showModal: false,
   orderIds: [],
+  previousRoute: null,
 };

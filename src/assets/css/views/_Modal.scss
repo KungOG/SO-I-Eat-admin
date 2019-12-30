@@ -1,34 +1,69 @@
 .modal {
-  background: $main-base-color;
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: absolute;
-  color: white;
-  top: 25%;
+  position: fixed;
+  top: 0;
   z-index: 100;
-  height: 250px;
-  width: 250px;
-  border-radius: 5px;
-  border: 2px solid white;
-  transform: translateY(-700px);
-  transition: transform 1s ease-in-out;
+  height: 100vh;
+  width: 100vw;
 
-  &.-active {
-    transform: translateY(0);
+  .modal-overlay {
+    background: white;
+    padding: 5rem 3rem 3rem 3rem;
+    border-radius: 3px;
+    position: relative;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    >section >h2 {
+     margin-bottom: 2rem;
+    }
+
+    .time-section {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      border: 1px solid gray;
+      padding: 2rem 1rem;
+
+      .open-business,
+      .closed-business {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3 {
+          margin-bottom: 1rem;
+        }
+      }
+    }
+
+    select {
+      font-size: 40px;
+    }
+
+    .modal-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 4rem;
+
+      >.dark-admin-btn {
+        width: 120px;
+        height: 50px;
+        background: $green;
+        color: white;
+        border: none;
+        font-size: 20px;
+      }
+    }
   }
 
-  > .time-section > .open-business > h3 {
-    color: white;
-  }
-
-  > .time-section > .closed-business > h3 {
-    color: white;
-  }
-
-  > .modal-button > .dark-admin.btn {
-    color: white;
-    border: 1px solid white;
-  }
+ 
 }
