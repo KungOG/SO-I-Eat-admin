@@ -24,10 +24,11 @@ export default {
     border: 1px solid white;
     border-radius: 5px;
     color: white;
+    font-family: 'Carrois Gothic', sans-serif;
     background: none;
     font-size: 16px;
-    width: 65px;
-    height: 30px;
+    width: 75px;
+    height: 40px;
     margin: 0 1rem;
     text-transform: uppercase;
     cursor: pointer;

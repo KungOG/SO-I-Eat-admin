@@ -115,11 +115,11 @@ export default {
       this.$emit('setActiveCategoryToEdit', cat);
     },
     updateTime() {
-      const cd = new Date();
+      let cd = new Date();
       this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2);
     },
     zeroPadding(num, digit) {
-      const zero = '';
+      let zero = '';
       for (let i = 0; i < digit; i++) {
         zero += '0';
       }

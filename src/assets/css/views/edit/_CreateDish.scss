@@ -190,8 +190,8 @@
     font-family: $regular-font;
     border: 1px solid $main-secondary-color;
 
-    @media screen and (max-width: 1385px) { font-size: 14px; }
-    @media screen and (min-width: 2400px) { font-size: 34px; }
+    @media screen and (max-width: 1200px) { font-size: 16px; }
+    @media screen and (min-width: 1201px) { font-size: 18px; }
   }
 
   .protein,

@@ -1,9 +1,9 @@
 .navigation {
   background: $main-base-color;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 90px;
 
   .nav-orders {
     display: flex;
@@ -22,6 +22,7 @@
 
   > .logo {
     position: relative;
+    margin-left: 3rem;
 
     > img {
       cursor: pointer;
@@ -35,11 +36,10 @@
     align-items: center;
     position: absolute;
     color: white;
-    border-radius: 5px;
     height: 1px;
     width: calc(100% - 65%);
     z-index: 100;
-    top: 75px;
+    top: 89px;
     left: 0;
     transition: height .5s;
   
@@ -70,7 +70,7 @@
 
 
   > .-activeBackground {
-    background: rgba(0,0,0,0.15);
+    background: rgba(0,0,0,0.5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +86,7 @@
   > .current-time {
     color: white;
     font-family: $regular-font;
-    font-size: 30px;
+    font-size: 25px;
+    margin-right: 3rem;
   }
 }
