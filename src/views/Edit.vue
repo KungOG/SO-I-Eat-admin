@@ -248,7 +248,7 @@ export default {
       });
     },
     filterMenuItems() {
-      return this.menuItems.filter(item => item.productName.match(this.search));
+      return this.menuItems.filter(item => item.productName.toUpperCase().match(this.search.toUpperCase()));
     },
     categories() {
       if (this.categoryToEdit === 'huvudrätt') {
