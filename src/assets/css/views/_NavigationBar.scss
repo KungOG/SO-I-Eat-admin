@@ -53,6 +53,10 @@
       justify-content: space-evenly;
       height: 50%;
       padding-top: 100px;
+
+      .router-link-active {
+        color: $secondary-color;
+      }
     }
 
     > .dropdown-links > a, span {
