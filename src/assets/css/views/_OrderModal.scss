@@ -18,5 +18,20 @@
 
   .lower-order-modal {
     display: flex;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+
+    >.dark-admin-btn {
+      width: 120px;
+      height: 50px;
+      background: $green;
+      color: white;
+      border: none;
+      font-size: 20px;
+
+      &:first-child {
+        background: $main-color;
+      }
+    }
   }
 }

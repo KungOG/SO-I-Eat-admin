@@ -31,7 +31,6 @@ export default {
       required: true,
     },
   },
-
   components: {
     FoodInformation,
   },
@@ -39,7 +38,7 @@ export default {
     time() {
       var d = new Date(this.order[1][0].date);
       return JSON.stringify(d).slice(12, 17);
-    }
-  }
+    },
+  },
 };
 </script>

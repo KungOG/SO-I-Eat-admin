@@ -2,7 +2,7 @@
   <div class="order-modal">
     <div class='modal-overlay'>
       <section class='upper-order-modal'>
-        <h4>Ydada ydayday ydayda</h4>
+        <h2>Vill du leverera detta bord?</h2>
       </section>
       <section class='lower-order-modal'>
         <DarkButton buttonText="Avbryt" @click.native="cancelUpdate"/>
