@@ -2,8 +2,8 @@
   <div class='navigation'>
     <div class='logo-dropdown' :class="showHamburger === true ? '-active' : ''">
       <div v-if="burgerText" class='dropdown-links'>
-        <router-link to="/edit">redigera</router-link>
         <router-link to="/orderboard">ordrar</router-link>
+        <router-link to="/edit">produkter</router-link>
         <router-link to="/archive">arkiv</router-link>
         <span @click="logout">logga ut</span>
       </div>
@@ -32,13 +32,13 @@
         :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('förrätt')"
       />
-      <LightButton 
+      <LightButton
         class="edit-btn"
         buttonText="huvudrätt"
         :chosenValue="categoryToEdit"
         @click.native="setCategoryToEdit('huvudrätt')"
       />
-      <LightButton 
+      <LightButton
         class="edit-btn"
         buttonText="efterrätt"
         :chosenValue="categoryToEdit"
@@ -58,11 +58,11 @@
 </template>
 
 <script>
+import axios from 'axios';
 import Orders from '@/assets/icons/Menu.svg';
 import Timer from '@/assets/icons/Clock.svg';
 import Icon from '@/assets/icons/FullLogo.svg';
 import LightButton from '@/components/LightButton.vue';
-import axios from 'axios';
 
 export default {
   name: 'navigationbar',
@@ -72,44 +72,42 @@ export default {
     Icon,
     LightButton,
   },
-  data () {
-    return {
-      Orders: Orders,
-      Timer: Timer,
-      Icon: Icon,
-      buttonTexts: ['10', '15', '20', '30', '45'],
-      time: '',
-      productionTime: '',
-      productionTimeId: null,
-      categoryToEdit: 'förrätt',
-      showHamburger: false,
-      burgerText: false,
-    }
-  },
+  data: () => ({
+    Orders: Orders,
+    Timer: Timer,
+    Icon: Icon,
+    buttonTexts: ['10', '15', '20', '30', '45'],
+    time: '',
+    productionTime: '',
+    productionTimeId: null,
+    categoryToEdit: 'förrätt',
+    showHamburger: false,
+    burgerText: false,
+  }),
   computed: {
     numberOfOrders() {
       return this.$store.getters.foodItems.length;
     },
   },
   mounted() {
-    var timerID = setInterval(this.updateTime, 1000);
+    let timerID = setInterval(this.updateTime, 1000);
     this.getProductionTime();
   },
   methods: {
     logout() {
       this.$auth.logout({
-        returnTo: window.location.origin
+        returnTo: window.location.origin,
       });
     },
     activateHamburger() {
       this.showHamburger = !this.showHamburger;
       setTimeout(() => {
-        this.burgerText = !this.burgerText
+        this.burgerText = !this.burgerText;
       }, 100);
     },
     async updateProductionTime(time) {
       this.productionTime = time;
-      await this.$store.dispatch('updateProductionTime', {time: time, _id: this.productionTimeId});
+      await this.$store.dispatch('updateProductionTime', { time: time, _id: this.productionTimeId });
       this.getProductionTime();
     },
     setCategoryToEdit(cat) {
@@ -117,17 +115,17 @@ export default {
       this.$emit('setActiveCategoryToEdit', cat);
     },
     updateTime() {
-      var cd = new Date();
+      const cd = new Date();
       this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2);
     },
     zeroPadding(num, digit) {
-      var zero = '';
-      for(var i = 0; i < digit; i++) {
-          zero += '0';
+      const zero = '';
+      for (let i = 0; i < digit; i++) {
+        zero += '0';
       }
       return (zero + num).slice(-digit);
     },
-    getProductionTime(ctx) {
+    getProductionTime() {
       const url = 'https://so-i-eat-server.herokuapp.com/deliveryTimes';
       axios
         .get(url)
@@ -139,6 +137,6 @@ export default {
           console.log(error);
         });
     },
-  }
+  },
 };
 </script>
