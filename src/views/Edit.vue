@@ -213,7 +213,7 @@ export default {
       productNr: 0,
       productName: '',
       category: 0,
-      active: false,
+      active: true,
       price: 0,
       description: '',
       protein: [],
@@ -267,7 +267,11 @@ export default {
     },
     removeProductFromDB() {
       // eslint-disable-next-line no-underscore-dangle
-      this.$store.dispatch('removeProduct', this.newProduct._id);
+      this.$store.dispatch('removeProduct', this.newProduct._id)
+        .then(
+            this.emptyNewProductData(),
+            this.$store.dispatch('getMenuItems'),
+          );
     },
     createNewProduct() {
       // eslint-disable-next-line no-underscore-dangle
@@ -275,11 +279,13 @@ export default {
         this.$store.dispatch('updateProduct', this.newProduct)
           .then(
             this.emptyNewProductData(),
+            this.$store.dispatch('getMenuItems'),
           );
       } else {
         this.$store.dispatch('createProduct', this.newProduct)
           .then(
             this.emptyNewProductData(),
+            this.$store.dispatch('getMenuItems'),
           )
       }
     },
@@ -287,6 +293,7 @@ export default {
       // eslint-disable-next-line no-underscore-dangle
       const productToEdit = this.menuItems.find(item => item._id === id);
       this.newProduct = productToEdit;
+      this.activatedSearch = false;
     },
     arrayFullOfProtein(i) {
       const proteins = this.newProduct.protein;
@@ -314,9 +321,10 @@ export default {
       this.newProduct = {
         productNr: 0,
         productName: '',
-        category: 1,
+        category: 0,
         price: 0,
         description: '',
+        active: true,
         protein: [],
         spice: false,
         ingredients: [],
