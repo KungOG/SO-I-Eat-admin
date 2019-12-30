@@ -111,6 +111,7 @@ export default {
       this.getProductionTime();
     },
     setCategoryToEdit(cat) {
+      this.$emit('emptyProductData');
       this.categoryToEdit = cat;
       this.$emit('setActiveCategoryToEdit', cat);
     },

@@ -1,6 +1,6 @@
 <template>
   <div class='edit'>
-    <Navigation @setActiveCategoryToEdit="setActiveCategory"/>
+    <Navigation @setActiveCategoryToEdit="setActiveCategory" @emptyProductData="emptyNewProductData"/>
     <div class="content-wrapper">
       <div class='fader' :class="activatedSearch === true ? '-active' : ''" @click="showSearch">
         <img class='close-down-search' :src="require('@/assets/icons/' + icons.whiteCross)" alt="Cancel icon">
