@@ -271,7 +271,6 @@ export default {
       this.$store.dispatch('removeProduct', this.newProduct._id)
         .then(
             this.emptyNewProductData(),
-            this.$store.dispatch('getMenuItems'),
           );
     },
     createNewProduct() {
@@ -280,13 +279,11 @@ export default {
         this.$store.dispatch('updateProduct', this.newProduct)
           .then(
             this.emptyNewProductData(),
-            this.$store.dispatch('getMenuItems'),
           );
       } else {
         this.$store.dispatch('createProduct', this.newProduct)
           .then(
             this.emptyNewProductData(),
-            this.$store.dispatch('getMenuItems'),
           )
       }
     },

@@ -17,6 +17,7 @@ export default {
       });
   },
   getMenuItems(ctx) {
+    console.log('getItemns')
     const url = 'https://so-i-eat-server.herokuapp.com/products';
     axios
       .get(url)
@@ -52,16 +53,19 @@ export default {
     let token = localStorage.token;
     await axios.post('https://so-i-eat-server.herokuapp.com/products', newProduct, {
       headers: { authorization: `Bearer ${token}` }});
+      ctx.dispatch('getMenuItems');  
   },
   async updateProduct(ctx, newProduct) {
     let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/products', newProduct, {
       headers: { authorization: `Bearer ${token}` }});
+      ctx.dispatch('getMenuItems'); 
   },
   async updateActiveProduct(ctx, active) {
     let token = localStorage.token;
     await axios.patch('https://so-i-eat-server.herokuapp.com/products', active, {
       headers: { authorization: `Bearer ${token}` }});
+      ctx.dispatch('getMenuItems'); 
   },
   async updateProductionTime(ctx, productionTime) {
     let token = localStorage.token;
@@ -77,6 +81,7 @@ export default {
     let token = localStorage.token;
     await axios.delete(`https://so-i-eat-server.herokuapp.com/products/${newProduct}`, {
       headers: { authorization: `Bearer ${token}` }});
+      ctx.dispatch('getMenuItems'); 
   },
   deliverOrders(ctx) {
     let token = localStorage.token;
