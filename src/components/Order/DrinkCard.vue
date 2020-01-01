@@ -35,9 +35,10 @@ export default {
   },
   computed: {
     time() {
-      var d = new Date(this.order[1][0].date);
-      return JSON.stringify(d).slice(12, 17);
-    }
+      let date = new Date(this.order[1][0].date);
+      let localTime = date.toLocaleTimeString().slice(0, 5);
+      return localTime;
+    },
   },
 };
 </script>
