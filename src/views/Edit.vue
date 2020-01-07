@@ -1,9 +1,15 @@
 <template>
   <div class='edit'>
-    <Navigation @setActiveCategoryToEdit="setActiveCategory" @emptyProductData="emptyNewProductData"/>
+    <Navigation
+      @setActiveCategoryToEdit="setActiveCategory"
+      @emptyProductData="emptyNewProductData"
+    />
     <div class="content-wrapper">
       <div class='fader' :class="activatedSearch === true ? '-active' : ''" @click="showSearch">
-        <img class='close-down-search' :src="require('@/assets/icons/' + icons.whiteCross)" alt="Cancel icon">
+        <img class='close-down-search'
+          :src="require('@/assets/icons/' + icons.whiteCross)"
+          alt="Cancel icon"
+        />
       </div>
       <section class='search-slidein' :class="activatedSearch === true ? '-active' : ''">
         <div class="search-bar">
