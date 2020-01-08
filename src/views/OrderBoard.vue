@@ -20,7 +20,7 @@
       </div>
     </div>
     <OrderModal v-if="showOrderModal"/>
-    <Modal v-if="showOpeningModal" @closeModal="closeOpeningModal"/>
+    <Modal v-if="showOpeningModal" @closeModal="closeOpeningModal" />
   </div>
 </template>
 
@@ -40,9 +40,7 @@ import Modal from '@/components/Modal.vue';
 export default {
   name: 'orderboard',
   beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.prevRoute = from;
-    });
+    next(vm => { vm.prevRoute = from; });
   },
   beforeMount() {
     setInterval(() => {
