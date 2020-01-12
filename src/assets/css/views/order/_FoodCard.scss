@@ -37,16 +37,44 @@
     }
   }
 
-  .comment-modal {
-    background: rgba($color: #000000, $alpha: .7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
+  > .comment-modal {
     position: absolute;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 800;
+    width: 100vw;
+    height: 100vh;
+
+    > .filler {
+      background: rgba(0, 0, 0, 0.7);
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      z-index: 850;
+    }
+
+    > .modal-content {
+      background: #fff;
+      padding: 30px;
+      position: absolute;
+      border-radius: 5px;
+      z-index: 900;
+
+      > .close-down-cross {
+        position: absolute;
+        top: -45px;
+        left: -45px;
+      }
+
+      > .modal-content-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
   }
 }
