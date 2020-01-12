@@ -2,22 +2,36 @@
   <div class='food-order'>
     <div class='food-header'>
       <div class='filler' />
-      <h2 v-if="order[1][0].orderInformation.table !== 'take away'">Bord: {{order[1][0].orderInformation.table}}</h2>
+      <span class='comment'
+      @click="showComment"
+      v-if="order[1][0].comment !== null"
+      >Kommentar</span>
+      <h2 v-if="order[1][0].orderInformation.table !== 'take away'">
+        Bord: {{order[1][0].orderInformation.table}}
+      </h2>
       <h2 v-else>{{order[1][0].orderInformation.table}}</h2>
-      <span>{{time}}</span>
+      <span class='time'>{{time}}</span>
     </div>
     <div v-for="(orderItem, i) in order[1]"  :key="i">
-      <FoodInformation 
-        v-for="(item, i) in orderItem.orderInformation.foodItems" 
+      <FoodInformation
+        v-for="(item, i) in orderItem.orderInformation.foodItems"
         :key="i"
         :index="i"
-        :items="item" 
+        :items="item"
         :orderNumber="orderItem.code"
         :id="orderItem._id"
         :status="item.status"
         :table="order"
         :orderStatus="orderItem.status"
       />
+     </div>
+     <div
+     class='comment-modal'
+     v-if="showComment">
+      <div class='modal-content'>
+        <span>Ordernummer: {{}}</span>
+        <span></span>
+      </div>
      </div>
   </div>
 </template>
@@ -36,9 +50,17 @@ export default {
   },
   computed: {
     time() {
-      let date = new Date(this.order[1][0].date);
-      let localTime = date.toLocaleTimeString().slice(0, 5);
+      const date = new Date(this.order[1][0].date);
+      const localTime = date.toLocaleTimeString().slice(0, 5);
       return localTime;
+    },
+    showCommentModal() {
+      return this.$store.state.showComment;
+    },
+  },
+  methods: {
+    showComment() {
+      this.$store.commit('setShowComment', true);
     },
   },
 };

@@ -14,4 +14,7 @@ export default {
   setOrdersIdsToDeliver(state, id) {
     state.orderIds = id;
   },
+  setShowComment(state, boolean) {
+    state.showComment = boolean;
+  },
 };
