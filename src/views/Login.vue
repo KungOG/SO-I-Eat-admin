@@ -41,6 +41,6 @@ export default {
         returnTo: window.location.origin,
       });
     },
-  }
+  },
 };
 </script>
