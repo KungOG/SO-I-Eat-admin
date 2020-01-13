@@ -18,7 +18,7 @@
     </div>
     <div class='time-buttons' v-if="$route.path == '/orderboard'">
       <img :src='Timer' alt="This is icon for timer" />
-      <LightButton 
+      <LightButton
         v-for="buttonText in buttonTexts" 
         :key="buttonText" 
         :buttonText="buttonText" 
@@ -26,7 +26,7 @@
         @click.native="updateProductionTime(buttonText) "/>
     </div>
     <div v-if="$route.path == '/edit'">
-      <LightButton 
+      <LightButton
         class="edit-btn"
         buttonText="förrätt"
         :chosenValue="categoryToEdit"

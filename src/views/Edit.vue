@@ -276,8 +276,8 @@ export default {
       // eslint-disable-next-line no-underscore-dangle
       this.$store.dispatch('removeProduct', this.newProduct._id)
         .then(
-            this.emptyNewProductData(),
-          );
+          this.emptyNewProductData(),
+        );
     },
     createNewProduct() {
       // eslint-disable-next-line no-underscore-dangle
@@ -290,7 +290,7 @@ export default {
         this.$store.dispatch('createProduct', this.newProduct)
           .then(
             this.emptyNewProductData(),
-          )
+          );
       }
     },
     showProduct(id) {
