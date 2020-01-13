@@ -9,6 +9,7 @@
         <span v-if="items.protein === 'Beef'" >Biff</span>
         <span v-if="items.protein === 'Chicken'">Kyckling</span>
         <span v-if="items.protein === 'Pork'">Fläsk</span>
+        <span v-if="items.protein === 'Tofu'">Tofu</span>
       </div>
       <div class='added-items'>
         <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
