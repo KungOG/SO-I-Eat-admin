@@ -1,5 +1,6 @@
-import Vue from 'vue';
 import createAuth0Client from '@auth0/auth0-spa-js';
+
+import Vue from 'vue';
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname);
 let instance;
