@@ -79,6 +79,7 @@
                   <label v-if="proteinType === 'Beef'">Biff</label>
                   <label v-if="proteinType === 'Chicken'">Kyckling</label>
                   <label v-if="proteinType === 'Shrimp'">Räkor</label>
+                  <label v-if="proteinType === 'Tofu'">Tofu</label>
                 </div>
               </div>
               <br>
@@ -212,7 +213,7 @@ export default {
       { name: 'Brysselkål', price: 5 },
       { name: 'Honung', price: 5 },
     ],
-    proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp'],
+    proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp', 'Tofu'],
     isSpice: true,
     buttonText: 'Lägg till',
     newProduct: {
