@@ -7,6 +7,30 @@
     width: 100%;
     margin: 0 10px 10px 0;
     padding: 2rem;
+
+    .order-info {
+      margin: 40px 30px;
+
+      > div:first-child {
+      }
+
+      > div:nth-child(2) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      p {
+        margin: 10px;
+      }
+
+      h3 {
+        margin-left: 0px;
+      }
+    }
+
+    h3 {
+      margin: 10px 30px;
+    }
   }
 
   .aside-content {
