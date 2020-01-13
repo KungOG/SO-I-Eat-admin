@@ -74,6 +74,17 @@
       } 
     }
 
+    >.date {
+      background: white;
+      margin: 0 10px 10px 10px;
+
+      > input {
+        padding: 15px 0 15px 20px;
+        width: calc(100% - 25px);
+        text-transform: uppercase;
+      }
+    }
+
     >.archive-items-list {
       background: white;
       margin: 10px;

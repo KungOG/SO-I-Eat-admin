@@ -13,6 +13,11 @@
             v-model="search"
             placeholder="Sök ordernummer">
         </div>
+        <div class="date">
+          <input
+            type="date"
+            @input="date = $event.target.valueAsDate">
+        </div>
         <div class="archive-items-list">
           <ul>
             <li
@@ -77,6 +82,7 @@ export default {
     },
     search: '',
     chosenOrder: null,
+    date: null,
   }),
   components: {
     Navigation,
@@ -95,7 +101,6 @@ export default {
       const localTime = time.toLocaleTimeString().slice(0, 5);
       return year + '-' + month +1 + '-' + date + ' ' + localTime;
     },
-
   },
   beforeMount() {
     this.getAllOrders();
