@@ -2,7 +2,7 @@
   <div class='drink-information' @click="checkOpenModal">
     <div class="side-infomation" :class="[(itemStatus === true ? 'green' : '')]" />
     <div class='content'>
-      <h3>{{orderNumber}}</h3>
+      <h3 class='order-number'>{{orderNumber}}</h3>
       <h3 class='product-name'>{{drinkItem.productName}}</h3>
       <span>{{drinkItem.description}}</span>
     </div>
