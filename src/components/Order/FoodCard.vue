@@ -25,14 +25,14 @@
         :orderStatus="orderItem.status"
       />
      </div>
-     <div
+<!--      <div
      class='comment-modal'
      v-if="showComment">
       <div class='modal-content'>
         <span>Ordernummer: {{}}</span>
         <span></span>
       </div>
-     </div>
+     </div> -->
   </div>
 </template>
 
