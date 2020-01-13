@@ -1,15 +1,20 @@
-.archive {
+.archive .content-wrapper {
+  display: flex;
+  height: calc(100vh - 90px);
+
   .main-content {
     background: white;
-    width: auto;
+    width: 100%;
+    margin: 0 10px 10px 0;
+    padding: 2rem;
   }
 
   .aside-content {
-    width: 30vw;
+    width: 40vw;
 
-    .search-bar {
+    >.search-bar {
       background: white;
-      margin: 10px;
+      margin: 0 10px 10px 10px;
       position: relative;
   
       .search-icon {
@@ -26,11 +31,10 @@
       } 
     }
 
-    .items-list {
+    >.archive-items-list {
       background: white;
       margin: 10px;
       overflow-y: scroll;
-      height: calc(100% - 245px);
 
       @media screen and (max-width: 1385px) {
         //width: 99%;

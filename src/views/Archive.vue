@@ -1,16 +1,19 @@
 <template>
   <div class='archive'>
     <Navigation />
+    <div class="content-wrapper">
       <aside class="aside-content">
         <div class="search-bar">
           <img class='search-icon' :src="require('@/assets/icons/' + icons.search)"
           alt="Sök" />
           <input type="text" v-model="search" placeholder="Sök ordernummer">
         </div>
-        <div class="items-list">
+        <div class="archive-items-list">
           <ul>
-            <li v-for="(item, i) in allOrders" :key="`archiveitems-${i}`"
-            @click="chosenOrder = item">
+            <li
+              v-for="(item, i) in allOrders"
+              :key="`archiveitems-${i}`"
+              @click="chosenOrder = item">
               <span>{{item.date}}</span>
               {{item.code}}
             </li>
@@ -20,8 +23,10 @@
       <main class="main-content">
         <div v-if=chosenOrder>
           <h1>{{chosenOrder.code}}</h1>
+          <h1>{{chosenOrder.date}}</h1>
         </div>
       </main>  
+    </div>  
   </div>
 </template>
 
