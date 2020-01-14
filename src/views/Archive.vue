@@ -16,7 +16,7 @@
         <div class="date">
           <input
             type="date"
-            @input="date = $event.target.valueAsDate">
+            @input="date = $event.target.value">
         </div>
         <div class="archive-items-list">
           <ul>
@@ -82,7 +82,7 @@ export default {
     },
     search: '',
     chosenOrder: null,
-    date: null,
+    date: '',
   }),
   components: {
     Navigation,
@@ -90,7 +90,17 @@ export default {
   computed: {
     filterArchiveItems() {
       if (this.allOrders !== null) {
-      return this.allOrders.filter(item => item.code.toUpperCase().match(this.search.toUpperCase()));
+        if (this.date.length === 0) {
+          return this.allOrders.filter(item => item.code.toUpperCase().match(this.search.toUpperCase()));
+        } else {
+          return this.allOrders.filter(item => {
+            const time = new Date(item.date);
+            const year = time.getFullYear()
+            const month = time.getMonth()
+            const date = time.getDate()
+            const fullDate = year + '-' + month +1 + '-' + date
+            return fullDate === this.date });
+        }
       }
     },
     time() {
@@ -120,8 +130,5 @@ export default {
         });
     }
   },
-  showOrder(id) {
-
-  }
 };
 </script>
