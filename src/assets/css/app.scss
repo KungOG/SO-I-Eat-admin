@@ -1,20 +1,20 @@
-@import './components/variables';
-@import './components/typography';
-@import './components/functions';
+@import 'components/variables';
+@import 'components/typography';
+@import 'components/functions';
 
 
-@import './views/OrderBoard.scss';
-@import './views/Login.scss';
-@import './views/Edit.scss';
-@import './views/NavigationBar.scss';
-@import './views/Modal.scss';
-@import './views/OrderModal.scss';
+@import 'views/OrderBoard';
+@import 'views/Login';
+@import 'views/Edit';
+@import 'views/NavigationBar';
+@import 'views/Modal';
+@import 'views/OrderModal';
 
-@import './views/order/DrinkCard.scss';
-@import './views/order/FoodCard.scss';
-@import './views/order/DrinkInformation.scss';
-@import './views/order/FoodInformation.scss';
+@import 'views/order/DrinkCard';
+@import 'views/order/FoodCard';
+@import 'views/order/DrinkInformation';
+@import 'views/order/FoodInformation';
 
 
-@import './views/edit/CreateDish.scss';
-@import './views/edit/SearchFunction.scss';
+@import 'views/edit/CreateDish';
+@import 'views/edit/SearchFunction';
