@@ -1,0 +1,111 @@
+.archive .content-wrapper {
+  display: flex;
+  height: calc(100vh - 90px);
+
+  .main-content {
+    background: white;
+    width: 100%;
+    margin: 0 10px 10px 0;
+    padding: 3rem;
+
+    .order-details {
+      margin-bottom: 3rem;
+
+      > h1 {
+      color: gray;
+      }
+    }
+
+    .order-info {
+      margin: 1.5rem 4rem;
+
+      > div:nth-child(2) {
+        display: flex;
+        margin-left: 1rem;
+        justify-content: space-between;
+
+        > div {
+          margin: 0 1rem;
+        }
+
+        p {
+          margin: 0;
+        }
+      }
+
+
+      h3 {
+        margin-left: 0px;
+        color: $main-color;
+      }
+    }
+
+    .totalsum {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      margin: 4rem 4rem;
+    }
+
+    h3 {
+      margin-top: .3rem;
+    }
+  }
+
+  .aside-content {
+    width: 40vw;
+
+    >.search-bar {
+      background: white;
+      margin: 0 10px 10px 10px;
+      position: relative;
+  
+      .search-icon {
+        position: absolute;
+        right: 0;
+        top: 5px;
+        height: 80%;
+      }
+  
+      > input {
+        padding: 15px 0 15px 20px;
+        width: calc(100% - 25px);
+        text-transform: uppercase;
+      } 
+    }
+
+    >.date {
+      background: white;
+      margin: 0 10px 10px 10px;
+
+      > input {
+        padding: 15px 0 15px 20px;
+        width: calc(100% - 25px);
+        text-transform: uppercase;
+        background: white;
+        border: none;
+      }
+    }
+
+    >.archive-items-list {
+      background: white;
+      margin: 10px;
+      overflow-y: scroll;
+
+      > ul {
+        padding: 0;
+        margin: 0;
+
+        > li {
+          border-top: 1px solid $main-secondary-color;
+          padding: 15px;
+          cursor: pointer;
+          text-transform: uppercase;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+    }
+  }  
+}

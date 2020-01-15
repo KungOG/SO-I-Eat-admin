@@ -3,8 +3,8 @@
     <div class='food-header'>
       <div class='filler' />
       <span class='comment'
-      @click="showComment"
-      v-if="order[1][0].comment !== null"
+        @click="showComment"
+        v-if="order[1][0].comment !== null"
       >Kommentar</span>
       <h2 v-if="order[1][0].orderInformation.table !== 'take away'">
         Bord: {{order[1][0].orderInformation.table}}
@@ -26,11 +26,24 @@
       />
      </div>
      <div
-     class='comment-modal'
-     v-if="showComment">
+      class='comment-modal'
+      v-if="showCommentModal">
+      <div
+        class="filler"
+        @click="closeComment"
+      />
       <div class='modal-content'>
-        <span>Ordernummer: {{}}</span>
-        <span></span>
+        <img
+          class='close-down-cross'
+          :src="whiteCross"
+          alt="Cancel icon"
+        />
+        <div
+          class='modal-content-wrapper'
+        >
+          <span>Ordernummer: {{order[1][0].code}}</span>
+          <span>Kommentar: {{order[1][0].comment}}</span>
+        </div>
       </div>
      </div>
   </div>
@@ -38,6 +51,7 @@
 
 <script>
 import FoodInformation from '@/components/Order/FoodInformation.vue';
+import WhiteCross from '@/assets/icons/WhiteCross.svg';
 
 export default {
   props: {
@@ -45,8 +59,12 @@ export default {
       required: true,
     },
   },
+  data: () => ({
+    whiteCross: WhiteCross,
+  }),
   components: {
     FoodInformation,
+    WhiteCross,
   },
   computed: {
     time() {
@@ -61,6 +79,9 @@ export default {
   methods: {
     showComment() {
       this.$store.commit('setShowComment', true);
+    },
+    closeComment() {
+      this.$store.commit('setShowComment', false);
     },
   },
 };

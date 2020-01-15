@@ -3,15 +3,16 @@
     <div class='content'>
       <div class='color' :class="[(itemStatus === 1 ? 'yellow' : ''), (itemStatus === 2 ? 'green' : '')]"/>
       <div class='info'>
-        <h3>{{orderNumber}}</h3>
+        <h3 class='order-number'>{{orderNumber}}</h3>
         <h3 class='product-name'>{{items.productName}}</h3>
         <span v-if="items.protein === 'Shrimp'">Räkor</span>
         <span v-if="items.protein === 'Beef'" >Biff</span>
         <span v-if="items.protein === 'Chicken'">Kyckling</span>
         <span v-if="items.protein === 'Pork'">Fläsk</span>
+        <span v-if="items.protein === 'Tofu'">Tofu</span>
       </div>
       <div class='added-items'>
-        <span v-for="(item, j) in items.add" :key="j">{{item}}</span>
+        <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
       </div>
       <div class='removed-items'>
         <span v-for="(item, k) in items.remove" :key="k">{{item}}</span>
