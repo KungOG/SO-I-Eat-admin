@@ -733,8 +733,10 @@ label {
   display: flex;
 }
 
-.food-order .comment-modal {
-  background: rgba(0, 0, 0, 0.7);
+.food-order > .comment-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -744,12 +746,47 @@ label {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 800;
   width: 100vw;
   height: 100vh;
+}
+
+.food-order > .comment-modal > .filler {
+  background: rgba(0, 0, 0, 0.7);
   position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 800;
+  width: 100vw;
+  height: 100vh;
+  z-index: 850;
+}
+
+.food-order > .comment-modal > .modal-content {
+  background: #fff;
+  padding: 30px;
+  position: absolute;
+  border-radius: 5px;
+  z-index: 900;
+}
+
+.food-order > .comment-modal > .modal-content > .close-down-cross {
+  position: absolute;
+  top: -45px;
+  left: -45px;
+}
+
+.food-order > .comment-modal > .modal-content > .modal-content-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .drink-information {
@@ -789,6 +826,11 @@ label {
 
 .drink-information > .content .product-name {
   font-size: 18px;
+  margin: 5px 0;
+}
+
+.drink-information > .content .order-number {
+  color: gray;
 }
 
 .drink-information .side-infomation {
@@ -863,6 +905,11 @@ label {
 
 .food-information > .content .info .product-name {
   font-size: 18px;
+  margin: 5px 0;
+}
+
+.food-information > .content .info .order-number {
+  color: gray;
 }
 
 .food-information > .content .added-items {
