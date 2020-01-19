@@ -90,6 +90,7 @@
     >.archive-items-list {
       background: white;
       margin: 10px;
+      height: calc(100% - 143px);
       overflow-y: scroll;
 
       > ul {

@@ -2,6 +2,9 @@ export default {
   setOrders(state, orders) {
     state.orders = orders;
   },
+  setAllOrders(state, allOrders) {
+    state.allOrders = allOrders;
+  },
   setAddons(state, addons) {
     state.addons = addons;
   },

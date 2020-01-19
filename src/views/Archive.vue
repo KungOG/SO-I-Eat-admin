@@ -24,7 +24,7 @@
               v-for="(item, i) in filterArchiveItems"
               :key="`archiveitems-${i}`"
               @click="chosenOrder = item">
-              <span>{{new Date(item.date).getFullYear() + '-' + new Date(item.date).getMonth() + 1 + '-' + new Date(item.date).getDate() + ' ' + new Date(item.date).toLocaleTimeString().slice(0, 5)}}</span>
+              <span>{{new Date(item.date).getFullYear() + '-' + new Date(item.date).getMonth() + 1 + '-' + ("0" + new Date(item.date).getDate()).slice(-2) + ' ' + new Date(item.date).toLocaleTimeString().slice(0, 5)}}</span>
               {{item.code}}
             </li>
           </ul>
@@ -76,7 +76,6 @@ import axios from 'axios';
 export default {
   name: 'archive',
   data: () => ({
-    allOrders: null,
     icons: {
       search: 'Search.svg',    
     },
@@ -86,6 +85,9 @@ export default {
   }),
   components: {
     Navigation,
+  },
+  beforeMount() {
+    this.$store.dispatch('getAllOrders');
   },
   computed: {
     filterArchiveItems() {
@@ -97,7 +99,7 @@ export default {
             const time = new Date(item.date);
             const year = time.getFullYear()
             const month = time.getMonth()
-            const date = time.getDate()
+            const date = ("0" + time.getDate()).slice(-2)
             const fullDate = year + '-' + month +1 + '-' + date
             return fullDate === this.date });
         }
@@ -107,28 +109,13 @@ export default {
       const time = new Date(this.chosenOrder.date);
       const year = time.getFullYear()
       const month = time.getMonth()
-      const date = time.getDate()
+      const date = ("0" + time.getDate()).slice(-2)      
       const localTime = time.toLocaleTimeString().slice(0, 5);
       return year + '-' + month +1 + '-' + date + ' ' + localTime;
     },
-  },
-  beforeMount() {
-    this.getAllOrders();
-  },
-  methods: {
-    getAllOrders() {
-      const url = 'https://so-i-eat-server.herokuapp.com/orders';
-      let token = localStorage.token;
-      axios
-        .get(url, {
-          headers: { authorization: `Bearer ${token}` }})
-        .then((response) => {
-          this.allOrders = response.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    allOrders() {
+      return this.$store.state.allOrders;
+    },
   },
 };
 </script>

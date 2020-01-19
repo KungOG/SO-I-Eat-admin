@@ -1,8 +1,7 @@
 import axios from 'axios';
 
 export default {
- 
-  
+
   getOrders(ctx) {
     const url = 'https://so-i-eat-server.herokuapp.com/orders';
     let token = localStorage.token;
@@ -11,6 +10,19 @@ export default {
         headers: { authorization: `Bearer ${token}` }})
       .then((response) => {
         ctx.commit('setOrders', response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  getAllOrders(ctx) {
+    const url = 'https://so-i-eat-server.herokuapp.com/allOrders';
+    let token = localStorage.token;
+    axios
+      .get(url, {
+        headers: { authorization: `Bearer ${token}` }})
+      .then((response) => {
+        ctx.commit('setAllOrders', response.data);
       })
       .catch((error) => {
         console.log(error);
