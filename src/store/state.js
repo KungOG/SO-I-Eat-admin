@@ -1,5 +1,6 @@
 export default {
   orders: [],
+  addons: [],
   menuItems: [],
   categories: [],
   orderIds: [],

@@ -177,42 +177,6 @@ export default {
     activatedSearch: false,
     search: '',
     categoryToEdit: 'förrätt',
-    addons: [
-      { name: 'Vitlök', price: 5 },
-      { name: 'Lök', price: 5 },
-      { name: 'Vitkål', price: 5 },
-      { name: 'Paprika', price: 5 },
-      { name: 'Morötter', price: 5 },
-      { name: 'Broccoli', price: 5 },
-      { name: 'Blomkål', price: 5 },
-      { name: 'Cashewnötter', price: 5 },
-      { name: 'Böngroddar', price: 5 },
-      { name: 'Purjolök', price: 5 },
-      { name: 'Bambuskott', price: 5 },
-      { name: 'Fisksås', price: 5 },
-      { name: 'Kokosmjölk', price: 5 },
-      { name: 'Sötsursås', price: 5 },
-      { name: 'Sweetchilisås', price: 5 },
-      { name: 'Jordnötsås', price: 5 },
-      { name: 'Jordnötter', price: 5 },
-      { name: 'Ostronsås', price: 5 },
-      { name: 'Ris', price: 5 },
-      { name: 'Nudlar', price: 5 },
-      { name: 'Ingefära', price: 5 },
-      { name: 'Thaibasilika', price: 5 },
-      { name: 'Galanga', price: 5 },
-      { name: 'Citrongräs', price: 5 },
-      { name: 'Korianderblad', price: 5 },
-      { name: 'Limeblad', price: 5 },
-      { name: 'Ananas', price: 5 },
-      { name: 'Tomat', price: 5 },
-      { name: 'Ägg', price: 5 },
-      { name: 'Gräslök', price: 5 },
-      { name: 'Tamarindsås', price: 5 },
-      { name: 'Koriander', price: 5 },
-      { name: 'Brysselkål', price: 5 },
-      { name: 'Honung', price: 5 },
-    ],
     proteinTypes: ['Pork', 'Beef', 'Chicken', 'Shrimp', 'Tofu'],
     isSpice: true,
     buttonText: 'Lägg till',
@@ -239,6 +203,7 @@ export default {
   beforeMount() {
     this.$store.dispatch('getMenuItems');
     this.$store.dispatch('getCategories');
+    this.$store.dispatch('getAddons');
   },
   computed: {
     menuItems() {
@@ -267,6 +232,9 @@ export default {
         );
       }
       return this.$store.state.categories;
+    },
+    addons() {
+      return this.$store.state.addons;
     },
   },
   methods: {

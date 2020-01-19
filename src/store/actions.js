@@ -16,6 +16,19 @@ export default {
         console.log(error);
       });
   },
+  getAddons(ctx) {
+    const url = 'https://so-i-eat-server.herokuapp.com/addons';
+    let token = localStorage.token;
+    axios
+      .get(url, {
+        headers: { authorization: `Bearer ${token}` }})
+      .then((response) => {
+        ctx.commit('setAddons', response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
   getMenuItems(ctx) {
     console.log('getItemns')
     const url = 'https://so-i-eat-server.herokuapp.com/products';
