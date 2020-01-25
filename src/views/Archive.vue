@@ -1,29 +1,22 @@
 <template>
-  <div class='archive'>
+  <div class="archive">
     <Navigation />
     <div class="content-wrapper">
       <aside class="aside-content">
         <div class="search-bar">
-          <img
-            class='search-icon'
-            :src="require('@/assets/icons/' + icons.search)"
-            alt="Sök" />
-          <input
-            type="text"
-            v-model="search"
-            placeholder="Sök ordernummer">
+          <img class="search-icon" :src="require('@/assets/icons/' + icons.search)" alt="Sök" />
+          <input type="text" v-model="search" placeholder="Sök ordernummer" />
         </div>
         <div class="date">
-          <input
-            type="date"
-            @input="date = $event.target.value">
+          <input type="date" @input="date = $event.target.value" />
         </div>
         <div class="archive-items-list">
           <ul>
             <li
               v-for="(item, i) in filterArchiveItems"
               :key="`archiveitems-${i}`"
-              @click="chosenOrder = item">
+              @click="chosenOrder = item"
+            >
               <span>{{new Date(item.date).getFullYear() + '-' + new Date(item.date).getMonth() + 1 + '-' + ("0" + new Date(item.date).getDate()).slice(-2) + ' ' + new Date(item.date).toLocaleTimeString().slice(0, 5)}}</span>
               {{item.code}}
             </li>
@@ -31,16 +24,20 @@
         </div>
       </aside>
       <main class="main-content">
-        <div v-if=chosenOrder>
+        <div v-if="chosenOrder">
           <div class="order-details">
             <h1>{{chosenOrder.code}}</h1>
             <h1>{{time}}</h1>
             <h1>Bord: {{chosenOrder.orderInformation.table}}</h1>
           </div>
-          <div class="order-info" v-for="(foodItem, i) in chosenOrder.orderInformation.foodItems" :key="`archivefooditems-${i}`">
+          <div
+            class="order-info"
+            v-for="(foodItem, i) in chosenOrder.orderInformation.foodItems"
+            :key="`archivefooditems-${i}`"
+          >
             <div>
               <h3>{{foodItem.productName}}</h3>
-              <hr>
+              <hr />
             </div>
             <div>
               <div>
@@ -54,9 +51,13 @@
               </div>
             </div>
           </div>
-          <div class="order-info" v-for="(drinkItem, i) in chosenOrder.orderInformation.drinkItems" :key="`archivedrinkitems-${i}`">
+          <div
+            class="order-info"
+            v-for="(drinkItem, i) in chosenOrder.orderInformation.drinkItems"
+            :key="`archivedrinkitems-${i}`"
+          >
             <h3>{{drinkItem.productName}}</h3>
-            <hr>
+            <hr />
             <p>{{drinkItem.description}}</p>
           </div>
           <div class="totalsum">
@@ -64,58 +65,74 @@
             <h3 class="sum">Betalad med Swish</h3>
           </div>
         </div>
-      </main>  
-    </div>  
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import Navigation from '@/components/NavigationBar.vue';
-import axios from 'axios';
+import axios from "axios";
+import Navigation from "@/components/NavigationBar.vue";
 
 export default {
-  name: 'archive',
+  name: "archive",
   data: () => ({
     icons: {
-      search: 'Search.svg',    
+      search: "Search.svg"
     },
-    search: '',
+    search: "",
     chosenOrder: null,
-    date: '',
+    date: ""
   }),
   components: {
-    Navigation,
+    Navigation
   },
   beforeMount() {
-    this.$store.dispatch('getAllOrders');
+    this.$store.dispatch("getAllOrders");
   },
   computed: {
     filterArchiveItems() {
       if (this.allOrders !== null) {
         if (this.date.length === 0) {
-          return this.allOrders.filter(item => item.code.toUpperCase().match(this.search.toUpperCase()));
-        } else {
-          return this.allOrders.filter(item => {
-            const time = new Date(item.date);
-            const year = time.getFullYear()
-            const month = time.getMonth()
-            const date = ("0" + time.getDate()).slice(-2)
-            const fullDate = year + '-' + month +1 + '-' + date
-            return fullDate === this.date });
+          return this.allOrders.filter(item =>
+            item.code.toUpperCase().match(this.search.toUpperCase())
+          );
         }
+        return this.allOrders.filter(item => {
+          const time = new Date(item.date);
+          const year = time.getFullYear();
+          const month = time.getMonth();
+          const date = time.getDate();
+          const fullDate = `${year}-${month}${1}-${date}`;
+          return fullDate === this.date;
+        });
       }
     },
     time() {
       const time = new Date(this.chosenOrder.date);
-      const year = time.getFullYear()
-      const month = time.getMonth()
-      const date = ("0" + time.getDate()).slice(-2)      
+      const year = time.getFullYear();
+      const month = time.getMonth();
+      const date = time.getDate();
       const localTime = time.toLocaleTimeString().slice(0, 5);
-      return year + '-' + month +1 + '-' + date + ' ' + localTime;
-    },
-    allOrders() {
-      return this.$store.state.allOrders;
-    },
+      return `${year}-${month}${1}-${date} ${localTime}`;
+    }
   },
+  beforeMount() {
+    this.getAllOrders();
+  },
+  methods: {
+    getAllOrders() {
+      const url = "https://so-i-eat-server.herokuapp.com/orders";
+      const { token } = localStorage;
+      axios
+        .get(url, { headers: { authorization: `Bearer ${token}` } })
+        .then(response => {
+          this.allOrders = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
 };
 </script>

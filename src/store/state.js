@@ -8,5 +8,4 @@ export default {
   showModal: false,
   businessHours: null,
   previousRoute: null,
-  showComment: false,
 };

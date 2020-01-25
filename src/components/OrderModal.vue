@@ -22,13 +22,13 @@ export default {
   },
   methods: {
     async deliverOrder() {
-      await this.$store.dispatch('deliverOrders')
-      this.$store.commit('setShowModal', false)
+      await this.$store.dispatch('deliverOrders');
+      this.$store.commit('setShowModal', false);
       this.$store.dispatch('getOrders');
     },
     cancelUpdate() {
-      this.$store.commit('setShowModal', false)
+      this.$store.commit('setShowModal', false);
     },
-  }  
-}
+  },
+};
 </script>

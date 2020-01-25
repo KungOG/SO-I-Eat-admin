@@ -45,7 +45,7 @@ export default {
   watch: {
     status() {
       this.updateStatus();
-    }
+    },
   },
   methods: {
     getBusinessHours() {
@@ -73,7 +73,7 @@ export default {
         });
     },
     updateStatus() {
-      this.$store.dispatch('updateStatus', {status: this.status, _id: this.statusId});
+      this.$store.dispatch('updateStatus', { status: this.status, _id: this.statusId });
     },
   },
 };

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import axios from 'axios'
+import axios from 'axios';
 import Vuex from 'vuex';
 import actions from './actions';
 import getters from './getters';

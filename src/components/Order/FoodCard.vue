@@ -3,7 +3,7 @@
     <div class='food-header'>
       <div class='filler' />
       <span class='comment'
-        @click="showComment"
+        @click="toggleCommentModal"
         v-if="order[1][0].comment !== null"
       >Kommentar</span>
       <h2 v-if="order[1][0].orderInformation.table !== 'take away'">
@@ -27,10 +27,10 @@
      </div>
      <div
       class='comment-modal'
-      v-if="showCommentModal">
+      v-if="showComment">
       <div
         class="filler"
-        @click="closeComment"
+        @click="toggleCommentModal"
       />
       <div class='modal-content'>
         <img
@@ -41,8 +41,14 @@
         <div
           class='modal-content-wrapper'
         >
-          <span>Ordernummer: {{order[1][0].code}}</span>
-          <span>Kommentar: {{order[1][0].comment}}</span>
+        <div class='modal-text'>
+          <span>ORDERNUMBER:</span>
+          <p>{{order[1][0].code}}</p>
+        </div>
+        <div class='modal-text'>
+          <span>KOMMENTAR:</span>
+          <p>{{order[1][0].comment}}</p>
+        </div>
         </div>
       </div>
      </div>
@@ -61,6 +67,7 @@ export default {
   },
   data: () => ({
     whiteCross: WhiteCross,
+    showComment: false,
   }),
   components: {
     FoodInformation,
@@ -72,16 +79,10 @@ export default {
       const localTime = date.toLocaleTimeString().slice(0, 5);
       return localTime;
     },
-    showCommentModal() {
-      return this.$store.state.showComment;
-    },
   },
   methods: {
-    showComment() {
-      this.$store.commit('setShowComment', true);
-    },
-    closeComment() {
-      this.$store.commit('setShowComment', false);
+    toggleCommentModal() {
+      this.showComment = !this.showComment;
     },
   },
 };

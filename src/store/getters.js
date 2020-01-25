@@ -1,10 +1,10 @@
 export default {
-foodItems(state) {
-  var orders = state.orders.map(x => x);
-    var groupedOrders = Object.entries(orders.reduce(function (acc, obj) {
-      var key = obj.orderInformation['table'];
-      var code = obj['code'];
-      if(key === 'take away') {
+  foodItems(state) {
+    const orders = state.orders.map(x => x);
+    const groupedOrders = Object.entries(orders.reduce((acc, obj) => {
+      const key = obj.orderInformation.table;
+      const { code } = obj;
+      if (key === 'take away') {
         acc[code] = [];
         acc[code].push(obj);
       }
@@ -16,10 +16,10 @@ foodItems(state) {
     }, {}));
 
     for (let i = 0; i < groupedOrders.length; i++) {
-      if(groupedOrders[i][0] === 'take away') {
-        groupedOrders.splice(groupedOrders.indexOf(groupedOrders[i]),1)
+      if (groupedOrders[i][0] === 'take away') {
+        groupedOrders.splice(groupedOrders.indexOf(groupedOrders[i]), 1);
       }
-    } 
-    return groupedOrders
+    }
+    return groupedOrders;
   },
 };
