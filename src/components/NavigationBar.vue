@@ -19,9 +19,9 @@
     <div class='time-buttons' v-if="$route.path == '/orderboard'">
       <img :src='Timer' alt="This is icon for timer" />
       <LightButton
-        v-for="buttonText in buttonTexts" 
-        :key="buttonText" 
-        :buttonText="buttonText" 
+        v-for="buttonText in buttonTexts"
+        :key="buttonText"
+        :buttonText="buttonText"
         :chosenValue="productionTime"
         @click.native="updateProductionTime(buttonText) "/>
     </div>
@@ -73,9 +73,9 @@ export default {
     LightButton,
   },
   data: () => ({
-    Orders: Orders,
-    Timer: Timer,
-    Icon: Icon,
+    Orders,
+    Timer,
+    Icon,
     buttonTexts: ['10', '15', '20', '30', '45'],
     time: '',
     productionTime: '',
@@ -90,7 +90,7 @@ export default {
     },
   },
   mounted() {
-    let timerID = setInterval(this.updateTime, 1000);
+    const timerID = setInterval(this.updateTime, 1000);
     this.getProductionTime();
   },
   methods: {
@@ -107,7 +107,7 @@ export default {
     },
     async updateProductionTime(time) {
       this.productionTime = time;
-      await this.$store.dispatch('updateProductionTime', { time: time, _id: this.productionTimeId });
+      await this.$store.dispatch('updateProductionTime', { time, _id: this.productionTimeId });
       this.getProductionTime();
     },
     setCategoryToEdit(cat) {
@@ -116,8 +116,8 @@ export default {
       this.$emit('setActiveCategoryToEdit', cat);
     },
     updateTime() {
-      let cd = new Date();
-      this.time = this.zeroPadding(cd.getHours(), 2) + ':' + this.zeroPadding(cd.getMinutes(), 2);
+      const cd = new Date();
+      this.time = `${this.zeroPadding(cd.getHours(), 2)}:${this.zeroPadding(cd.getMinutes(), 2)}`;
     },
     zeroPadding(num, digit) {
       let zero = '';

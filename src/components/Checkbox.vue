@@ -19,17 +19,17 @@
 export default {
   name: 'checkbox',
   props: {
-    value: { 
-        required: true,
+    value: {
+      required: true,
     },
     dataValue: {
-        required: true,
-    }
+      required: true,
+    },
   },
   methods: {
-      sendValue() {
-          this.$emit('input', this.value);
-      },
+    sendValue() {
+      this.$emit('input', this.value);
+    },
   },
 };
 </script>

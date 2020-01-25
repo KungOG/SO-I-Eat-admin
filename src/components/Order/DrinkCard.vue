@@ -24,6 +24,7 @@
 
 <script>
 import DrinkInformation from '@/components/Order/DrinkInformation.vue';
+
 export default {
   components: {
     DrinkInformation,
@@ -35,8 +36,8 @@ export default {
   },
   computed: {
     time() {
-      let date = new Date(this.order[1][0].date);
-      let localTime = date.toLocaleTimeString().slice(0, 5);
+      const date = new Date(this.order[1][0].date);
+      const localTime = date.toLocaleTimeString().slice(0, 5);
       return localTime;
     },
   },

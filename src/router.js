@@ -31,7 +31,7 @@ export default new Router({
     {
       path: '/orderboard',
       name: 'orderboard',
-      beforeEnter: authGuard,
+      //beforeEnter: authGuard,
       component: () => import('./views/OrderBoard.vue'),
     },
   ],

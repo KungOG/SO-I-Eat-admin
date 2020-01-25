@@ -64,21 +64,21 @@
             <h3 class="sum">Betalad med Swish</h3>
           </div>
         </div>
-      </main>  
-    </div>  
+      </main>
+    </div>
   </div>
 </template>
 
 <script>
-import Navigation from '@/components/NavigationBar.vue';
 import axios from 'axios';
+import Navigation from '@/components/NavigationBar.vue';
 
 export default {
   name: 'archive',
   data: () => ({
     allOrders: null,
     icons: {
-      search: 'Search.svg',    
+      search: 'Search.svg',
     },
     search: '',
     chosenOrder: null,
@@ -92,24 +92,24 @@ export default {
       if (this.allOrders !== null) {
         if (this.date.length === 0) {
           return this.allOrders.filter(item => item.code.toUpperCase().match(this.search.toUpperCase()));
-        } else {
-          return this.allOrders.filter(item => {
-            const time = new Date(item.date);
-            const year = time.getFullYear()
-            const month = time.getMonth()
-            const date = time.getDate()
-            const fullDate = year + '-' + month +1 + '-' + date
-            return fullDate === this.date });
         }
+        return this.allOrders.filter((item) => {
+          const time = new Date(item.date);
+          const year = time.getFullYear();
+          const month = time.getMonth();
+          const date = time.getDate();
+          const fullDate = `${year}-${month}${1}-${date}`;
+          return fullDate === this.date;
+        });
       }
     },
     time() {
       const time = new Date(this.chosenOrder.date);
-      const year = time.getFullYear()
-      const month = time.getMonth()
-      const date = time.getDate()
+      const year = time.getFullYear();
+      const month = time.getMonth();
+      const date = time.getDate();
       const localTime = time.toLocaleTimeString().slice(0, 5);
-      return year + '-' + month +1 + '-' + date + ' ' + localTime;
+      return `${year}-${month}${1}-${date} ${localTime}`;
     },
   },
   beforeMount() {
@@ -118,17 +118,16 @@ export default {
   methods: {
     getAllOrders() {
       const url = 'https://so-i-eat-server.herokuapp.com/orders';
-      let token = localStorage.token;
+      const { token } = localStorage;
       axios
-        .get(url, {
-          headers: { authorization: `Bearer ${token}` }})
+        .get(url, { headers: { authorization: `Bearer ${token}` } })
         .then((response) => {
           this.allOrders = response.data;
         })
         .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
 };
 </script>
