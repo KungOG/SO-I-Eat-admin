@@ -4,14 +4,13 @@
   .content-wrapper {
     display: flex;
     position: relative;
-    height: calc(100% - 85px);
 
     .fader {
-      background: rgba(0,0,0,0.1);
-      transition: background .5s;
+      background: rgba(0, 0, 0, 0.1);
+      transition: background 0.5s;
 
       &.-active {
-        background: rgba(0,0,0,0.7);
+        background: rgba(0, 0, 0, 0.7);
         display: block;
         position: absolute;
         width: 100%;
@@ -37,8 +36,8 @@
       height: calc(100%);
       z-index: 100;
       transform: translateX(-3000px);
-      transition: transform .7s ease-out;
-      
+      transition: transform 0.7s ease-out;
+
       @media screen and (max-width: 1400px) {
         transform: translateX(-500px);
       }
@@ -52,7 +51,4 @@
 
 .edit > .content-wrapper > .field {
   background: white;
-  height: calc(100% - 20px);
-  width: 100%;
-  margin: 0 10px 10px 10px;
 }
