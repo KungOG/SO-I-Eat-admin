@@ -41,10 +41,10 @@
     z-index: 100;
     top: 89px;
     left: 0;
-    transition: height .5s;
-  
+    transition: height 0.5s;
+
     &.-active {
-      height: 100%;
+      height: calc(100% - 90px);
     }
 
     > .dropdown-links {
@@ -59,7 +59,8 @@
       }
     }
 
-    > .dropdown-links > a, span {
+    > .dropdown-links > a,
+    span {
       font-family: $header-font-family;
       letter-spacing: 0.05em;
       font-weight: 700;
@@ -72,9 +73,8 @@
     }
   }
 
-
   > .-activeBackground {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
     align-items: center;
     justify-content: center;

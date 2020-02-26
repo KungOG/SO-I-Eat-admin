@@ -21,8 +21,8 @@
     justify-content: center;
     align-items: center;
 
-    >section >h2 {
-     margin-bottom: 2rem;
+    > section > h2 {
+      margin-bottom: 2rem;
     }
 
     .time-section {
@@ -54,7 +54,7 @@
       justify-content: center;
       margin-top: 4rem;
 
-      >.dark-admin-btn {
+      > .dark-admin-btn {
         width: 120px;
         height: 50px;
         background: $green;
@@ -64,6 +64,4 @@
       }
     }
   }
-
- 
 }
