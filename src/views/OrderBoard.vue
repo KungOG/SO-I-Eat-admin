@@ -1,14 +1,9 @@
-
 <template>
-  <div class='order-board'>
+  <div class="order-board">
     <Navigation />
-    <div class='content'>
-      <div class='drink-content'>
-        <DrinkCard
-          v-for="(order, i) in drinkOrders"
-          :key="`drink-orders-${i}`"
-          :order="order"
-        />
+    <div class="content">
+      <div class="drink-content">
+        <DrinkCard v-for="(order, i) in drinkOrders" :key="`drink-orders-${i}`" :order="order" />
       </div>
       <div class="food1">
         <FoodCard
@@ -25,49 +20,33 @@
         />
       </div>
     </div>
-    <OrderModal v-if="showOrderModal"/>
-    <Modal v-if="showOpeningModal" @closeModal="closeOpeningModal" />
+    <OrderModal v-if="showOrderModal" />
   </div>
 </template>
 
 <script>
 // eslint-disable-next-line import/no-unresolved
-import Navigation from '@/components/NavigationBar.vue';
+import Navigation from "@/components/NavigationBar.vue";
 // eslint-disable-next-line import/no-unresolved
-import FoodCard from '@/components/Order/FoodCard.vue';
+import FoodCard from "@/components/Order/FoodCard.vue";
 // eslint-disable-next-line import/no-unresolved
-import DrinkCard from '@/components/Order/DrinkCard.vue';
+import DrinkCard from "@/components/Order/DrinkCard.vue";
 // eslint-disable-next-line import/no-unresolved
-import OrderModal from '@/components/OrderModal.vue';
+import OrderModal from "@/components/OrderModal.vue";
 // eslint-disable-next-line import/no-unresolved
-import Modal from '@/components/Modal.vue';
-
 
 export default {
-  name: 'orderboard',
-  beforeRouteEnter(to, from, next) {
-    next((vm) => { vm.prevRoute = from; });
-  },
+  name: "orderboard",
   beforeMount() {
     setInterval(() => {
-      this.$store.dispatch('getOrders');
+      this.$store.dispatch("getOrders");
     }, 5000);
   },
-  mounted() {
-    setTimeout(() => {
-      this.prevRoute.name === 'loading' ? this.showOpeningModal = true : this.showOpeningModal = false;
-    }, 1000);
-  },
-  data: () => ({
-    showOpeningModal: false,
-    prevRoute: null,
-  }),
   components: {
     Navigation,
     DrinkCard,
     FoodCard,
-    OrderModal,
-    Modal,
+    OrderModal
   },
   computed: {
     showOrderModal() {
@@ -81,8 +60,10 @@ export default {
         return 0;
       });
       const newArray = [];
-      foodItems.forEach((x) => {
-        x[1][0].orderInformation.drinkItems.length !== 0 ? newArray.push(x) : '';
+      foodItems.forEach(x => {
+        x[1][0].orderInformation.drinkItems.length !== 0
+          ? newArray.push(x)
+          : "";
       });
       return newArray;
     },
@@ -96,17 +77,11 @@ export default {
         return 0;
       });
       for (let i = 0; i < count.length; i++) {
-        foodItems.length !== 0 ? arrays.array1.push(foodItems.shift()) : '';
-        foodItems.length !== 0 ? arrays.array2.push(foodItems.shift()) : '';
+        foodItems.length !== 0 ? arrays.array1.push(foodItems.shift()) : "";
+        foodItems.length !== 0 ? arrays.array2.push(foodItems.shift()) : "";
       }
       return arrays;
-    },
-  },
-  methods: {
-    closeOpeningModal() {
-      this.prevRoute = null;
-      this.showOpeningModal = false;
-    },
-  },
+    }
+  }
 };
 </script>
