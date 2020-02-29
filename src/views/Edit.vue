@@ -145,7 +145,8 @@
             <div class='button-wrapper'>
               <div class='edit-admin-btn -add' @click="createNewProduct" >
                 <img :src="require('@/assets/icons/' + icons.add)" alt="Add item to database icon">
-                <span>Lägg till</span>
+                <span v-if="!this.newProduct._id">Lägg till</span>
+                <span v-else>Uppdatera</span>
               </div>
               <div class='edit-admin-btn -cancel' @click="emptyNewProductData">
                 <img :src="require('@/assets/icons/' + icons.cross)" alt="Cancel icon">
