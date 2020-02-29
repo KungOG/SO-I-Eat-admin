@@ -278,7 +278,7 @@ export default {
       const { extras } = this.newProduct;
       // eslint-disable-next-line no-unused-expressions
       const index = extras.findIndex(x => x.name === i.name)
-      index === -1 ? extras.push({name: i.name, price: i.price}) : extras.splice(index, 1)
+      index === -1 ? extras.push({name: i.name, price: i.price, _id: i._id}) : extras.splice(index, 1)
     },
     containsAddon(addon) {
       const { extras } = this.newProduct;
