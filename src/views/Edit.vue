@@ -277,12 +277,12 @@ export default {
     arrayFullOfAddons(i) {
       const { extras } = this.newProduct;
       // eslint-disable-next-line no-unused-expressions
-      const index = extras.findIndex(x => x.name === i.name)
-      index === -1 ? extras.push({name: i.name, price: i.price, _id: i._id}) : extras.splice(index, 1)
+      const index = extras.findIndex(x => x.name === i.name);
+      index === -1 ? extras.push({ name: i.name, price: i.price, _id: i._id }) : extras.splice(index, 1);
     },
     containsAddon(addon) {
       const { extras } = this.newProduct;
-      if(extras.findIndex(x => x.name === addon.name) === -1) { return false } else { return true };
+      return extras.findIndex(x => x.name === addon.name) !== -1;
     },
     setActiveCategory(x) {
       this.categoryToEdit = x;
