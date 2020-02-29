@@ -124,8 +124,8 @@
               <div class="input-wrapper">
                 <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
                   <Checkbox
-                  :dataValue="newProduct.extras.includes(addon.name)"
-                  :value="addon.name" @input="arrayFullOfAddons"/>
+                  :dataValue="containsAddon(addon)"
+                  :value="addon" @input="arrayFullOfAddons"/>
                   <label :for="addon.name">{{addon.name}}</label>
                 </div>
               </div>
@@ -277,7 +277,12 @@ export default {
     arrayFullOfAddons(i) {
       const { extras } = this.newProduct;
       // eslint-disable-next-line no-unused-expressions
-      extras.includes(i) ? extras.splice(extras.indexOf(i), 1) : extras.push(i);
+      const index = extras.findIndex(x => x.name === i.name)
+      index === -1 ? extras.push({name: i.name, price: i.price}) : extras.splice(index, 1)
+    },
+    containsAddon(addon) {
+      const { extras } = this.newProduct;
+      if(extras.findIndex(x => x.name === addon.name) === -1) { return false } else { return true };
     },
     setActiveCategory(x) {
       this.categoryToEdit = x;
