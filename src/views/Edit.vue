@@ -108,7 +108,7 @@
           </div>
           <div class="wrapper-right">
             <div class="ingredients"
-            :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
+            :class="{'-inactive': categoryToEdit === 'dryck'}">
               <span>Redigerbara ingredienser</span>
               <input type="text" v-model="newProduct.ingredients[0]">
               <input type="text" v-model="newProduct.ingredients[1]">
@@ -119,7 +119,7 @@
               <input type="text" v-model="newProduct.ingredients[6]">
             </div>
             <div class="extras"
-            :class="{'-inactive': categoryToEdit === 'efterrätt' || categoryToEdit === 'dryck'}">
+            :class="{'-inactive': categoryToEdit === 'dryck'}">
               <span>Tillval</span>
               <div class="input-wrapper">
                 <div class="container" v-for="(addon, i) in addons" :key="`addon-${i}`" >
