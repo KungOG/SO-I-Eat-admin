@@ -2,7 +2,7 @@
   background: $main-base-color;
   height: 100vh;
 
-  >.content {
+  > .content {
     display: flex;
 
     .drink-content {
@@ -11,17 +11,26 @@
       align-items: center;
       width: 20%;
       height: calc(100vh - 90px);
-      overflow: scroll;
+      overflow-y: scroll;
     }
-  
-    .food1, 
+
+    .food1,
     .food2 {
       display: flex;
       flex-direction: column;
       align-items: center;
       width: 40%;
       height: calc(100vh - 90px);
-      overflow: scroll;
+      overflow-y: scroll;
     }
   }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 999px;
 }
