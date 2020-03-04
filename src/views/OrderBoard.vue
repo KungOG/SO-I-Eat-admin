@@ -1,6 +1,6 @@
 <template>
   <div class="order-board">
-    <Navigation />
+    <Navigation :prevRoute="prevRoute"/>
     <div class="content">
       <div class="drink-content">
         <DrinkCard v-for="(order, i) in drinkOrders" :key="`drink-orders-${i}`" :order="order" />
@@ -37,6 +37,9 @@ import OrderModal from "@/components/OrderModal.vue";
 
 export default {
   name: "orderboard",
+  data: () => ({
+    prevRoute: null,
+  }),
   beforeMount() {
     setInterval(() => {
       this.$store.dispatch("getOrders");
@@ -47,6 +50,11 @@ export default {
     DrinkCard,
     FoodCard,
     OrderModal
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.prevRoute = from;
+    });
   },
   computed: {
     showOrderModal() {

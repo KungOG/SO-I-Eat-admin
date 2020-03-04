@@ -74,17 +74,13 @@ import Modal from "@/components/Modal.vue";
 
 export default {
   name: "navigationbar",
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.prevRoute = from;
-    });
-  },
   mounted() {
     setTimeout(() => {
-      console.log(this.prevRoute);
-      this.prevRoute.name === "loading"
-        ? (this.showOpeningModal = true)
-        : (this.showOpeningModal = false);
+      if(this.prevRoute) {
+        this.prevRoute.name === "loading" 
+          ? (this.showOpeningModal = true)
+          : (this.showOpeningModal = false);
+      }
     }, 1000);
     const timerID = setInterval(this.updateTime, 1000);
     this.getProductionTime();
@@ -95,6 +91,11 @@ export default {
     Icon,
     LightButton,
     Modal
+  },
+  props: {
+    prevRoute: {
+      required: false,
+    },
   },
   data: () => ({
     Orders,
@@ -108,7 +109,6 @@ export default {
     showHamburger: false,
     burgerText: false,
     showOpeningModal: false,
-    prevRoute: null
   }),
   computed: {
     numberOfOrders() {
@@ -117,11 +117,9 @@ export default {
   },
   methods: {
     openingModal() {
-      this.prevRoute = null;
       this.showOpeningModal = true;
     },
     closeOpeningModal() {
-      this.prevRoute = null;
       this.showOpeningModal = false;
     },
     logout() {
