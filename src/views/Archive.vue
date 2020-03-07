@@ -17,7 +17,7 @@
               :key="`archiveitems-${i}`"
               @click="chosenOrder = item"
             >
-              <span>{{new Date(item.date).getFullYear() + '-' + new Date(item.date).getMonth() + 1 + '-' + ("0" + new Date(item.date).getDate()).slice(-2) + ' ' + new Date(item.date).toLocaleTimeString().slice(0, 5)}}</span>
+              <span>{{item.date.slice(0, 10) + ' ' + new Date(item.date).toLocaleTimeString().slice(0, 5)}}</span>
               {{item.code}}
             </li>
           </ul>
@@ -44,10 +44,10 @@
                 <p>{{foodItem.protein}}</p>
               </div>
               <div>
-                <p v-for="add in foodItem.add">+{{add.name}}</p>
+                <p v-for="(add, i) in foodItem.add" :key="`archiveadd-${i}`">+{{add.name}}</p>
               </div>
               <div>
-                <p v-for="remove in foodItem.remove">-{{remove}}</p>
+                <p v-for="(remove, i) in foodItem.remove" :key="`archiveremove-${i}`">-{{remove}}</p>
               </div>
             </div>
           </div>
@@ -61,8 +61,7 @@
             <p>{{drinkItem.description}}</p>
           </div>
           <div class="totalsum">
-            <h3 class="sum">Totalsumma XXX:-</h3>
-            <h3 class="sum">Betalad med Swish</h3>
+            <h3 class="sum">Totalsumma {{chosenOrder.amount}}:-</h3>
           </div>
         </div>
       </main>
@@ -82,7 +81,7 @@ export default {
     },
     search: "",
     chosenOrder: null,
-    date: ""
+    date: "",
   }),
   components: {
     Navigation
@@ -91,6 +90,9 @@ export default {
     this.$store.dispatch("getAllOrders");
   },
   computed: {
+    allOrders() {
+      return this.$store.state.allOrders;
+    },
     filterArchiveItems() {
       if (this.allOrders !== null) {
         if (this.date.length === 0) {
@@ -99,40 +101,17 @@ export default {
           );
         }
         return this.allOrders.filter(item => {
-          const time = new Date(item.date);
-          const year = time.getFullYear();
-          const month = time.getMonth();
-          const date = time.getDate();
-          const fullDate = `${year}-${month}${1}-${date}`;
+          const fullDate = item.date.slice(0, 10);
           return fullDate === this.date;
         });
       }
     },
     time() {
       const time = new Date(this.chosenOrder.date);
-      const year = time.getFullYear();
-      const month = time.getMonth();
-      const date = time.getDate();
       const localTime = time.toLocaleTimeString().slice(0, 5);
-      return `${year}-${month}${1}-${date} ${localTime}`;
-    }
+      const date = this.chosenOrder.date.slice(0, 10)
+      return date + ' ' + localTime
+    },
   },
-  beforeMount() {
-    this.getAllOrders();
-  },
-  methods: {
-    getAllOrders() {
-      const url = "https://so-i-eat-server.herokuapp.com/orders";
-      const { token } = localStorage;
-      axios
-        .get(url, { headers: { authorization: `Bearer ${token}` } })
-        .then(response => {
-          this.allOrders = response.data;
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }
 };
 </script>
