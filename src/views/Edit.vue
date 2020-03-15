@@ -126,7 +126,7 @@
                   <Checkbox
                   :dataValue="containsAddon(addon)"
                   :value="addon" @input="arrayFullOfAddons"/>
-                  <label :for="addon.name">{{addon.name}}</label>
+                  <label :for="addon.productName">{{addon.productName}}</label>
                 </div>
               </div>
             </div>
@@ -277,12 +277,12 @@ export default {
     arrayFullOfAddons(i) {
       const { extras } = this.newProduct;
       // eslint-disable-next-line no-unused-expressions
-      const index = extras.findIndex(x => x.name === i.name);
-      index === -1 ? extras.push({ name: i.name, price: i.price, _id: i._id }) : extras.splice(index, 1);
+      const index = extras.findIndex(x => x.productName === i.productName);
+      index === -1 ? extras.push({ productName: i.productName, price: i.price, _id: i._id }) : extras.splice(index, 1);
     },
     containsAddon(addon) {
       const { extras } = this.newProduct;
-      return extras.findIndex(x => x.name === addon.name) !== -1;
+      return extras.findIndex(x => x.productName === addon.productName) !== -1;
     },
     setActiveCategory(x) {
       this.categoryToEdit = x;

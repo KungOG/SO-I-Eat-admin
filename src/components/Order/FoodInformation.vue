@@ -12,7 +12,7 @@
         <span v-if="items.protein === 'Tofu'">Tofu</span>
       </div>
       <div class='added-items'>
-        <span v-for="(item, j) in items.add" :key="j">{{item.name}}</span>
+        <span v-for="(item, j) in items.add" :key="j">{{item.productName}}</span>
       </div>
       <div class='removed-items'>
         <span v-for="(item, k) in items.remove" :key="k">{{item}}</span>
